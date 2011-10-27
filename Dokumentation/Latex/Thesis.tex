@@ -1,0 +1,149 @@
+%-----------------
+% Header
+%-----------------
+\documentclass[
+a4paper,                % Papierformat A4frg
+12pt,										% Schriftgröße 12pt
+oneside, 								% Zweiseitiges Layout [oneside]
+titlepage,              % Titleseite verwenden
+headsepline,            % Trennlinie zum Seitenkopf Bereich headings
+bibliography=totoc,     % Das Literaturverzeichnis in den TOC
+listof=totoc, 					% alle Listen in das Inhaltsverzeichnis
+cleardoublepage=plain
+% abstractoff,
+% appendixprefix=true,		
+% headings=normal,      % kleinere Überschriften verwenden
+% chapterprefix=false,  % Einfügen von "Anhang" bzw. "Kapitel" in Überschrift
+% plainheadsepline,     % Trennlinie zum Seitenkopf Bereich Plain
+% parskip=half-         % Abstand nach Absatz
+]{scrbook}
+
+
+\bibliographystyle{alphadin}
+
+%-----------------
+% Packages
+%-----------------
+\usepackage[ngerman]{babel}
+\usepackage{textcomp}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage{lmodern}
+\usepackage{lscape}
+\usepackage{rotating}
+\usepackage{tocbasic}
+\usepackage{color}
+%\usepackage{palatino}
+%\usepackage{mathpazo}
+%\usepackage{courier}
+% left = innen, right = außen
+\usepackage[a4paper, left=4cm, right=3cm, top=4cm, bottom=4cm]{geometry} 
+
+\usepackage{graphicx, amsmath, longtable, booktabs, color, listings, makeidx, pdfpages, subfigure}
+\usepackage{float}
+\usepackage[pdftex,
+	hyperindex=true,
+	plainpages=false,
+	hypertexnames=true,
+	bookmarks=true,
+	bookmarksnumbered=true,
+	pdfhighlight=/O,
+	linkcolor=black,
+	citecolor=black,
+	filecolor=black,
+	menucolor=black,
+	urlcolor=black,
+	colorlinks=true,
+	pdftitle={Elektronische Patientenkarte},
+	pdfauthor={Alexander Miller},
+	pdfsubject={MAGW, Angewandte Informatik},
+	pdfstartpage=1]{hyperref}
+	
+\hyphenation
+{
+	soft-ware-mä-ßi-gen
+	kryp-to-gra-phi-schen
+	kryp-to-gra-phi-scher
+	Ein-weg
+	Hash-funk-ti-o-nen
+	Pro-to-kol-le
+}
+	
+% Formatierung für Code-Listings setzen:
+\lstset{basicstyle=\scriptsize\ttfamily,
+		keywordstyle=\bfseries\color[rgb]{0.07, 0.21, 0.45},
+		keywordstyle=[2]\color[rgb]{0.3, 0.4, 0.5},
+		commentstyle={\color[gray]{0.5}\textit},
+		stringstyle={\textit},
+		xleftmargin=0.5cm, xrightmargin=0cm, framerule=1pt,
+		showstringspaces=false, breaklines=true, breakatwhitespace=true,
+		numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=0.2cm,
+		frame=lines,
+		aboveskip=\bigskipamount, belowskip=\bigskipamount,
+		framexleftmargin=0.5cm,
+		tabsize=4,
+		escapeinside={<ref>}{</ref>}}
+%--------------------------------------
+%   Metainformation
+%--------------------------------------
+\newcommand{\art}{Mobile Anwendungen im Gesundheitswesen}
+\newcommand{\titel}{Elektronische Patientenkarte}
+\newcommand{\untertitel}{\empty}
+\newcommand{\autor}{Christian Bunk,\\Alexander Miller,\\Benjamin Oertel,\\Christian Sandvoss}
+\newcommand{\registriernr}{Mobile Anwendungen im Gesundheitswesen}
+\newcommand{\hochschule}{Hochschule für Technik und Wirtschaft Berlin}
+\newcommand{\fachgebiet}{Angewandte Informatik}
+\newcommand{\erstgutachter}{Thorsten Knape}
+\newcommand{\datum}{Abgabedatum: 15.01.2012} % durch Abgabedatum zu ersetzen
+\newcommand{\ort}{Berlin}
+
+
+	
+%--------------------------------------
+%   Dokumentenbeginn
+%--------------------------------------
+\begin{document}
+
+%--------------------------------------
+%   Titelseite
+%--------------------------------------
+\begin{titlepage}
+	\pdfbookmark[-1]{\titel}{Marke}
+	% Titelblattkopf
+	\titlehead{
+		\begin{flushright}
+			\includegraphics[width=0.4\textwidth]{images/HTW_Logo_rgb.jpg}
+		\end{flushright}
+	}
+	
+	\subject{Hochschule für Technik und Wirtschaft Berlin \\ Angewandten Informatik\\ \large{\mdseries{\registriernr}}} % Art der Arbeit
+	\title{\titel}% Titel der Arbeit
+	\subtitle{\untertitel}% ggf. Untertitel
+	\author{\autor}% Verfasser
+	\date{\datum}% Datum
+	\publishers{\erstgutachter }% Betreuer
+	\maketitle %erzeugt die Titelseite
+\end{titlepage}
+
+%--------------------------------------
+%   Seitennummerierung
+%--------------------------------------
+\pagenumbering{Roman}
+
+%--------------------------------------
+%   Abstract und Kurzfassung
+%--------------------------------------
+\include{chapter/abstract}
+
+\pagenumbering{arabic}
+
+\include{chapter/Kapitel1_Einleitung}
+\include{chapter/Kapitel4_Implementierung}
+\include{chapter/Kapitel6_Fazit}
+\include{chapter/Anhang}
+
+
+%--------------------------------------
+%   Dokumentenende
+%--------------------------------------
+\end{document}

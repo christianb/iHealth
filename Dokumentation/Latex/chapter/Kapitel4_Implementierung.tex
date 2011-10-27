@@ -1,0 +1,43 @@
+\chapter{Entwicklung eines Prototyps}
+\label{sec:Entwicklung eines Prototyps}
+
+Im Folgenden wird das ausgewählte Anwendungsszenario vorgestellt, welches ganzheitlich einen Arbeitsprozess der elektronischen Patientenkarte mit all seinen Teilschritten und möglichen Anwendungsfällen ausführlich beschreibt. Für diesen Zweck erfolgt eine Anforderungsanalyse, die sowohl auf die Ermittlung der einzelnen Personas als auch auf die Spezifikation der User-Interface ausgerichtet ist. Durch die Konzeption und Entwicklung der mobilen Applikation wird es bestrebt eine professionelle Behandlung sowie eine hochqualitative Betreuung für alle Patienten zu ermöglichen und dadurch die Kundenzufriedenheit zu erhöhen.
+
+\section{Szenario}
+\label{sec:Szenario}
+
+Nach einer administrativen Patientenaufnahme in einem Krankenhaus, weden die Patienten medizinisch behandelt und während des ganzen Aufenthalts pflegerisch betreut. Für die Dauer der stationären Anwesenheit erhält jeder Patient ein Armband (RFID-Tag), welcher die eindeutige Identifikation gewährleistet. Anschließend erfolgt die Erstellung eines neuen Profils, wobei notwendige Stammdaten (Armband-ID, Vorname, Nachname, Geschlecht, Geburtsdatum) sowie die optionale Daten (Größe, Gewicht) vom Krankenhauspersonal erfasst und gespeichert werden. Das medizinische Personal, welches für die Behandlung der Patienten zugelassen ist, werden mit jeweils einem Tablet ausgestattet. Nach der erfolgreichen Patientenidentifizierung (RFID-Tag auslesen) stehen auf dem Tablet folgende Funktionalität zur Verfügung:
+
+\begin{itemize}
+	\item \textbf{Allgemeine Informationen:} Durch die Auswahl dieser Funktion, stehen vielfältige Informationen zur Verfügung. So zum Beispiel besteht die Möglichkeit aktuelle Krankenhausmeldungen oder die online-Speisekarte anzusehen und den betroffenen Patienten zu informieren. 
+	\item \textbf{Messung der Vitalfunktionen (Körpertemperatur):} Nach der Aktivierung dieser Funktion wird die Köpertemperatur mit einem meizinischen Fieberthermometer gemessen und über Bluetooth-Funktechnologie an das mobile Gerät übertragen. Die erfasten Messdaten werden sowohl lokal auf dem Gerät gespeichert als auch zu der zentralen Krankenhaus-Datenbank weitergeleitet.
+	\item \textbf{Visualisierung der Daten:} Die erfassten Daten können für eine medizinische Analyse visualisiert werden. Dabei werden die Grenzbereiche gekennzeichnet, so dass der Fortschritt sowie die Tendenz der Genesung sich herauskristallisieren. Durch die Auswahl eines Zeitraums werden die Daten in Form eines Diagramms dargestellt und ermöglichen einen schnellen Überblick der einzelnen Vitalfunktionen.
+\end{itemize}
+
+Damit der Vergleich von gemessenen Werten ein repräsentatives Ergebnis bereitstellt, ist es erforderlich die einzelnen Vitalfunktionen täglich um 08:00, 16:00 und 20:00 zu messen. Dabei muss es immer überprüft werden, dass die Messung korrekt durchgeführt wird und die Messwerte in einem akzeptablen Bereich (z.B. 27 °C - 42,8 °C) liegen. Für die pünktliche Messung sorgt die Erinnerungsfunktion, welche mit Hilfe von akustischen Signalen das zuständige Personal an die bevorstehende Messung rechtzeitig aufmerksam macht. 
+
+Eine clientseitige Webanwendung ermöglicht sowohl für Ärzte als auch für die Patienten eine Betrachtung der gemessenen Daten. Durch die Festlegung der Wertebereiche sowie die automatisierte Anaylsen, werden die Patienten mit kritischen Messwerten informiert und für die priorisierte Behandlung gekennzeichnet.
+
+\section{Anforderungsanalyse}
+\label{sec:Anforderungsanalyse}
+
+Für die Realisierung eines Projekts dieser Größe, ist es erforderlich die einzelnen Systemkomponente zu kennzeichnen sowie den Informationsfluss darzustellen. Wie in der Abbildung \ref{fig:Systemaufbau} dargestellt übernimmt das mobile Gerät die Funktionalität einer Komunikationsschnittstelle zwischen dem NFC fähigen medizinischen Gerät und dem Server. Die clienseitige Anwendung ermöglicht die Visualisierung sowie die anschließende Analyse der erfassten Daten und ermöglicht einen Fernzugriff auf die erforderliche Informationen.
+
+\begin{figure}[ht]
+\centering
+		\includegraphics[height=4.5cm]{images/Systemaufbau.png}
+	\caption[Systemaufbau] {Systemaufbau}
+	\label{fig:Systemaufbau}
+\end{figure}
+
+Folgende technische Komponenten stehen für die Entwicklung zur Verfügung:
+\begin{itemize}
+	\item Messgerät: Arduino Board + NFC-Shield + Temperatursensor
+	\item Mobiles Endgerät: Samsung Nexus S
+	\item Web-Server an der Hochschule für Technik und Wirtschaft Berlin
+\end{itemize}
+
+\section{Konzeption und Implementierung}
+\label{sec:Konzeption und Implementierung}
+
+...

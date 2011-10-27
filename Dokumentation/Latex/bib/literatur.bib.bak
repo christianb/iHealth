@@ -1,0 +1,108 @@
+%  some examples
+%  useful -> ISBN to BibTeX: http://lead.to/amazon/en/
+
+@Article{abrahams1984,
+  author = {Athol D Abrahams},
+  title = {Channel networks: A geomorphological perspective},
+  year = {1984},
+  abstract = {},
+  journal = {Water Resources Research},
+  volume = {20},
+  pages = {161--168}
+}
+
+@Book{adler1998,
+  author = {R J Adler and R E Feldman and M S Taqqu},
+  title = {A practical guide to heavy tails : statistical techniques and applications},
+  year = {1998},
+  abstract = {},
+  publisher = {Birkhauser},
+  address = {Boston}
+}
+
+@Incollection{bevenwood1993,
+  author = {Keith Beven and Eric F Wood},
+  title = {Flow routing and the hydrological response of channel networks},
+  year = {1993},
+  abstract = {},
+  booktitle = {Channel network hydrology},
+  editor = {Keith Beven and Michael J. Kirkby},
+  publisher = {Wiley},
+  pages = {99--128}
+}
+
+@Inproceedings{bookhagen2004,
+  author = {Bodo Bookhagen and R C Thiede and M R Strecker},
+  title = {Late Quaternary intensified monsoon phases control landscape evolution in the NW Himalaya},
+  year = {2004},
+  abstract = {},
+  booktitle = {EGU Annual Meeting 2004 abstracts},
+  note = {EGU04-A-06809}
+}
+
+
+@Booklet{hsieh2001,
+  author = {Meng-Long Hsieh and Ping-Mei Liew and Yoko Ota},
+  title = {The dynamic Hualien-Taitung coast, eastern Taiwan: a treasure for studying active tectonics and coastal evolution},
+  year = {2001},
+  abstract = {},
+  howpublished = {Booklet},
+  note = {Field guide for the 2001 international meeting on sea-level  
+                  changes, coastal evolution and neotectonics (INQUA)}
+}
+
+@Phdthesis{larsen1995,
+  author = {E W Larsen},
+  title = {Mechanics and modeling of river meander migration},
+  year = {1995},
+  abstract = {},
+  school = {University of California, Berkeley}
+}
+
+@Unpublished{larsen2001,
+  author = {M C Larsen and G F Wieczorek and L S Eaton and H Torres-Sierra},
+  title = {The rainfall-triggered landslide and flash flood disaster in northern Venezuela, December 1999},
+  year = {2001},
+  abstract = {},
+  note = {in Proceedings of the 7th Federal 
+                   Interagency Sedimentation
+                   Conference, Reno, NV,  March 25-29,  2001}
+}
+
+@Techreport{reidsmith1992,
+  author = {L M Reid and C W Smith},
+  title = {The effects of Hurricane Iniki on flood hazard on Kauai},
+  year = {1992},
+  abstract = {},
+  institution = {U.S.D.A. Forest Service-Pacific Southwest Research Station}
+}
+
+@Manual{spiegelhalter1996b,
+  author = {D J Spiegelhalter and A Thomas and N G Best and W R Gilks},
+  title = {BUGS: Bayesian inference Using Gibbs Sampling, Version 0.5, (version ii)},
+  year = {1996},
+  abstract = {},
+  organization = {MRC Biostatistics Unit},
+  address = {Cambridge, UK}
+}
+
+@BOOKLET{website:wiki,
+	editor = {{Wikipedia}},
+	title = {Die freie Enzyklopädie},
+	url = {http://de.wikipedia.org/},
+	lastchecked = {11.\,September.\,2009},
+	year = {2009}
+}
+
+@BOOK{Azad200707,
+	title={Computer Vision: Das Praxisbuch},
+	author={Pedram Azad and Tilo Gockel and Rüdiger Dillmann},
+	publisher={Elektor-Verlag},
+	year={2007},
+	month={7},
+	edition={1},
+	isbn={9783895761652},
+	url={http://amazon.de/o/ASIN/3895761656/},
+	totalpages={317},
+	timestamp={2009.07.14},
+}
