@@ -1,0 +1,54 @@
+<?php /*<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head>
+<?php echo $this->headMeta(); ?>
+<?php *//*echo $this->jQuery()
+				->setVersion('1.4.4')
+				->setUIVersion('1.8.7'); 
+<?php echo $this->headLink()
+				->prependStylesheet($this->baseUrl().'/css/site.css')
+				->appendStylesheet($this->baseUrl().'/css/navi_de.css')
+				->appendStylesheet($this->baseUrl().'/css/custom/jquery-ui-1.8.7.custom.css');
+*//*
+$currentController = Zend_Controller_Front::getInstance()->getRequest()->getControllerName();
+$currentAction = Zend_Controller_Front::getInstance()->getRequest()->getActionName();
+?>
+</head>
+<body>
+<a <?php if($currentController == "index" && $currentAction == "index") echo "class=\"active\" "; ?>href="/index" id="nhome">&nbsp;</a>
+
+<?php 
+$defaultNamespace = new Zend_Session_Namespace('Default');
+// different navigation if user is logged in or not
+if(Zend_Auth::getInstance()->hasIdentity())
+{
+    echo $this->translate("Welcome");
+    
+    echo $defaultNamespace->user->getFirstName(); 
+    ?>
+    <a href="/article/list/uid/<?php echo $defaultNamespace->user->getId(); ?>"><?php echo $this->translate("My articles"); ?></a>
+<?php
+}
+else
+{
+    echo $this->translate("Please login, using your Facebook account to publish own articles."); 
+}
+?>
+<?php 
+    if(!empty($this->flashMessages))
+    {
+        echo '<div class="flash-messages">';
+
+        foreach($this->flashMessages as $key => $value)
+            echo $this->translate($value)."<br />";
+
+        echo '</div>';
+    }
+*/
+    // content from each view, the rest of this page is global to all views
+    echo $this->layout()->content;/*
+?>
+
+<a href="/service/imprint"><?php echo $this->translate("Imprint"); ?></a>
+</body>
+</html>*/ ?>

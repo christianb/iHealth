@@ -1,0 +1,151 @@
+#Translation csv file
+Manage user;Benutzer verwalten
+Internal area;Interner Bereich
+Welcome;Willkommen
+Edit my profile;Mein Profil bearbeiten
+Request rights;Rechte beantragen
+My articles;Meine Artikel
+Publish article;Artikel veröffentlichen
+My reviews;Meine Reviews
+Manage users; Benutzer verwalten
+Please login, using your Facebook account to publish own articles.;Bitte melden Sie sich mit Ihrem Facebook Account an, um Ihre eigenen Artikel zu veröffentlichen.
+Guest;Gast
+Upload article as document file;Hochladen Ihres Artikels als Dokument
+Write article online;Artikel online schreiben
+Firstname;Vorname
+Lastname;Nachname
+Rank;Rang
+No matching records found.;Keine passenden Einträge gefunden.
+Position;Position
+University;Universität
+Department;Fachbereich
+Personal Information;Persönliche Angaben
+Company Information;Angaben zum Arbeitsplatz
+Save;Speichern
+User Profile saved successfully.;Benutzerprofil erfolgreich gespeichert.
+Settings;Einstellungen
+Rank;Rang
+Your request;Ihre Anfrage
+I want to request the following rights;Ich möchte die folgenden Rechte beantragen
+Rights;Rechte
+I want to get a reviewer.;Ich möchte ein Reviewer werden.
+Send Request;Anfrage senden
+Rights request successfully transmitted.;Ihre Rechtebeantragung wurde erfolgreich übermittelt.
+Why do you want to get a reviewer?;Warum möchten Sie Reviewer werden?
+Upload article;Artikel hochladen
+Title;Titel
+Choose file;Datei wählen
+Your article was successfully uploaded and will be reviewed now.;Ihr Artikel wurde hochgeladen und wird nun reviewed.
+Article;Artikel
+Reviewer;Reviewer
+Ratings;Bewertungen
+Collaborators;Kollaboratoren
+Insert the names of your collaborators.;Geben Sie die Namen Ihrer Kollaboratoren an.
+Insert the names of your reviewers.;Geben Sie die Namen Ihrer Reviewer an.
+Choose at least %min% users.;Wählen Sie mindestens %min% Personen.
+Creation date;Erstellungsdatum
+Insert tags for your article.;Geben Sie Tags für Ihren Artikel an.
+Abstract;Abstract
+Author to display in the article;Angezeigter Autor im Artikel
+Create article;Artikel anlegen
+Review article;Artikel reviewen
+Your comment;Ihr Kommentar
+Do you want the article to be published?;Möchten Sie, dass der Artikel veröffentlicht wird?
+No, it is not good enough.;Nein, der Artikel ist nicht gut genug.
+Yes, I like it.;Ja, ich finde den Artikel gut.
+Review information;Review Informationen
+Submit review;Review abgeben
+Articles I am asked to review;Artikel, welche ich reviewen soll
+My reviewed articles;Meine reviewten Artikel
+Created;Erstellt
+Published;Veröffentlicht
+Not published yet.;Noch nicht veröffentlicht.
+No reviews available yet.;Es sind noch keine Reviews verfügbar.
+Article shall be published.;Artikel soll veröffentlicht werden.
+Article shall not be published.;Artikel soll nicht veröffentlicht werden.
+Edit article;Artikel bearbeiten
+Save changes;Änderungen speichern
+Checkin;Einchecken
+The article is locked for you exclusively. Other collaborators can not edit it until you check it in again.;Der Artikel kann derzeit nur durch Sie bearbeitet werden. Checken Sie den Artikel ein, um anderen Kollaboratoren die Bearbeitung zu ermöglichen.
+Select yes to unlock the article, that other collaborators can edit it.;Wählen Sie ja aus, um anderen Kollaboratoren die Bearbeitung zu ermöglichen.
+Yes, check in and unlock.;Ja, einchecken und entsperren.
+No, keep it locked for me exclusively.;Nein, für mich gesperrt lassen.
+The article is locked by the following user. You can not edit it, until the user releases the lock.; Der Artikel wurde zur Bearbeitung von nachfolgendem Benutzer gesperrt. Sie können den Artikel erst bearbeiten, wenn der User den Artikel wieder freigibt.
+Create journal edition;Journalausgabe erstellen
+Imprint;Impressum
+Contact;Kontakt
+Contact form;Kontaktformular
+Send form;Formular abschicken
+Contact form was transmitted successfully.;Kontaktformular wurde erfolgreich abgeschickt.
+Comment Information;Kommentar Informationen
+Articles;Artikel
+Journal editions;Journalausgaben
+of;von
+Reset;Zurücksetzen
+The search results are currently filtered by;Die Suchergebnisse werden derzeit gefiltert nach
+No articles found.; Es wurden keine Artikel gefunden.
+Search for articles, to add them to the book.;Suchen Sie nach Artikeln, um diese Ihrem Buch hinzuzufügen.
+Journal edition;Journalausgabe
+Edition;Ausgabe
+Publishing date;Veröffentlichungsdatum
+Your journal edition was created. You have to publish it now.;Ihre Journalausgabe wurde erstellt. Sie müssen diese nun freigeben.
+Created journal editions;Erstellte Journalausgaben
+My articles in progress;Meine Artikel in Bearbeitung
+My published articles;Meine veröffentlichten Artikel
+Show;Anzeigen
+Edit;Bearbeiten
+Remove;Löschen
+Yes;Ja
+No;Nein
+Are you sure that you want to remove the following book?;Sind Sie sicher, dass Sie das folgende Buch löschen wollen?
+Remove book;Buch löschen
+Lock;Sperren
+Unlock;Entsperren
+Table of contents;Inhaltsverzeichnis
+Edit journal edition;Journalausgabe bearbeiten
+Your article was saved successfully.;Ihr Artikel wurde erfolgreich gespeichert.
+Comments;Kommentare
+Comment;Kommentar
+Pdf is being generated.;PDF wird generiert.
+Post comment;Kommentar posten
+No comments available yet.;Es liegen noch keine Kommentare vor.
+Your comment was saved successfully.;Ihr Kommentar wurde erfolgreich gespeichert.
+Remove user;Benutzer löschen
+Superadmins are not allowed to be removed.;Superadmins dürfen nicht gelöscht werden.
+Are you sure that you want to remove the following user?;Sind Sie sicher, dass Sie den folgenden Benutzer löschen wollen?
+Are you sure that you want to publish the following article?;Sind Sie sicher, dass Sie den folgenden Artikel veröffentlichen wollen?
+Once you have published, you can't edit the article anymore!;Nachdem Sie den Artikel veröffentlicht haben, können Sie ihn nicht mehr bearbeiten!
+Is beeing reviewed;Wird derzeit reviewed
+PDF is being generated;PDF wird erstellt
+I do not want to review;Ich möchte keinen Review abgeben
+Article Information;Artikelinformationen
+Authors;Autoren
+Date added;Datum hinzugefügt
+Processing...;Bitte warten...
+Show _MENU_ entries;Einträge _MENU_ anzeigen
+No matching records found;Keine Einträge vorhanden.
+Showing _START_ to _END_ of _TOTAL_ entries;_START_ bis _END_ von _TOTAL_ Einträgen
+Showing 0 to 0 of 0 entries;0 bis 0 von 0 Einträgen
+(filtered from _MAX_ total entries);(gefiltert von _MAX_  Einträgen)
+Search;Suchen
+First;Erster
+Previous;Zurück
+Next;Nächster
+Last;Letzter	
+No editions found.;Keine Jorunalausgaben gefunden.
+by;von
+You have to register to publish. It takes only a minute!;Um zu veröffentlichen, müssen Sie sich registrieren. Die Registrierung dauert nur eine Minute!
+Your article was created, you can start to write.;Ihr Artikel wurde angelegt, Sie können nun mit dem Schreiben beginnen.
+Edit profile;Profil bearbeiten
+You finished working at this article successfully.;Sie haben Ihre Arbeit an dem Artikel erfolgreich abgeschlossen.
+Edit journal edition and create PDF;Journal bearbeiten und PDF erstellen
+Create journal edition and the PDF;Journalausgabe und PDF erstellen
+The article does not exist.;Der Artikel existiert nicht.
+You already rated on this article.;Sie haben diesen Artikel bereits bewertet.
+Your rating was submitted.;Ihre Bewertung wurde gespeichert.
+Rating;Bewertung
+You need to login to rate articles.;Sie müssen sich anmelden, um Artikel zu bewerten.
+Author;Autor
+It is too late, you can not review it anymore.;Es ist zu spät, Sie können den Artikel nicht mehr reviewen.
+You were logged in successfully.;Sie haben sich erfolgreich angemeldet.
+You were logged off successfully.;Sie haben sich erfolgreich abgemeldet.
