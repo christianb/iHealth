@@ -23,12 +23,12 @@ class MeasurementsController extends Zend_Rest_Controller
     
     public function postAction()
     {
-         // POST /measurements/reportid/:reportid/type/:type/value/:value/note/:note
-        $id = $this->getRequest()->getParam("id");
+         // POST /measurements
         $type = $this->getRequest()->getParam("type");
         $value = $this->getRequest()->getParam("value");
         $note = $this->getRequest()->getParam("note");
         
+        $response["request"] = $this->getRequest()->getParams();
         $response["statuscode"] = 100;
         $response["statusmessage"] = "Measurement was created successfully.";
         $response["response"]["measurementId"] = 999;

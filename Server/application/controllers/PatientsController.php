@@ -16,10 +16,11 @@ class PatientsController extends Zend_Rest_Controller
 
     public function getAction()
     {
-        // GET /patients/rfid/:rfid
+        // GET /patients/:id
         
-        $rfid = $this->getRequest()->getParam("rfid");
+        $id = $this->getRequest()->getParam("id");
         
+        $response["request"] = $this->getRequest()->getParams();
         $response["statuscode"] = 100;
         $response["statusmessage"] = "User was found.";
         $response["response"]["userId"] = 999;

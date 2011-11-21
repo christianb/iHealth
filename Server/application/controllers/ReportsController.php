@@ -23,10 +23,11 @@ class ReportsController extends Zend_Rest_Controller
     
     public function postAction()
     {
-        // POST /reports/note/:note
+        // POST /reports
         
         $note = $this->getRequest()->getParam("note");
         
+        $response["request"] = $this->getRequest()->getParams();
         $response["statuscode"] = 100;
         $response["statusmessage"] = "Report was created successfully.";
         $response["response"]["reportId"] = 999;
@@ -36,11 +37,12 @@ class ReportsController extends Zend_Rest_Controller
     
     public function putAction()
     {
-        // PUT /reports/id/:id/note/:note
+        // PUT /reports/:id
         
         $id = $this->getRequest()->getParam("id");
         $note = $this->getRequest()->getParam("note");
         
+        $response["request"] = $this->getRequest()->getParams();
         $response["statuscode"] = 100;
         $response["statusmessage"] = "Report was updated successfully.";
         $response["response"]["reportId"] = $id;

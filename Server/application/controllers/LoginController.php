@@ -16,11 +16,12 @@ class LoginController extends Zend_Rest_Controller
 
     public function getAction()
     {
-        // GET /login/username/:username/password/:password
+        // GET /login/username/:username/hash/:hash
         
         $username = $this->getRequest()->getParam("username");
-        $password = $this->getRequest()->getParam("password");
+        $hash = $this->getRequest()->getParam("hash");
         
+        $response["request"] = $this->getRequest()->getParams();
         $response["statuscode"] = 100;
         $response["statusmessage"] = "User was logged in successfully.";
         $response["response"]["userId"] = 999;
