@@ -1,5 +1,8 @@
 package ihealth.activity;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+
 import ihealth.activity.R;
 import ihealth.activity.R.layout;
 
@@ -30,6 +33,9 @@ public class IHealthActivity extends Activity implements MessageReceiver {
         //JSONObject jObject = RestJsonClient.getPatientData(4);
         //JSONObject jObject = RestJsonClient.createReport();
         //Log.d(TAG, jObject.toString());
+        
+				Log.d(TAG, "Sha1: " + Sha1.getHash("Hallo Welt"));
+
         
         startMeasurement = (Button) findViewById(R.id.startMeasurement);
         
