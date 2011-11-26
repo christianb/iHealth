@@ -8,5 +8,10 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/hello" />
-
+    
+    <Button 
+        android:id ="@+id/startMeasurement"
+        android:text="Start Measurement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>
