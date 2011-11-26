@@ -1,4 +1,4 @@
-package ihealth.activity;
+package ihealth.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -10,7 +10,7 @@ import java.security.NoSuchAlgorithmException;
  * @site http://www.java2s.com/Code/Android/Security/Sha1hashesbasedonagivenString.htm
  *
  */
-class Sha1 {
+public class Sha1 {
 
   public static String getHash(String str) {
     MessageDigest digest = null;

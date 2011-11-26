@@ -1,4 +1,5 @@
-package ihealth.activity;
+package ihealth.arduino;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class Communication {
 	
 	private ArduinoReceiver arduinoReceiver = new ArduinoReceiver();
 	
-	private boolean isConnected = false;
+	//private boolean isConnected = false;
 	
 	private List<MessageReceiver> mMessageReceivers = null;
 	
@@ -104,19 +105,19 @@ public class Communication {
     	public void onReceive(Context context, Intent intent) {
     		if (intent.filterEquals(new Intent(AmarinoIntent.ACTION_CONNECTED))) {
     			Log.d(TAG, "connection established");
-    			isConnected = true;
+    			//isConnected = true;
     		}
     		
     		if (intent.filterEquals(new Intent(AmarinoIntent.ACTION_DISCONNECTED))) {
     			Log.d(TAG, "disconnected");
-    			isConnected = false;
+    			//isConnected = false;
     		}
     		
     		//String data = null;
     		String data;
     		
     		// the device address from which the data was sent, we don't need it here but to demonstrate how you retrieve it
-    		final String address = intent.getStringExtra(AmarinoIntent.EXTRA_DEVICE_ADDRESS);
+    		//final String address = intent.getStringExtra(AmarinoIntent.EXTRA_DEVICE_ADDRESS);
     		
     		// the type of data which is added to the intent
     		final int dataType = intent.getIntExtra(AmarinoIntent.EXTRA_DATA_TYPE, -1);

@@ -1,4 +1,4 @@
-package ihealth.activity;
+package ihealth.arduino;
 
 public interface MessageReceiver {
 

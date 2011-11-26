@@ -1,12 +1,9 @@
 package ihealth.activity;
 
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
-
 import ihealth.activity.R;
-import ihealth.activity.R.layout;
-
-import org.json.JSONObject;
+import ihealth.arduino.Communication;
+import ihealth.arduino.MessageReceiver;
+import ihealth.utils.Sha1;
 
 import android.app.Activity;
 import android.os.Bundle;
