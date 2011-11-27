@@ -37,18 +37,44 @@ public class RestJsonClient {
 		// hash the password
 		String hash = Sha1.getHash(pPassword);
 		
-		String path = "/login/username/"+pUser+"/hash/"+hash;
+		// set the path
+		String path = "/login/";
 		
 		// Prepare a request object
-        HttpGet httpget = new HttpGet();
+        HttpPost post = new HttpPost();
         try {
-			httpget.setURI(new URI(HOST+path));
+			post.setURI(new URI(HOST+path));
 		} catch (URISyntaxException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
         
-        return execute(httpclient, httpget);
+        // Create JSON
+        JSONObject jo = new JSONObject();
+        try {
+			jo.put("username", pUser);
+			jo.put("hash", hash);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+        Log.d(TAG, "json to send: "+jo.toString());
+        
+        StringEntity se = null;
+        
+        try {
+			se = new StringEntity(jo.toString(), HTTP.UTF_8);
+			se.setContentType("application/json");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+        //httppost.setHeader("Content-Type","application/soap+xml;charset=UTF-8");
+        post.setEntity(se); 
+        
+        return execute(httpclient, post);
 	}
 
 	private static JSONObject execute(HttpClient httpclient, HttpUriRequest httpget) {
