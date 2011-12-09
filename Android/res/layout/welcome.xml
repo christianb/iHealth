@@ -1,10 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white" >
-
+    
+    <RelativeLayout
+        android:id="@+id/welcome_headline"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+		android:layout_marginLeft="20dip"
+		android:layout_marginRight="20dip"
+		android:layout_marginTop="120dip"
+		android:orientation="vertical"
+		>
+		
+        <TextView
+            android:id="@+id/headline"
+            android:text="willkommen"
+            android:textColor="@color/black" 
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+	</RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/welcome_info"
+        android:layout_width="fill_parent"
+        android:layout_height="150dip"
+		android:layout_marginLeft="20dip"
+		android:layout_marginRight="20dip"
+		android:layout_marginTop="150dip"
+		android:orientation="vertical"
+		android:background="@color/blue">
+	</RelativeLayout>
     
 
-</LinearLayout>
+    <RelativeLayout
+        android:id="@+id/welcome_login"
+        android:layout_below="@id/welcome_info"
+        android:layout_width="fill_parent"
+        android:layout_height="150dip"
+		android:layout_marginLeft="20dip"
+		android:layout_marginRight="20dip"
+		android:layout_marginTop="5dip"
+		android:orientation="vertical"
+		android:background="@color/red_bright">
+		
+        <TextView
+            android:id="@+id/username_info"
+            android:text="bitte geben sie ihren benutzernamen ein"
+            android:textColor="@color/black" 
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <EditText 
+            android:id="@+id/username_edit"
+            android:layout_width="fill_parent"
+            android:layout_height="20dip"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:layout_below="@id/username_info"
+            android:background="@color/red_dark"/>
+        <TextView
+            android:id="@+id/password_info"
+            android:text="bitte geben sie ihr passwort ein"
+            android:textColor="@color/black" 
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/username_edit"
+            />
+        <EditText 
+            android:id="@+id/password_edit"
+            android:layout_width="fill_parent"
+            android:layout_height="20dip"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:layout_below="@id/password_info"
+            android:background="@color/red_dark"/>
+        
+     </RelativeLayout>
+
+</RelativeLayout>
