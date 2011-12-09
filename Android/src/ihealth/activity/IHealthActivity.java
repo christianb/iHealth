@@ -1,9 +1,12 @@
 package ihealth.activity;
 
+import org.json.JSONObject;
+
 import ihealth.activity.R;
 import ihealth.arduino.Communication;
 import ihealth.arduino.MessageReceiver;
 import ihealth.utils.Sha1;
+import ihealth.webservice.RestJsonClient;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -26,12 +29,12 @@ public class IHealthActivity extends Activity implements MessageReceiver {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
-        //JSONObject jObject = RestJsonClient.login("Testa", "Testa");
+        //JSONObject jObject = RestJsonClient.loginPOST("christian", "qwertz");
         //JSONObject jObject = RestJsonClient.getPatientData(4);
-        //JSONObject jObject = RestJsonClient.createReport();
-        //Log.d(TAG, jObject.toString());
+        JSONObject jObject = RestJsonClient.createMeasurement("42", "temperature", "36", "Normale Kšrpertemperatur");
+        Log.d(TAG, "Empfangen: " + jObject.toString());
         
-				Log.d(TAG, "Sha1: " + Sha1.getHash("Hallo Welt"));
+		/*		Log.d(TAG, "Sha1: " + Sha1.getHash("Hallo Welt"));
 
         
         startMeasurement = (Button) findViewById(R.id.startMeasurement);
@@ -46,13 +49,13 @@ public class IHealthActivity extends Activity implements MessageReceiver {
         
         comm = new Communication(this, "00:06:66:05:07:4D");
         comm.connectToArduino();
-        comm.registerCallback(this);
+        comm.registerCallback(this);*/
     }
     
     @Override
 	protected void onDestroy() {
-		comm.disconnectFromArduino();
-		comm.unregisterCallback(this);
+		//comm.disconnectFromArduino();
+		//comm.unregisterCallback(this);
 		
 		super.onStop();
 	}

@@ -59,7 +59,7 @@ public class RestJsonClient {
         values.add(new BasicNameValuePair("hash", hash));
         
         try {
-			post.setEntity(new UrlEncodedFormEntity(values));
+			post.setEntity(new UrlEncodedFormEntity(values, HTTP.UTF_8));
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
@@ -102,10 +102,10 @@ public class RestJsonClient {
 		return json;
 	}
 	
-	public static JSONObject getPatientData(int pPatientID) {
+	public static JSONObject getPatientData(int pPatientRFID) {
 		HttpClient httpclient = new DefaultHttpClient();
 		
-		String path = "/patients/"+pPatientID;
+		String path = "/patients/"+pPatientRFID;
 		
 		// Prepare a request object
         HttpGet httpget = new HttpGet();
@@ -119,54 +119,31 @@ public class RestJsonClient {
         return execute(httpclient, httpget);
 	}
 	
-	public static JSONObject createReport() {
+	public static JSONObject createMeasurement(String pPatientId, String pType, String pValue, String pNote) {
 		HttpClient httpclient = new DefaultHttpClient();
+		HttpPost post = new HttpPost();
 		
-		HttpPost httppost = new HttpPost();
-		
-		String path = "/reports";
+		String path = "/measurements";
         try {
-			httppost.setURI(new URI(HOST+path));
+			post.setURI(new URI(HOST+path));
 		} catch (URISyntaxException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
         
-        // Make Json
-        JSONObject jo = new JSONObject();
+        List<NameValuePair> values = new ArrayList<NameValuePair>(2);
+        values.add(new BasicNameValuePair("type",pType));
+        values.add(new BasicNameValuePair("value", pValue));
+        values.add(new BasicNameValuePair("patientId",pPatientId));
+        values.add(new BasicNameValuePair("note", pNote));
+
         try {
-			jo.put("note", "Eine ganz lange Nachricht zu dem Report!");
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        
-        Log.d(TAG, "json to send: "+jo.toString());
-        
-        StringEntity se = null;
-        
-        try {
-			se = new StringEntity(jo.toString(), HTTP.UTF_8);
-			se.setContentType("text/xml");
+			post.setEntity(new UrlEncodedFormEntity(values, HTTP.UTF_8));
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         
-        //httppost.setHeader("Content-Type","application/soap+xml;charset=UTF-8");
-        httppost.setEntity(se); 
-        
-        return execute(httpclient, httppost);
-	}
-	
-	public static JSONObject updateReport() {
-		
-		return null;
-	}
-	
-	public static JSONObject addMeasurement() {
-		
-		return null;
+        return execute(httpclient, post);
 	}
 
     
