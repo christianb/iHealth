@@ -9,16 +9,21 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,7 +36,7 @@ public class RestJsonClient {
 	
 	private final static String HOST = "http://titania.f4.htw-berlin.de";
 	
-	public static JSONObject login(String pUser, String pPassword) {
+	public static JSONObject loginPOST(String pUser, String pPassword) {
 		HttpClient httpclient = new DefaultHttpClient();
 		
 		// hash the password
@@ -49,32 +54,38 @@ public class RestJsonClient {
 			e1.printStackTrace();
 		}
         
-        // Create JSON
-        JSONObject jo = new JSONObject();
-        try {
-			jo.put("username", pUser);
-			jo.put("hash", hash);
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        
-        Log.d(TAG, "json to send: "+jo.toString());
-        
-        StringEntity se = null;
+        List<NameValuePair> values = new ArrayList<NameValuePair>(2);
+        values.add(new BasicNameValuePair("username",pUser));
+        values.add(new BasicNameValuePair("hash", hash));
         
         try {
-			se = new StringEntity(jo.toString(), HTTP.UTF_8);
-			se.setContentType("application/json");
+			post.setEntity(new UrlEncodedFormEntity(values));
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        
-        //httppost.setHeader("Content-Type","application/soap+xml;charset=UTF-8");
-        post.setEntity(se); 
         
         return execute(httpclient, post);
+	}
+	
+	public static JSONObject loginGET(String pUser, String pPassword) {
+		HttpClient httpclient = new DefaultHttpClient();
+		
+		// hash the password
+		String hash = Sha1.getHash(pPassword);
+		
+		// set the path
+		String path = "/login/username/"+pUser+"/hash/"+hash;
+		
+		// Prepare a request object
+        HttpGet get = new HttpGet();
+        try {
+			get.setURI(new URI(HOST+path));
+		} catch (URISyntaxException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+        
+        return execute(httpclient, get);
 	}
 
 	private static JSONObject execute(HttpClient httpclient, HttpUriRequest httpget) {
