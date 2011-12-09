@@ -24,6 +24,8 @@ import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.HTTP;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -119,7 +121,16 @@ public class RestJsonClient {
         return execute(httpclient, httpget);
 	}
 	
-	public static JSONObject createMeasurement(String pPatientId, String pType, String pValue, String pNote) {
+	/**
+	 * 
+	 * @param pPatientId
+	 * @param pType
+	 * @param pValue
+	 * @param pNote
+	 * @param pUserId ID des Arztes oder der Krankenschwester
+	 * @return
+	 */
+	public static JSONObject createMeasurement(String pPatientId, String pType, String pValue, String pNote, String pUserId) {
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpPost post = new HttpPost();
 		
@@ -136,6 +147,7 @@ public class RestJsonClient {
         values.add(new BasicNameValuePair("value", pValue));
         values.add(new BasicNameValuePair("patientId",pPatientId));
         values.add(new BasicNameValuePair("note", pNote));
+        values.add(new BasicNameValuePair("userId", pUserId));
 
         try {
 			post.setEntity(new UrlEncodedFormEntity(values, HTTP.UTF_8));
@@ -146,6 +158,28 @@ public class RestJsonClient {
         return execute(httpclient, post);
 	}
 
+	public static JSONObject getMeasurement(String pPatientId, String pType, String pLimit) {
+		HttpClient httpclient = new DefaultHttpClient();
+		
+		String path = "/measurements/";
+		
+		// Prepare a request object
+        HttpGet get = new HttpGet();
+        try {
+			get.setURI(new URI(HOST+path));
+		} catch (URISyntaxException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+        HttpParams params = new BasicHttpParams();
+        params.setParameter("type", pType);
+        params.setParameter("patientId", pPatientId);
+        params.setParameter("limit", pLimit);
+        get.setParams(params);
+       
+        return execute(httpclient, get);
+	}
     
     /**
      *
