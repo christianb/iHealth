@@ -66,27 +66,6 @@ public class RestJsonClient {
         
         return execute(httpclient, post);
 	}
-	
-	public static JSONObject loginGET(String pUser, String pPassword) {
-		HttpClient httpclient = new DefaultHttpClient();
-		
-		// hash the password
-		String hash = Sha1.getHash(pPassword);
-		
-		// set the path
-		String path = "/login/username/"+pUser+"/hash/"+hash;
-		
-		// Prepare a request object
-        HttpGet get = new HttpGet();
-        try {
-			get.setURI(new URI(HOST+path));
-		} catch (URISyntaxException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-        
-        return execute(httpclient, get);
-	}
 
 	private static JSONObject execute(HttpClient httpclient, HttpUriRequest httpget) {
 		// Execute the request
