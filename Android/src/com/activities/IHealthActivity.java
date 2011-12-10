@@ -47,7 +47,7 @@ public class IHealthActivity extends Activity implements MessageReceiver {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.welcome);
+        setContentView(R.layout.login);
         
         //JSONObject jObject = RestJsonClient.loginPOST("christian", "qwertz");
         //JSONObject jObject = RestJsonClient.getPatientData(4);
