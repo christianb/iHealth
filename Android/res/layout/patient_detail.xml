@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white" >
+    
+    <!-- Layout just for Margin left and right -->
+    <RelativeLayout 
+        android:id="@+id/patient_details_margin"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip">
+        
+        <!-- Headline -->
+        <RelativeLayout
+        android:id="@+id/patient_details_headline_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+		android:layout_marginTop="50dip"
+		android:orientation="vertical">
+		
+	        <TextView
+	            android:id="@+id/patient_details_headline"
+	            android:text="patientendetails"
+	            android:textColor="@color/black" 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"/>
+		</RelativeLayout> <!-- End of Headline Layout -->
+    
+    	<!-- Image -->
+	    <RelativeLayout
+	        android:id="@+id/patient_details_image_layout"
+	        android:layout_width="fill_parent"
+	        android:layout_height="70dip"
+			android:layout_marginTop="75dip"
+			android:orientation="vertical"
+			android:background="@color/blue">
+	        
+	        <ImageView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"/>
+	        
+	        <TextView 
+	            android:layout_width="fill_parent"
+	            android:layout_height="fill_parent"
+	            android:background="@color/red_bright"
+	            android:text="patientin hannah mustermann"
+	            android:layout_marginLeft="130dip"/>
+		</RelativeLayout> <!-- End of Image Layout -->
+    
+		<!-- Patenten Detail View -->
+	    <RelativeLayout
+	        android:id="@+id/patient_details_view"
+	        android:layout_below="@id/patient_details_image_layout"
+	        android:layout_width="fill_parent"
+	        android:layout_height="200dip"
+			android:layout_marginTop="5dip"
+			android:orientation="vertical"
+			android:background="@color/red_bright">
+	        
+	        <!-- Margin Layout -->
+	        <RelativeLayout 
+	            android:id="@+id/patient_details_content"
+	            android:layout_marginLeft="20dip"
+	            android:layout_width="fill_parent"
+	            android:layout_height="fill_parent">
+	            
+	            <!-- Diese Elemente müssten dynamisch eingebunden werden!!! -->	            
+	            <LinearLayout 
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:orientation="vertical">
+	                <TextView 
+	                    android:layout_width="fill_parent"
+	            		android:layout_height="wrap_content"
+	            		android:text="name"/>
+	                <TextView
+	                    android:layout_width="fill_parent"
+	            		android:layout_height="wrap_content"
+	            		android:text="Hannah Mustermann"/>
+	            			    
+				</LinearLayout>
+	            
+	        </RelativeLayout>
+	        
+	       	
+	       	
+	        
+	     </RelativeLayout> <!-- End of Buttons -->
+        
+    </RelativeLayout> <!-- End of Margin Layout -->
+    
+    
+
+</RelativeLayout>
