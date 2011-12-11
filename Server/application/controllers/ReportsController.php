@@ -26,6 +26,7 @@ class ReportsController extends Zend_Rest_Controller
         // POST /reports
         
         $note = $this->getRequest()->getParam("note");
+        $patientId = $this->getRequest()->getParam("patientId");
         
         $response["request"] = $this->getRequest()->getParams();
         $response["statuscode"] = 100;

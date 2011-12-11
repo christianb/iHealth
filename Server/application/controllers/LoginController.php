@@ -16,8 +16,13 @@ class LoginController extends Zend_Rest_Controller
 
     public function getAction()
     {
-        // GET /login/username/:username/hash/:hash
+        $response = "404";
         
+        $this->getResponse()->appendBody($response);
+    }
+    
+    public function postAction()
+    {
         $username = $this->getRequest()->getParam("username");
         $hash = $this->getRequest()->getParam("hash");
         
@@ -27,13 +32,6 @@ class LoginController extends Zend_Rest_Controller
         $response["response"]["userId"] = 999;
 
         $this->getResponse()->appendBody(json_encode($response));
-    }
-    
-    public function postAction()
-    {
-        $response = "404";
-        
-        $this->getResponse()->appendBody($response);
     }
     
     public function putAction()
