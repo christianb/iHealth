@@ -50,9 +50,9 @@
 	            android:layout_marginLeft="130dip"/>
 		</RelativeLayout> <!-- End of Image Layout -->
     
-		<!-- Patenten Detail View -->
+		<!-- Content -->
 	    <RelativeLayout
-	        android:id="@+id/new_measurement_view"
+	        android:id="@+id/new_measurement_content"
 	        android:layout_below="@id/new_measurement_image_layout"
 	        android:layout_width="fill_parent"
 	        android:layout_height="200dip"
@@ -60,28 +60,83 @@
 			android:orientation="vertical"
 			android:background="@color/red_bright">
 	        
-	        <!-- Margin Layout -->
-	        <RelativeLayout 
-	            android:layout_marginLeft="20dip"
-	            android:layout_width="fill_parent"
-	            android:layout_height="fill_parent">
+	        <!-- Image Layout -->
+	        <LinearLayout
+	            android:id="@+id/new_measurement_content_image"
+	            android:layout_width="85dip"
+	            android:layout_height="fill_parent"
+	            android:background="@color/blue">
 	            
-	            <!-- Content: Diese Elemente müssten dynamisch eingebunden werden!!! -->	            
+	            <!-- Image Temperaturskala -->
+	        </LinearLayout>
+	        
+	        <!-- Content Layout -->
+	        <RelativeLayout 
+	            android:layout_marginLeft="10dip"
+	            android:layout_width="fill_parent"
+	            android:layout_height="fill_parent"
+	            android:layout_toRightOf="@id/new_measurement_content_image">
+	                  
 	            <LinearLayout
 	                android:layout_width="fill_parent"
 	                android:layout_height="wrap_content"
 	                android:orientation="vertical">
-	                <TextView 
+	                
+	                <LinearLayout
 	                    android:layout_width="fill_parent"
-	            		android:layout_height="wrap_content"
-	            		android:text="Temperatur"/>
-	                <TextView
-	                    android:id="@+id/new_measurement_content_temperature"
-	                    android:layout_width="fill_parent"
-	            		android:layout_height="wrap_content"
-	            		android:text="..."/>
+	                    android:layout_height="wrap_content"
+	                    android:orientation="vertical">
+	                    
+	                    <TextView 
+		                    android:layout_width="fill_parent"
+		            		android:layout_height="wrap_content"
+		            		android:text="messung typ"/>
+		                <Spinner 
+					        android:id="@+id/spinner"
+					        android:layout_width="fill_parent"
+					        android:layout_height="wrap_content"
+					        android:prompt="@string/planet_prompt"
+					        android:background="@color/red_dark"/>
+	                </LinearLayout>
+	                
+	                
+	                    <LinearLayout
+		                    android:layout_width="fill_parent"
+		                    android:layout_height="wrap_content"
+		                    android:orientation="vertical"
+		                    android:layout_marginTop="20dip">
+		                
+			                <TextView 
+			                    android:layout_width="fill_parent"
+			            		android:layout_height="wrap_content"
+			            		android:text="Messwert"/>
+			                <TextView
+			                    android:id="@+id/new_measurement_content_temperature"
+			                    android:layout_width="fill_parent"
+			            		android:layout_height="wrap_content"
+			            		android:background="@color/red_dark"
+			            		android:text="..."/>
+			          	</LinearLayout>
+			          	
+	                    <LinearLayout
+			           		android:layout_width="fill_parent"
+			                android:layout_height="wrap_content"
+			                android:orientation="vertical"
+			                android:layout_marginTop="20dip">
+			                
+				            <TextView 
+				            	android:layout_width="fill_parent"
+				            	android:layout_height="wrap_content"
+				            	android:text="Bemerkung"/>
+				            <TextView 
+				                android:id="@+id/new_measurement_content_bemerkung"
+				           	    android:layout_width="fill_parent"
+				            	android:layout_height="wrap_content"
+				            	android:background="@color/red_dark"
+				            	android:text="..."/>
+	                	</LinearLayout>
 	            			    
-				</LinearLayout>    
+					</LinearLayout>    
 	            
 	        </RelativeLayout>
 	        
@@ -90,7 +145,7 @@
 	    	<!-- Buttons -->
 	    	<RelativeLayout
 			        android:id="@+id/new_measurement_buttons"
-			        android:layout_below="@id/new_measurement_view"
+			        android:layout_below="@id/new_measurement_content"
 			        android:layout_width="fill_parent"
 			        android:layout_height="wrap_content"
 					android:layout_marginTop="5dip"

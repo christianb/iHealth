@@ -42,5 +42,17 @@ public class PatientView extends Activity {
 				
 			}
 		});
+		
+		RelativeLayout button1 = (RelativeLayout) findViewById(R.id.patient_overview_button_1);
+		button1.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Log.d(TAG, "click button : patientendaten anzeigen");
+				
+				Intent intent = new Intent(PatientView.this, PatientDetailView.class);
+				startActivity(intent);
+			}
+		});
 	}
 }
