@@ -18,7 +18,7 @@
         android:id="@+id/impressumg_headline_layout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-		android:layout_marginTop="50dip"
+		android:layout_marginTop="70dip"
 		android:orientation="vertical">
 		
 	        <TextView
@@ -26,16 +26,18 @@
 	            android:text="impressum"
 	            android:textColor="@color/black" 
 	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"/>
+	            android:layout_height="wrap_content"
+	            android:textSize="48sp"/>
+	        
 		</RelativeLayout> <!-- End of Headline Layout -->
 		
 		<!-- Content -->
 		<LinearLayout 
 		    android:id="@+id/impressum_content"
 		    android:layout_width="fill_parent"
-		    android:layout_height="320dip"
+		    android:layout_height="220dip"
 		    android:background="@color/red_bright"
-		    android:layout_marginTop="75dip">
+		    android:layout_marginTop="135dip">
 		    
 		    <LinearLayout
 		    	android:layout_width="fill_parent"
@@ -49,7 +51,8 @@
 	            	android:text="iHealth"
 	            	android:textColor="@color/black" 
 	            	android:layout_width="wrap_content"
-	            	android:layout_height="wrap_content"/>
+	            	android:layout_height="wrap_content"
+	            	android:textSize="14sp"/>
 		    
 			    <TextView
 		            android:id="@+id/impressum_text_2"
@@ -57,7 +60,8 @@
 		            android:textColor="@color/black" 
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
-		            android:layout_marginTop="2dip"/>
+		            android:layout_marginTop="2dip"
+		            android:textSize="12sp"/>
 		    </LinearLayout>
 		</LinearLayout>
 		
@@ -66,7 +70,7 @@
 		    android:layout_height="fill_parent"
 		    android:layout_below="@id/impressum_content"
 		    android:background="@color/blue"
-		    android:layout_marginTop="20dip"
+		    android:layout_marginTop="40dip"
 		    android:layout_marginBottom="10dip">
 		    
 		</LinearLayout>
