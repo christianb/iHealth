@@ -1,13 +1,16 @@
 package com.activities;
 
+import java.math.BigInteger;
+import java.nio.charset.Charset;
+
 import ihealth.arduino.Communication;
 import ihealth.arduino.MessageReceiver;
+import ihealth.utils.HexConversion;
 import ihealth.webservice.RestJsonClient;
 
 import org.json.JSONObject;
 
 import com.nfc.NFC;
-import com.util.HexConversion;
 
 import android.app.Activity;
 import android.app.PendingIntent;
@@ -91,7 +94,12 @@ public class IHealthActivity extends Activity implements MessageReceiver {
        
         techListsArray = new String[][] { new String[] { NfcA.class.getName(), NdefFormatable.class.getName(), MifareClassic.class.getName() } };
         
+        com = new Communication(this);
     }
+    
+    public String toHex(String arg) {
+	    return String.format("%x", new BigInteger(arg.getBytes(Charset.forName("US-ASCII"))));
+	}
     
     public void onPause() {
         super.onPause();
@@ -104,8 +112,13 @@ public class IHealthActivity extends Activity implements MessageReceiver {
     }
 
     public void onNewIntent(Intent intent) {
+    	
     	mTagFromIntent = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
         Log.d(TAG, "call onNewIntent()");
+        
+        // write tag
+        NFC.writeTag(mTagFromIntent, "42:06:66:05:07:4D");
+        
         byte[] payload = NFC.readTag(mTagFromIntent);
     	StringBuffer buf = new StringBuffer();
     	for (int i = 0; i < 6; i++) {
@@ -119,7 +132,7 @@ public class IHealthActivity extends Activity implements MessageReceiver {
     	Log.d(TAG, "device id: "+device_id);
         //do something with tagFromIntent
     	
-    	com = new Communication(this, device_id);
+    	
     	com.connectToArduino();
     }
     

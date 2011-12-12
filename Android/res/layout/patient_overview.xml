@@ -7,7 +7,7 @@
     
     <!-- Layout just for Margin left and right -->
     <RelativeLayout 
-        android:id="@+id/patient_margin"
+        android:id="@+id/patient_overview_margin"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_marginLeft="20dip"
@@ -15,14 +15,14 @@
         
         <!-- Headline -->
         <RelativeLayout
-        android:id="@+id/patient_headline_layout"
+        android:id="@+id/patient_overview_headline_layout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
 		android:layout_marginTop="100dip"
 		android:orientation="vertical">
 		
 	        <TextView
-	            android:id="@+id/patient_headline"
+	            android:id="@+id/patient_overview_headline"
 	            android:text="patient"
 	            android:textColor="@color/black" 
 	            android:layout_width="wrap_content"
@@ -31,7 +31,7 @@
     
     	<!-- Image -->
 	    <RelativeLayout
-	        android:id="@+id/patient_image_layout"
+	        android:id="@+id/patient_overview_image_layout"
 	        android:layout_width="fill_parent"
 	        android:layout_height="150dip"
 			android:layout_marginTop="120dip"
@@ -52,8 +52,8 @@
     
 		<!-- Buttons -->
 	    <RelativeLayout
-	        android:id="@+id/menu_buttons"
-	        android:layout_below="@id/patient_image_layout"
+	        android:id="@+id/patient_overview_buttons"
+	        android:layout_below="@id/patient_overview_image_layout"
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 			android:layout_marginTop="5dip"
@@ -61,7 +61,7 @@
 			android:background="@color/white">
 	        
 	        <RelativeLayout
-	            android:id="@+id/menu_button_1"
+	            android:id="@+id/patient_overview_button_1"
 	            android:layout_width="fill_parent"
 	            android:layout_height="50dip"
 				android:layout_marginTop="5dip"
@@ -74,7 +74,7 @@
 	                android:layout_height="fill_parent"
 	                android:layout_marginLeft="10dip">
 	            	<TextView 
-	                	android:id="@+id/menu_button_1_text_1"
+	                	android:id="@+id/patient_overview_button_1_text_1"
 	                	android:layout_width="fill_parent"
 	                	android:layout_height="20dip"
 		                android:text="patientendaten anzeigen"
@@ -83,15 +83,15 @@
 		                android:layout_width="fill_parent"
 		                android:layout_height="20dip"
 		                android:text="basisinformationen des patienten"
-		                android:layout_below="@id/menu_button_1_text_1"/>
+		                android:layout_below="@id/patient_overview_button_1_text_1"/>
 	            </RelativeLayout>
 	        </RelativeLayout>
 	        
 	       	<RelativeLayout
-	            android:id="@+id/menu_button_2"
+	            android:id="@+id/patient_overview_button_2"
 	            android:layout_width="fill_parent"
 	            android:layout_height="50dip"
-	            android:layout_below="@id/menu_button_1"
+	            android:layout_below="@id/patient_overview_button_1"
 				android:layout_marginTop="5dip"
 				android:orientation="vertical"
 				android:background="@color/red_bright">
@@ -102,7 +102,7 @@
 	                android:layout_height="fill_parent"
 	                android:layout_marginLeft="10dip">
 	            	<TextView 
-	                	android:id="@+id/menu_button_1_text_1"
+	                	android:id="@+id/patient_overview_button_1_text_1"
 	                	android:layout_width="fill_parent"
 	                	android:layout_height="20dip"
 		                android:text="auswertungen anzeigen"
@@ -111,15 +111,15 @@
 		                android:layout_width="fill_parent"
 		                android:layout_height="20dip"
 		                android:text="messung über zeitraum ausgeben"
-		                android:layout_below="@id/menu_button_1_text_1"/>
+		                android:layout_below="@id/patient_overview_button_1_text_1"/>
 	            </RelativeLayout>
 	        </RelativeLayout>
 	        
 	       	<RelativeLayout
-	            android:id="@+id/menu_button_3"
+	            android:id="@+id/patient_overview_button_3"
 	            android:layout_width="fill_parent"
 	            android:layout_height="50dip"
-	            android:layout_below="@id/menu_button_2"
+	            android:layout_below="@id/patient_overview_button_2"
 				android:layout_marginTop="5dip"
 				android:orientation="vertical"
 				android:background="@color/red_bright">
@@ -130,7 +130,7 @@
 	                android:layout_height="fill_parent"
 	                android:layout_marginLeft="10dip">
 	            	<TextView 
-	                	android:id="@+id/menu_button_1_text_1"
+	                	android:id="@+id/patient_overview_button_1_text_1"
 	                	android:layout_width="fill_parent"
 	                	android:layout_height="20dip"
 		                android:text="messung starten"
@@ -139,7 +139,7 @@
 		                android:layout_width="fill_parent"
 		                android:layout_height="20dip"
 		                android:text="neue messung starten"
-		                android:layout_below="@id/menu_button_1_text_1"/>
+		                android:layout_below="@id/patient_overview_button_1_text_1"/>
 	            </RelativeLayout>
 	        </RelativeLayout>
 	        
