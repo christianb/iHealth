@@ -60,12 +60,18 @@
 			android:orientation="vertical"
 			android:background="@color/red_bright">
 	        
+	        <ScrollView 
+	                android:layout_width="fill_parent"
+					android:layout_height="fill_parent"
+					android:layout_marginLeft="10dip">
+					
 	        <!-- Margin Layout -->
-	        <RelativeLayout 
+	        <LinearLayout 
 	            android:id="@+id/patient_details_content"
-	            android:layout_marginLeft="20dip"
+	            
 	            android:layout_width="fill_parent"
-	            android:layout_height="fill_parent">
+	            android:layout_height="fill_parent"
+	            android:orientation="vertical">
 	            
 	            <!-- Diese Elemente müssten dynamisch eingebunden werden!!! -->	            
 	            <LinearLayout 
@@ -79,13 +85,84 @@
 	                <TextView
 	                    android:layout_width="fill_parent"
 	            		android:layout_height="wrap_content"
-	            		android:text="Hannah Mustermann"/>
+	            		android:text="Hannah Mustermann"
+	            		android:background="@color/red_dark"/>
 	            			    
 				</LinearLayout>
+				
+				<LinearLayout 
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:orientation="vertical"
+	                android:layout_marginTop="10dip">
+	                <TextView 
+	                    android:layout_width="fill_parent"
+	            		android:layout_height="wrap_content"
+	            		android:text="geburtstag"/>
+	                <TextView
+	                    android:layout_width="fill_parent"
+	            		android:layout_height="wrap_content"
+	            		android:text="01.03.1985 (26 Jahre)"
+	            		android:background="@color/red_dark"/>
+	            			    
+				</LinearLayout>
+				
+				<LinearLayout 
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:orientation="vertical"
+	                android:layout_marginTop="10dip">
+	                <TextView 
+	                    android:layout_width="fill_parent"
+	            		android:layout_height="wrap_content"
+	            		android:text="im krankenhaus seit"/>
+	                <TextView
+	                    android:layout_width="fill_parent"
+	            		android:layout_height="wrap_content"
+	            		android:text="01.11.2011"
+	            		android:background="@color/red_dark"/>
+	            			    
+				</LinearLayout>
+				
+				<LinearLayout 
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:orientation="vertical"
+	                android:layout_marginTop="10dip">
+	                <TextView 
+	                    android:layout_width="fill_parent"
+	            		android:layout_height="wrap_content"
+	            		android:text="blutgruppe"/>
+	                <TextView
+	                    android:layout_width="fill_parent"
+	            		android:layout_height="wrap_content"
+	            		android:text="A Rh-"
+	            		android:background="@color/red_dark"/>
+	            			    
+				</LinearLayout>
+				
+				<LinearLayout 
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:orientation="vertical"
+	                android:layout_marginTop="10dip">
+	                <TextView 
+	                    android:layout_width="fill_parent"
+	            		android:layout_height="wrap_content"
+	            		android:text="gewicht"/>
+	                <TextView
+	                    android:layout_width="fill_parent"
+	            		android:layout_height="wrap_content"
+	            		android:text="56 kg"
+	            		android:background="@color/red_dark"/>
+	            			    
+				</LinearLayout>
+				
+				
 	            
-	        </RelativeLayout>
+	        </LinearLayout>
 	        
-	       	
+	       	</ScrollView>
 	       	
 	        
 	     </RelativeLayout> <!-- End of Buttons -->

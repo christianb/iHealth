@@ -1,4 +1,4 @@
-package com.util;
+package ihealth.utils;
 /*
  * =============================================================================
  * Copyright (c) 1998-2009 Jeffrey M. Hunter. All rights reserved.

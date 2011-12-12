@@ -105,12 +105,12 @@
 	                	android:id="@+id/menu_button_1_text_1"
 	                	android:layout_width="fill_parent"
 	                	android:layout_height="20dip"
-		                android:text="..."
+		                android:text="Impressum"
 		                android:layout_marginTop="10dip"/>
 		            <TextView 
 		                android:layout_width="fill_parent"
 		                android:layout_height="20dip"
-		                android:text="..."
+		                android:text="legal information anzeigen"
 		                android:layout_below="@id/menu_button_1_text_1"/>
 	            </RelativeLayout>
 	        </RelativeLayout>

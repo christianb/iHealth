@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 /** Patientendetails: Name, Geburtstag, etc. */
-public class PatentDetailView extends Activity {
+public class PatientDetailView extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

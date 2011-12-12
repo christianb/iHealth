@@ -9,13 +9,22 @@ import android.util.Log;
 public class NFC {
 	
 	private static final String TAG = "NFC";
+	private static final int SECTOR = 2;
+	private static final int BLOCK = 9;
 
+	/**
+	 * Write a TAG with a given Device ID.
+	 * @param tag
+	 * @param tagText
+	 */
 	public static void writeTag(Tag tag, String tagText) {
         MifareClassic classic = MifareClassic.get(tag);
         
+        String[] elements = tagText.split(":");
+        
         try {
             classic.connect();
-            classic.authenticateSectorWithKeyA(2, MifareClassic.KEY_DEFAULT);
+            classic.authenticateSectorWithKeyA(SECTOR, MifareClassic.KEY_DEFAULT);
             //classic.authenticateSectorWithKeyB(1, MifareClassic.KEY_DEFAULT);
             Log.d(TAG, "is connected : "+ classic.isConnected());
             
@@ -35,6 +44,19 @@ public class NFC {
             //classic.writeBlock(8, toWrite);
             
             //toWrite = "00:06:66:05:07:4D0000".getBytes(Charset.forName("US-ASCII"));
+            int count = 0;
+            for (String s : elements) {
+            	int intValue=Integer.parseInt(s,16);
+            	toWrite[count++] = (byte) intValue;
+            }
+            
+            if (count < 15) {
+            	for (int i = count; i <= 15; i++) {
+            		toWrite[i] = 0x00;
+            	}
+            }
+            
+            /*
             toWrite[0] = 0x00;
             toWrite[1] = 0x06;
             toWrite[2] = 0x66;
@@ -50,8 +72,8 @@ public class NFC {
             toWrite[12] = 0x00;
             toWrite[13] = 0x00;
             toWrite[14] = 0x00;
-            toWrite[15] = 0x00;
-            classic.writeBlock(9, toWrite);
+            toWrite[15] = 0x00;*/
+            classic.writeBlock(BLOCK, toWrite);
         } catch (IOException e) {
         	
         } finally {

@@ -4,4 +4,9 @@
     <string name="hello">Hello World!</string>
     <string name="app_name">iHealth</string>
 
+    <string name="planet_prompt">Choose a planet</string>
+    <string-array name="planets_array">
+        <item>Körpertemperatur</item>
+        <item>Puls</item>
+    </string-array>
 </resources>

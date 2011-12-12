@@ -13,9 +13,10 @@ import at.abraxas.amarino.AmarinoIntent;
 
 public class Communication {
 
-	private final String mDeviceAddress;
-	private final Context mContext;
+	private String mDeviceAddress = null;
+	private Context mContext;
 	//private final BroadcastReceiver mReceiver;
+	private boolean isConnected = false;
 	
 	private ArduinoReceiver arduinoReceiver = new ArduinoReceiver();
 	
@@ -23,11 +24,37 @@ public class Communication {
 	
 	private List<MessageReceiver> mMessageReceivers = null;
 	
+	private static Communication mInstance;
+	
+	public static Communication getInstance(Context pContext) {
+		if (mInstance == null) {
+			mInstance = new Communication(pContext);
+		}
+		
+		return mInstance;
+	}
+	
 	public Communication(Context pContext, String pDevice_Address) {
 		mDeviceAddress = pDevice_Address;
 		mContext = pContext;
 		mMessageReceivers = new ArrayList<MessageReceiver>();
 		//mReceiver = pReceiver;
+		mInstance = this;
+	}
+	
+	public Communication(Context pContext) {
+		// TODO Auto-generated constructor stub
+		mContext = pContext;
+		mInstance = this;
+		mMessageReceivers = new ArrayList<MessageReceiver>();
+	}
+	
+	private void setContext(Context pContext) {
+		mContext = pContext;
+	}
+	
+	public void setDeviceAddress(String pDevice_Address) {
+		mDeviceAddress = pDevice_Address;
 	}
 	
 	public void registerCallback(MessageReceiver mr) {
@@ -49,16 +76,18 @@ public class Communication {
      * @param pDevice_Address Set the address of the Bluetooth device.
      */
     public void connectToArduino() {
-    	// in order to receive broadcasted intents we need to register our receiver
-    	mContext.registerReceiver(arduinoReceiver, new IntentFilter(AmarinoIntent.ACTION_RECEIVED));
-    	mContext.registerReceiver(arduinoReceiver, new IntentFilter(AmarinoIntent.ACTION_CONNECTED));
-    	
-    	// TODO Add a local receiver, to check connection state
-    	// TODO add callback wich have to be registered to receive messages!
-    			
-    	
-    	// this is how you tell Amarino to connect to a specific BT device from within your own code
-    	Amarino.connect(mContext, mDeviceAddress);
+    	if (!isConnected && mDeviceAddress != null) {
+    		// in order to receive broadcasted intents we need to register our receiver
+    		mContext.registerReceiver(arduinoReceiver, new IntentFilter(AmarinoIntent.ACTION_RECEIVED));
+    		mContext.registerReceiver(arduinoReceiver, new IntentFilter(AmarinoIntent.ACTION_CONNECTED));
+    		
+    		// TODO Add a local receiver, to check connection state
+    		// TODO add callback wich have to be registered to receive messages!
+    		
+    		
+    		// this is how you tell Amarino to connect to a specific BT device from within your own code
+    		Amarino.connect(mContext, mDeviceAddress);    		
+    	}
     }
     
     /**
@@ -67,10 +96,12 @@ public class Communication {
      */
     public void disconnectFromArduino() {
     	// if you connect in onStart() you must not forget to disconnect when your app is closed
-    	Amarino.disconnect(mContext, mDeviceAddress);
+    	if (isConnected) {
+    		Amarino.disconnect(mContext, mDeviceAddress);
     			
-    	// do never forget to unregister a registered receiver
-    	mContext.unregisterReceiver(arduinoReceiver);
+    		// do never forget to unregister a registered receiver
+    		mContext.unregisterReceiver(arduinoReceiver);
+    	}
     }
     
     public void sendInteger(int value, char flag) {
@@ -89,6 +120,16 @@ public class Communication {
      */
     public void startMeasurement() {
     	sendInteger(0, 'M');
+    	notifyCallbacks(36);
+    }
+    
+    public void restartMeasurement() {
+    	sendInteger(0, 'M');
+    	notifyCallbacks(42);
+    }
+    
+    public boolean isConnected() {
+    	return isConnected;
     }
     
     /**
@@ -105,12 +146,12 @@ public class Communication {
     	public void onReceive(Context context, Intent intent) {
     		if (intent.filterEquals(new Intent(AmarinoIntent.ACTION_CONNECTED))) {
     			Log.d(TAG, "connection established");
-    			//isConnected = true;
+    			isConnected = true;
     		}
     		
     		if (intent.filterEquals(new Intent(AmarinoIntent.ACTION_DISCONNECTED))) {
     			Log.d(TAG, "disconnected");
-    			//isConnected = false;
+    			isConnected = false;
     		}
     		
     		//String data = null;
@@ -131,7 +172,7 @@ public class Communication {
     					// since we know that our string value is an int number we can parse it to an integer
     					//final int sensorReading = Integer.parseInt(data);
     					Log.d(TAG, "Sensor Reading: "+data);
-    					//notifyCallbacks(data);
+    					notifyCallbacks(new Integer(data).intValue());
     					//mGraph.addDataPoint(sensorReading);
     				//} 
     				//catch (NumberFormatException e) { /* oh data was not an integer */ }
