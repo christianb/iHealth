@@ -15,19 +15,19 @@
         
         <!-- Headline -->
         <RelativeLayout
-        android:id="@+id/patient_overview_headline_layout"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-		android:layout_marginTop="100dip"
-		android:orientation="vertical">
+	        android:id="@+id/patient_overview_headline_layout"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+			android:layout_marginTop="80dip"
+			android:orientation="vertical">
 		
 	        <TextView
 	            android:id="@+id/patient_overview_headline"
 	            android:text="patient"
-	            android:textColor="@color/black" 
 	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"/>
-		</RelativeLayout> <!-- End of Headline Layout -->
+	            android:layout_height="wrap_content"
+	            style="@style/Headline"/>
+	    </RelativeLayout> <!-- End of Headline Layout -->
     
     	<!-- Image -->
 	    <RelativeLayout

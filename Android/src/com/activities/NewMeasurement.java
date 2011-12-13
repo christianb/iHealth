@@ -101,6 +101,10 @@ public class NewMeasurement extends iHealthSuperActivity implements MessageRecei
         intentFiltersArray = new IntentFilter[] {ndef, };
        
         techListsArray = new String[][] { new String[] { NfcA.class.getName(), NdefFormatable.class.getName(), MifareClassic.class.getName() } };
+	
+        setFontSegoeWPLight((TextView) findViewById(R.id.new_measurement_headline));
+        setFontSegoeWPSemibold((TextView) findViewById(R.id.new_measurement_image_text_1));
+        setFontSegoeWPSemibold((TextView) findViewById(R.id.new_measurement_image_text_2));
 	}
 
 	@Override

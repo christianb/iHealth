@@ -18,15 +18,15 @@
         android:id="@+id/menu_headline_layout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-		android:layout_marginTop="100dip"
+		android:layout_marginTop="80dip"
 		android:orientation="vertical">
 		
 	        <TextView
 	            android:id="@+id/menu_headline"
 	            android:text="aktion wählen"
-	            android:textColor="@color/black" 
 	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"/>
+	            android:layout_height="wrap_content"
+	            style="@style/Headline"/>
 		</RelativeLayout> <!-- End of Headline Layout -->
     
     	<!-- Image -->

@@ -20,4 +20,10 @@ public class iHealthSuperActivity extends Activity {
 					getBaseContext().getAssets(), "fonts/SegoeWP-Light.ttf");
 			view.setTypeface(tf);			
 	}
+	
+	protected void setFontSegoeWPSemibold(TextView view) {
+		Typeface tf = Typeface.createFromAsset(
+				getBaseContext().getAssets(), "fonts/SegoeWP-Semibold.ttf");
+		view.setTypeface(tf);
+	}
 }
