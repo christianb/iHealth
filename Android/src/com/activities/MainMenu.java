@@ -1,24 +1,36 @@
 package com.activities;
 
-import android.app.Activity;
+import ihealth.utils.HexConversion;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.nfc.NfcAdapter;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.nfc.NFC;
 
 /** Patient einlesen, impressum (Hilfe) */
 public class MainMenu extends iHealthSuperActivity {
 
 	private static final String TAG = "MainMenu";
+	private ProgressDialog dialog;
+	private Tag mTagFromIntent;
+	
+	private String mTagID = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.menu);
+		
+		dialog = new ProgressDialog(this);
 		
 		RelativeLayout button1 = (RelativeLayout) findViewById(R.id.menu_button_1);
 		button1.setOnClickListener(new OnClickListener() {
@@ -27,8 +39,12 @@ public class MainMenu extends iHealthSuperActivity {
 			public void onClick(View v) {
 				Log.d(TAG, "click Button : patient einlesen");
 				
-				Intent intent = new Intent (MainMenu.this, PatientView.class);
-				startActivity(intent);
+				if (mTagID == null) {
+					Toast.makeText(MainMenu.this, "Bitte Patient einlesen", Toast.LENGTH_SHORT).show();
+				} else {
+					Intent intent = new Intent (MainMenu.this, PatientView.class);
+					startActivity(intent);					
+				}
 			}
 		});
 		
@@ -50,5 +66,36 @@ public class MainMenu extends iHealthSuperActivity {
 		setFontSegoeWPLight((TextView) findViewById(R.id.menu_button_2_text_1));
 		setFontSegoeWPLight((TextView) findViewById(R.id.menu_button_2_text_2));
 		setFontSegoeWPLight((TextView) findViewById(R.id.menu_image_text));
+	}
+	
+	public void onNewIntent(Intent intent) {
+    	
+    	mTagFromIntent = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
+    	//Log.d(TAG, "Tag ID = "+mTagFromIntent.);
+    	byte[] tagId = intent.getByteArrayExtra(NfcAdapter.EXTRA_ID);
+    	mTagID = HexConversion.bytesToHex(tagId);
+    	Log.d(TAG, "tag id = "+mTagID);
+        Log.d(TAG, "call onNewIntent()");
+        
+        Toast.makeText(this, "Patient eingelesen!", Toast.LENGTH_SHORT).show();
+    }
+	
+	public void onPause() {
+        super.onPause();
+        mAdapter.disableForegroundDispatch(this);
+    }
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		
+		mAdapter.enableForegroundDispatch(MainMenu.this, pendingIntent, intentFiltersArray, techListsArray);
+	}
+	
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		mTagID = null;
 	}
 }

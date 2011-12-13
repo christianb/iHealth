@@ -109,6 +109,8 @@ public class Communication {
     			
     		// do never forget to unregister a registered receiver
     		mContext.unregisterReceiver(arduinoReceiver);
+    		
+    		isConnected=false;
     	}
     }
     

@@ -30,10 +30,6 @@ public class NewMeasurement extends iHealthSuperActivity implements MessageRecei
 	private static final String TAG = "NewMeasurement";
 	private Communication com;
 	private Tag mTagFromIntent;
-	private NfcAdapter mAdapter;
-	private PendingIntent pendingIntent;
-	private IntentFilter[] intentFiltersArray;
-	private String[][] techListsArray;
 
 	
 	private ProgressDialog dialog;
@@ -119,9 +115,14 @@ public class NewMeasurement extends iHealthSuperActivity implements MessageRecei
 		
 	}
 	
+	
+	
 	public void onNewIntent(Intent intent) {
     	
     	mTagFromIntent = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
+    	//Log.d(TAG, "Tag ID = "+mTagFromIntent.);
+    	byte[] tagId = intent.getByteArrayExtra(NfcAdapter.EXTRA_ID);
+    	Log.d(TAG, "tag id = "+HexConversion.bytesToHex(tagId));
         Log.d(TAG, "call onNewIntent()");
         
         // write tag

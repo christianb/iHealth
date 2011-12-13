@@ -1,5 +1,9 @@
 package com.activities;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import ihealth.webservice.RestJsonClient;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,8 +31,31 @@ public class Login extends iHealthSuperActivity {
 			public void onClick(View v) {
 				Log.d(TAG, "click button : login");
 				
-				Intent intent = new Intent(Login.this, MainMenu.class);
-				startActivity(intent);
+				JSONObject jObject = RestJsonClient.loginPOST("christian", "qwertz");
+				Log.d(TAG, "Empfangen: " + jObject.toString());
+				String statuscode = "";
+				String statusmessage = "";
+				
+				try {
+					statuscode = jObject.get("statuscode").toString();
+					statusmessage = jObject.get("statusmessage").toString();
+					Log.d(TAG, "statuscode = "+ statuscode);
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				Log.d(TAG, statusmessage);
+				
+				if (new Integer(statuscode).intValue() == 200) {
+					
+				} else {
+					/* TODO noch statuscode 100, wenn geändert dann methode nach oben verschieben */
+					Intent intent = new Intent(Login.this, MainMenu.class);
+					startActivity(intent);
+				}
+				
+				
 			}
 		});
 		
