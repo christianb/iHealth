@@ -1,0 +1,22 @@
+<?php
+    $this->title = "Personal Listenansicht";
+    $this->headTitle($this->title);
+?>
+<table cellpadding="0" cellspacing="0" class="default"> 
+  <tr>
+    <th>Name</th>
+    <th style="width: 150px;">Rolle</th>
+    <th style="width: 200px;">Aktionen</th>
+  </tr>
+  <?php 
+  $i = 0;
+  foreach($this->listPersonnel as $personnel): 
+    ?>
+  <tr <?php echo ($i++ %2 == 0) ? "class=\"even\"" : ""; ?>>
+    <td><?php echo $personnel->getFirstname() . " " . $personnel->getLastname(); ?></td>
+    <td>kommt noch</td>
+    <td>[ 
+        ]</td>
+  </tr>
+  <?php endforeach; ?>
+</table>

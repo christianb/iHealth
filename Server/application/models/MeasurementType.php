@@ -17,7 +17,6 @@ class Application_Model_MeasurementType
     /**
      * The measurement type id that is a unique identifier for the measurement type.
      * @var integer The measurement type id.
-     * @access private
      * 
      * @Id @Column(type="integer")
      * @GeneratedValue
@@ -26,7 +25,6 @@ class Application_Model_MeasurementType
     /** 
      * The measurement name.
      * @var string The measurement name.
-     * @access private
      * 
      * @Column(type="string", length=64)
      */
@@ -34,7 +32,6 @@ class Application_Model_MeasurementType
     /** 
      * The measurement unit.
      * @var string The measurement unit.
-     * @access private
      * 
      * @Column(type="string", length=32)
      */

@@ -17,7 +17,6 @@ class Application_Model_HospitalStay
     /**
      * The hospital stay id that is a unique identifier for the hospital stay.
      * @var integer The hospital stay id.
-     * @access private
      * 
      * @Id @Column(type="integer")
      * @GeneratedValue
@@ -26,7 +25,6 @@ class Application_Model_HospitalStay
     /** 
      * Whether the hospital stay was an emergency or not.
      * @var string The hospital stay was an emergency.
-     * @access private
      * 
      * @Column(type="boolean") 
      */
@@ -34,7 +32,6 @@ class Application_Model_HospitalStay
     /** 
      * The hospital stay checkin date and time.
      * @var DateTime The checkin date and time.
-     * @access private
      * 
      * @Column(type="datetime", nullable="true")
      */
@@ -42,7 +39,6 @@ class Application_Model_HospitalStay
     /** 
      * The hospital stay checkout date and time.
      * @var DateTime The checkout date and time.
-     * @access private
      * 
      * @Column(type="datetime", nullable="true")
      */
@@ -50,7 +46,6 @@ class Application_Model_HospitalStay
     /** 
      * The hospital stay icd.
      * @var string The hospital stay icd.
-     * @access private
      * 
      * @Column(type="string", length=64)
      */
@@ -58,7 +53,6 @@ class Application_Model_HospitalStay
     /** 
      * The hospital stay ops.
      * @var string The hospital stay ops.
-     * @access private
      * 
      * @Column(type="string", length=64)
      */
@@ -66,7 +60,6 @@ class Application_Model_HospitalStay
     /** 
      * The hospital operator.
      * @var string The hospital operator.
-     * @access private
      * 
      * @OneToOne(targetEntity="Application_Model_Patient")
      * @JoinColumn(name="patient_id_fk", referencedColumnName="id")
@@ -75,7 +68,6 @@ class Application_Model_HospitalStay
     /** 
      * The hospital operator type.
      * @var string The hospital operator type.
-     * @access private
      * 
      * @ManyToOne(targetEntity="Application_Model_Hospital")
      * @JoinColumn(name="hospital_id_fk", referencedColumnName="id")

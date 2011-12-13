@@ -17,7 +17,6 @@ class Application_Model_Hospital
     /**
      * The hospital id that is a unique identifier for the hospital.
      * @var integer The hospital id.
-     * @access private
      * 
      * @Id @Column(type="integer")
      * @GeneratedValue
@@ -26,7 +25,6 @@ class Application_Model_Hospital
     /** 
      * The hospital name.
      * @var string The hospital name.
-     * @access private
      * 
      * @Column(type="string", length=64)
      */
@@ -34,7 +32,6 @@ class Application_Model_Hospital
     /** 
      * The hospital ik.
      * @var string The hospital ik.
-     * @access private
      * 
      * @Column(type="string", length=64)
      */
@@ -42,7 +39,6 @@ class Application_Model_Hospital
     /** 
      * The hospital operator.
      * @var string The hospital operator.
-     * @access private
      * 
      * @Column(type="string", length=64)
      */
@@ -50,7 +46,6 @@ class Application_Model_Hospital
     /** 
      * The hospital operator type.
      * @var string The hospital operator type.
-     * @access private
      * 
      * @Column(type="string", length=64)
      */
@@ -58,7 +53,6 @@ class Application_Model_Hospital
     /** 
      * Whether the hospital is a teaching hospital or not.
      * @var string The hospital name.
-     * @access private
      * 
      * @Column(type="boolean") 
      */

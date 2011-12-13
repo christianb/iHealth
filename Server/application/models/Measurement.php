@@ -17,7 +17,6 @@ class Application_Model_Measurement
     /**
      * The measurement id that is a unique identifier for the measurement.
      * @var integer The measurement id.
-     * @access private
      * 
      * @Id @Column(type="integer")
      * @GeneratedValue
@@ -26,7 +25,6 @@ class Application_Model_Measurement
     /** 
      * The measurement memo.
      * @var string The measurement memo.
-     * @access private
      * 
      * @Column(type="string", length=256)
      */
@@ -34,7 +32,6 @@ class Application_Model_Measurement
     /** 
      * The measurement value.
      * @var string The measurement value.
-     * @access private
      * 
      * @Column(type="string", length=32)
      */
@@ -42,24 +39,21 @@ class Application_Model_Measurement
     /** 
      * The measurement date.
      * @var string The measurement date.
-     * @access private
      * 
      * @Column(type="datetime", nullable=true)
      */
     private $date;
     /** 
-     * The measurement report.
-     * @var string The measurement report.
-     * @access private
+     * The measurement user.
+     * @var string The measurement user.
      * 
-     * @ManyToOne(targetEntity="Application_Model_Report")
-     * @JoinColumn(name="report_id_fk", referencedColumnName="id")
+     * @ManyToOne(targetEntity="Application_Model_Patient")
+     * @JoinColumn(name="patient_id_fk", referencedColumnName="id")
      */
-    private $report;
+    private $patient;
     /** 
      * The measurement type.
      * @var string The measurement type.
-     * @access private
      * 
      * @ManyToOne(targetEntity="Application_Model_MeasurementType")
      * @JoinColumn(name="measurement_type_id_fk", referencedColumnName="id")
@@ -68,7 +62,6 @@ class Application_Model_Measurement
     /** 
      * The measurement personnel.
      * @var string The measurement personnel.
-     * @access private
      * 
      * @ManyToOne(targetEntity="Application_Model_Personnel")
      * @JoinColumn(name="personnel_id_fk", referencedColumnName="id")

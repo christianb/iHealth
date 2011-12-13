@@ -5,13 +5,12 @@ class LoginController extends Zend_Rest_Controller
 
     public function init()
     {
-        $this->_helper->viewRenderer->setNoRender(true);
+        
     }
     
     public function indexAction()
     {
-        $response = "404";
-        $this->getResponse()->appendBody($response);
+        echo "index";
     }
 
     public function getAction()
@@ -19,6 +18,8 @@ class LoginController extends Zend_Rest_Controller
         $response = "404";
         
         $this->getResponse()->appendBody($response);
+        
+        $this->_helper->viewRenderer->setNoRender(true);
     }
     
     public function postAction()
@@ -32,6 +33,8 @@ class LoginController extends Zend_Rest_Controller
         $response["response"]["userId"] = 999;
 
         $this->getResponse()->appendBody(json_encode($response));
+        
+        $this->_helper->viewRenderer->setNoRender(true);
     }
     
     public function putAction()
@@ -39,6 +42,8 @@ class LoginController extends Zend_Rest_Controller
         $response = "404";
         
         $this->getResponse()->appendBody($response);
+        
+        $this->_helper->viewRenderer->setNoRender(true);
 
     }
     
@@ -47,6 +52,8 @@ class LoginController extends Zend_Rest_Controller
         $response = "404";
         
         $this->getResponse()->appendBody($response);
+        
+        $this->_helper->viewRenderer->setNoRender(true);
 
     }
 }

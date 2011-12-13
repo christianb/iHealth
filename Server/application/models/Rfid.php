@@ -11,13 +11,12 @@
  * @Table(name="rfid_tags")
  * @HasLifeCycleCallbacks
  */
-class Application_Model_RFIDTag
+class Application_Model_Rfid
 {
     
     /**
      * The rfid tag id that is a unique identifier for the rfid tag.
      * @var integer The rfid tag id.
-     * @access private
      * 
      * @Id @Column(type="integer")
      * @GeneratedValue
@@ -26,16 +25,26 @@ class Application_Model_RFIDTag
     /** 
      * The rfid tag tag.
      * @var string The rfid tag tag.
-     * @access private
      * 
      * @Column(type="string", length=64)
      */
     private $tag;
+    /**
+     * @OneToOne(targetEntity="Application_Model_Patient", inversedBy="rfid")
+     * @JoinColumn(name="patient_id", referencedColumnName="id")
+     */
+    private $patient;
 
     /**
      * Constructor.
      */
-    public function __construct() {
+    public function __construct($data) {
+      if(isset($data["tag"])){
+        $this->tag = $data["tag"];
+      }
+      if(isset($data["patient"])){
+        $this->patient = $data["patient"];
+      }
     }   
     
     public function getId() {
@@ -53,6 +62,16 @@ class Application_Model_RFIDTag
     public function setTag($tag) {
         $this->tag = $tag;
     }
+    
+    public function getPatient(){
+      return $this->patient;
+    }
+
+    public function setPatient($patient){
+      $this->patient = $patient;
+    }
+
+
 
 
 }

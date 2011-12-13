@@ -17,7 +17,6 @@ class Application_Model_Patient
     /**
      * The patient id that is a unique identifier for the patient.
      * @var integer The patient id.
-     * @access private
      * 
      * @Id @Column(type="integer")
      * @GeneratedValue
@@ -26,7 +25,6 @@ class Application_Model_Patient
     /** 
      * The patient firstname.
      * @var string The patient firstname.
-     * @access private
      * 
      * @Column(type="string", length=64)
      */
@@ -34,7 +32,6 @@ class Application_Model_Patient
     /** 
      * The patient lastname.
      * @var string The patient lastname.
-     * @access private
      * 
      * @Column(type="string", length=64)
      */
@@ -42,7 +39,6 @@ class Application_Model_Patient
     /** 
      * The patient street.
      * @var string The patient street.
-     * @access private
      * 
      * @Column(type="string", length=64)
      */
@@ -50,7 +46,6 @@ class Application_Model_Patient
     /** 
      * The patient city.
      * @var string The patient city.
-     * @access private
      * 
      * @Column(type="string", length=64)
      */
@@ -58,7 +53,6 @@ class Application_Model_Patient
     /** 
      * The patient zipcode.
      * @var string The patient zipcode.
-     * @access private
      * 
      * @Column(type="string", length=5)
      */
@@ -66,7 +60,6 @@ class Application_Model_Patient
     /** 
      * The patient weight in gramm.
      * @var string The patient weight in gramm.
-     * @access private
      * 
      * @Column(type="integer", length=7)
      */
@@ -74,7 +67,6 @@ class Application_Model_Patient
     /** 
      * The patient size in cm.
      * @var string The patient size in cm.
-     * @access private
      * 
      * @Column(type="string", length=64)
      */
@@ -82,24 +74,17 @@ class Application_Model_Patient
     /** 
      * The patient blood group.
      * @var string The patient blood group.
-     * @access private
      * 
      * @Column(type="string", length=5)
      */
     private $bloodGroup;
-    /** 
-     * The patient rfid.
-     * @var string The patient rfid.
-     * @access private
-     * 
-     * @OneToOne(targetEntity="Application_Model_RFIDTag")
-     * @JoinColumn(name="rfid_tag_id", referencedColumnName="id")
+    /**
+     * @OneToOne(targetEntity="Application_Model_Rfid", mappedBy="patient")
      */
-    private $rfidTag;
+    private $rfid;
     /** 
      * The patient rfid.
      * @var string The patient rfid.
-     * @access private
      * 
      * @OneToMany(targetEntity="Application_Model_HospitalStay", mappedBy="patient")
      * @JoinColumn(name="hospital_stay_id_fk", referencedColumnName="id")
@@ -200,6 +185,12 @@ class Application_Model_Patient
     public function setHospitalStays($hospitalStays) {
         $this->hospitalStays = $hospitalStays;
     }
+    
+          public function getName(){
+      return $this->firstname . " " . $this->lastname;
+    }
+    
+    
 
 
 }

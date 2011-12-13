@@ -1,0 +1,24 @@
+<?php
+    $this->title = "RFID-Tags Listenansicht";
+    $this->headTitle($this->title);
+?>
+<table cellpadding="0" cellspacing="0" class="default"> 
+  <tr>
+    <th>RFID-Tag</th>
+    <th style="width: 150px;">Aktueller Patient</th>
+    <th style="width: 200px;">Aktionen</th>
+  </tr>
+  <?php 
+  $i = 0;
+  foreach($this->listRfidTags as $rfidTag): 
+    ?>
+  <tr <?php echo ($i++ %2 == 0) ? "class=\"even\"" : ""; ?>>
+    <td><?php echo $rfidTag->getTag(); ?></td>
+    <td><?php if($rfidTag->getPatient()) { echo $rfidTag->getPatient()->getName(); } else { echo "<i style=\"color: #999999\">nicht zugewiesen</i>"; } ?></td>
+    <td>[ <a href="<?php echo "/rfid/delete/id/" . $rfidTag->getId(); ?>">entfernen</a> |
+      <a href="<?php echo "/rfid/clear/id/" . $rfidTag->getId(); ?>">freigeben</a>
+        ]</td>
+  </tr>
+  <?php endforeach; ?>
+</table>
+  <a href="/rfid/create">Neuen Tag anlegen</a>

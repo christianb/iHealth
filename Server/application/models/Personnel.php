@@ -17,16 +17,21 @@ class Application_Model_Personnel
     /**
      * The personnel id that is a unique identifier for the measurement.
      * @var integer The personnel id.
-     * @access private
      * 
      * @Id @Column(type="integer")
      * @GeneratedValue
      */
     private $id;
     /** 
+     * The personnel email.
+     * @var string The personnel email.
+     * 
+     * @Column(type="string", length=32)
+     */
+    private $email;
+    /** 
      * The personnel username.
      * @var string The personnel username.
-     * @access private
      * 
      * @Column(type="string", length=32)
      */
@@ -34,39 +39,41 @@ class Application_Model_Personnel
     /** 
      * The personnel password.
      * @var string The personnel password.
-     * @access private
      * 
-     * @Column(type="string", length=32)
+     * @Column(type="string", length=64)
      */
     private $password;
         /** 
      * The personnel academic title.
      * @var string The personnel academic title.
-     * @access private
      * 
-     * @Column(type="string", length=32)
+     * @Column(type="string", length=32, nullable=true)
      */
     private $academicTitle;
     /** 
      * The personnel firstname.
      * @var string The personnel firstname.
-     * @access private
      * 
-     * @Column(type="string", length=64)
+     * @Column(type="string", length=64, nullable=true)
      */
     private $firstname;
         /** 
      * The personnel lastname.
      * @var string The personnel lastname.
-     * @access private
      * 
-     * @Column(type="string", length=64)
+     * @Column(type="string", length=64, nullable=true)
      */
     private $lastname;
+            /** 
+     * The personnel state.
+     * @var string The personnel state.
+     * 
+     * @Column(type="string", length=64, nullable=true)
+     */
+    private $state;
     /** 
      * The personnel current position.
      * @var string The current position.
-     * @access private
      * 
      * @OneToOne(targetEntity="Application_Model_PersonnelPosition")
      * @JoinColumn(name="personnel_position_id_fk", referencedColumnName="id")
@@ -75,7 +82,6 @@ class Application_Model_Personnel
     /** 
      * The personnel position layed in date.
      * @var Date The layed in date.
-     * @access private
      * 
      * @Column(type="datetime", nullable="true")
      */
@@ -83,7 +89,6 @@ class Application_Model_Personnel
     /** 
      * The personnel position layed out date.
      * @var Date The layed out date.
-     * @access private
      * 
      * @Column(type="datetime", nullable="true")
      */
@@ -91,18 +96,50 @@ class Application_Model_Personnel
     /** 
      * The personnel position degree date.
      * @var Date The degree date.
-     * @access private
      * 
      * @Column(type="date", nullable="true")
      */
     private $degreeDate;
-    
+      /**
+   * The users registration hash, used to verify the account.
+   * @var string The registration hash.
+   * 
+   * @Column(type="string", length=32, unique=true)
+   */
+  private $verificationHash;
+  
     /**
      * Constructor.
      */
-    public function __construct() {
-    }   
-    
+    public function __construct($data = array()){
+    if(isset($data["username"])){
+      $this->username = $data["username"];
+    }
+
+    if(isset($data["password"])){
+      $this->password = $data["password"];
+    }
+
+    if(isset($data["email"])){
+      $this->email = $data["email"];
+    }
+
+    if(isset($data["firstname"])){
+      $this->firstname = $data["firstname"];
+    }
+
+    if(isset($data["lastname"])){
+      $this->lastname = $data["lastname"];
+    }
+
+    if(isset($data["verificationHash"])){
+      $this->verificationHash = $data["verificationHash"];
+    }
+
+    if(isset($data["state"])){
+      $this->state = $data["state"];
+    }
+  }
     public function getId() {
         return $this->id;
     }
@@ -182,6 +219,33 @@ class Application_Model_Personnel
     public function setDegreeDate($degreeDate) {
         $this->degreeDate = $degreeDate;
     }
+    
+    public function getEmail(){
+      return $this->email;
+    }
 
+    public function setEmail($email){
+      $this->email = $email;
+    }
+
+    public function getState(){
+      return $this->state;
+    }
+
+    public function setState($state){
+      $this->state = $state;
+    }
+
+    public function getVerificationHash(){
+      return $this->verificationHash;
+    }
+
+    public function setVerificationHash($verificationHash){
+      $this->verificationHash = $verificationHash;
+    }
+    
+        public function getName(){
+      return $this->firstname . " " . $this->lastname;
+    }
 
 }

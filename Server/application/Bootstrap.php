@@ -7,12 +7,21 @@
  */
 class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 {
+    protected function _initConfig()
+    {
+        $config = new Zend_Config($this->getOptions(), true);
+        Zend_Registry::set('config', $config);
+        return $config;
+    }
+
     /**
      * Initalize the view.
      * @author Dennis De Cock
      */
     protected function _initView()
     {        
+        $defaultConfig = $this->getOption('default');
+        
         $view = new Zend_View();
     	//ZendX_JQuery::enableView($view);
     	$viewrenderer = new Zend_Controller_Action_Helper_ViewRenderer();
@@ -24,7 +33,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     	
     	$view->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
     	$view->headTitle()->setSeparator(' - ');
-		$view->headTitle('unplagged.com');
+	$view->headTitle($defaultConfig['portalName']);
+        
     }
 	
     /**
@@ -32,10 +42,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
      * @return Zend_Registry
      */
     protected function _initTranslate(){
-        $registry = Zend_Registry::getInstance();
+    /*    $registry = Zend_Registry::getInstance();
         $locale = new Zend_Locale('de_DE');
         $translate = new Zend_Translate('csv', APPLICATION_PATH . '/../languages/de.csv', 'de');
-		//$translate->addTranslation(APPLICATION_PATH . '/../languages/de.csv', 'de'); //TODO: add automatically lang support
+      //$translate->addTranslation(APPLICATION_PATH . '/../languages/de.csv', 'de'); //TODO: add automatically lang support
         
         $registry->set('Zend_Locale', $locale);
         $registry->set('Zend_Translate', $translate);
@@ -47,11 +57,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		        'content' => APPLICATION_PATH . '/../resources/languages',
 		        'locale'  => $locale,
 		        'scan'    => Zend_Translate::LOCALE_DIRECTORY
-		    )
+		    
 		);
         Zend_Validate_Abstract::setDefaultTranslator($translator);
 
-        return $registry;
+        return $registry;)*/
     }
  
     /**
@@ -99,14 +109,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $registry->entitymanager = $em;
  
         return $em;
-    }
-    
-    protected function _initRestRoute()
-    {
-        $this->bootstrap('frontController');
-        $frontController = Zend_Controller_Front::getInstance();
-        $restRoute = new Zend_Rest_Route($frontController);
-        $frontController->getRouter()->addRoute('default', $restRoute);
     }
 
 }
