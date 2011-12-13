@@ -7,9 +7,10 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 /** Patient einlesen, impressum (Hilfe) */
-public class MainMenu extends Activity {
+public class MainMenu extends iHealthSuperActivity {
 
 	private static final String TAG = "MainMenu";
 	
@@ -42,5 +43,12 @@ public class MainMenu extends Activity {
 				startActivity(intent);
 			}
 		});
+		
+		setFontSegoeWPLight((TextView) findViewById(R.id.menu_headline));
+		setFontSegoeWPLight((TextView) findViewById(R.id.menu_button_1_text_1));
+		setFontSegoeWPLight((TextView) findViewById(R.id.menu_button_1_text_2));
+		setFontSegoeWPLight((TextView) findViewById(R.id.menu_button_2_text_1));
+		setFontSegoeWPLight((TextView) findViewById(R.id.menu_button_2_text_2));
+		setFontSegoeWPLight((TextView) findViewById(R.id.menu_image_text));
 	}
 }

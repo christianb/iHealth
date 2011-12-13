@@ -1,3 +1,4 @@
+#include <MeetAndroid.h>
 #include <OneWire.h>
 
 // OneWire DS18S20, DS18B20, DS1822 Temperature Example
@@ -8,12 +9,32 @@
 // http://milesburton.com/Dallas_Temperature_Control_Library
 
 OneWire  ds(10);  // on pin 10
+MeetAndroid meetAndroid;
+
+#define rxPin 3
+#define txPin 2
+
+
+boolean runMeasurement = false;
+byte counter = 0;
+byte DURATION = 10;
+float values[10];
+
+byte NUM_VALUES = 4;
+
 
 void setup(void) {
-  Serial.begin(9600);
+  Serial.begin(115200);
+  meetAndroid.registerFunction(startMeasurement, 'M');  
+}
+
+void startMeasurement(byte flag, byte numOfValues) {
+  runMeasurement = true;
 }
 
 void loop(void) {
+  meetAndroid.receive();
+  if (runMeasurement) {
   byte i;
   byte present = 0;
   byte type_s;
@@ -22,41 +43,41 @@ void loop(void) {
   float celsius, fahrenheit;
   
   if ( !ds.search(addr)) {
-    Serial.println("No more addresses.");
-    Serial.println();
+    //Serial.println("No more addresses.");
+    //Serial.println();
     ds.reset_search();
     delay(250);
     return;
   }
   
-  Serial.print("ROM =");
+  //Serial.print("ROM =");
   for( i = 0; i < 8; i++) {
-    Serial.write(' ');
-    Serial.print(addr[i], HEX);
+    //Serial.write(' ');
+    //Serial.print(addr[i], HEX);
   }
 
   if (OneWire::crc8(addr, 7) != addr[7]) {
-      Serial.println("CRC is not valid!");
+      //Serial.println("CRC is not valid!");
       return;
   }
-  Serial.println();
+  //Serial.println();
  
   // the first ROM byte indicates which chip
   switch (addr[0]) {
     case 0x10:
-      Serial.println("  Chip = DS18S20");  // or old DS1820
+      //Serial.println("  Chip = DS18S20");  // or old DS1820
       type_s = 1;
       break;
     case 0x28:
-      Serial.println("  Chip = DS18B20");
+      //Serial.println("  Chip = DS18B20");
       type_s = 0;
       break;
     case 0x22:
-      Serial.println("  Chip = DS1822");
+      //Serial.println("  Chip = DS1822");
       type_s = 0;
       break;
     default:
-      Serial.println("Device is not a DS18x20 family device.");
+      //Serial.println("Device is not a DS18x20 family device.");
       return;
   } 
 
@@ -71,17 +92,17 @@ void loop(void) {
   ds.select(addr);    
   ds.write(0xBE);         // Read Scratchpad
 
-  Serial.print("  Data = ");
-  Serial.print(present,HEX);
-  Serial.print(" ");
+  //Serial.print("  Data = ");
+  //Serial.print(present,HEX);
+  //Serial.print(" ");
   for ( i = 0; i < 9; i++) {           // we need 9 bytes
     data[i] = ds.read();
-    Serial.print(data[i], HEX);
-    Serial.print(" ");
+    //Serial.print(data[i], HEX);
+    //Serial.print(" ");
   }
-  Serial.print(" CRC=");
-  Serial.print(OneWire::crc8(data, 8), HEX);
-  Serial.println();
+  //Serial.print(" CRC=");
+  //Serial.print(OneWire::crc8(data, 8), HEX);
+  //Serial.println();
 
   // convert the data to actual temperature
 
@@ -101,9 +122,45 @@ void loop(void) {
   }
   celsius = (float)raw / 16.0;
   fahrenheit = celsius * 1.8 + 32.0;
-  Serial.print("  Temperature = ");
+  /*Serial.print("  Temperature = ");
   Serial.print(celsius);
   Serial.print(" Celsius, ");
   Serial.print(fahrenheit);
-  Serial.println(" Fahrenheit");
+  Serial.println(" Fahrenheit");*/
+  
+  values[counter++] = celsius;
+  if (counter == DURATION) {
+    
+    //Serial.print("Measurement Done.");
+    
+    float average_temp = 0;
+    // Berechne Durchschnitt auf den letzten fünf Werten
+    for (int i = 1; i <= NUM_VALUES; i++) {
+      /*Serial.print("values[");
+      Serial.print(DURATION-i);
+      Serial.print("] = ");
+      Serial.println(values[DURATION-i]);*/
+      average_temp += values[DURATION-i];
+    }
+    
+    average_temp /= NUM_VALUES;
+    
+    //byte average_temp = (values[55] + values[56] + values[57] + values [DURATION] + values[DURATION-1]) / 5;
+    //Serial.print("Average Temperature = ");
+    //Serial.println(average_temp);
+    
+    
+    runMeasurement = false;
+    counter = 0;
+    
+    //Serial.flush();
+    meetAndroid.send((float) average_temp);
+  }
+  } else {
+    //Serial.print("Warte auf Anfrage...\n");
+    delay(1000);
+  }
+  
 }
+
+

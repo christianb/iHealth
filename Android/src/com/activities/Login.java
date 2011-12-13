@@ -7,9 +7,10 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 /** Welcome + Login */
-public class Login extends Activity {
+public class Login extends iHealthSuperActivity {
 
 	private static final String TAG = "Login";
 	
@@ -30,5 +31,9 @@ public class Login extends Activity {
 				startActivity(intent);
 			}
 		});
+		
+		setFontSegoeWPLight((TextView) findViewById(R.id.login_headline));
+		setFontSegoeWPLight((TextView) findViewById(R.id.login_username_info));
+		setFontSegoeWPLight((TextView) findViewById(R.id.login_password_info));
 	}
 }

@@ -35,17 +35,18 @@
 	        android:layout_width="fill_parent"
 	        android:layout_height="150dip"
 			android:layout_marginTop="120dip"
-			android:orientation="vertical"
-			android:background="@color/blue">
+			android:orientation="vertical">
 	        
 	        <ImageView 
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"/>
+	            android:layout_width="fill_parent"
+	            android:layout_height="fill_parent"
+	            android:src="@drawable/patient_header"/>
 	        
 	        <TextView 
+	            android:id="@+id/patient_overview_image_text"
 	            android:layout_width="fill_parent"
 	            android:layout_height="100dip"
-	            android:background="@color/red_bright"
+	            android:background="@color/red_3"
 	            android:text="patientin hannah mustermann"
 	            android:layout_marginTop="90dip"/>
 		</RelativeLayout> <!-- End of Image Layout -->
@@ -80,6 +81,7 @@
 		                android:text="patientendaten anzeigen"
 		                android:layout_marginTop="10dip"/>
 		            <TextView 
+		                android:id="@+id/patient_overview_button_1_text_2"
 		                android:layout_width="fill_parent"
 		                android:layout_height="20dip"
 		                android:text="basisinformationen des patienten"
@@ -102,12 +104,13 @@
 	                android:layout_height="fill_parent"
 	                android:layout_marginLeft="10dip">
 	            	<TextView 
-	                	android:id="@+id/patient_overview_button_1_text_1"
+	                	android:id="@+id/patient_overview_button_2_text_1"
 	                	android:layout_width="fill_parent"
 	                	android:layout_height="20dip"
 		                android:text="auswertungen anzeigen"
 		                android:layout_marginTop="10dip"/>
 		            <TextView 
+		                android:id="@+id/patient_overview_button_2_text_2"
 		                android:layout_width="fill_parent"
 		                android:layout_height="20dip"
 		                android:text="messung über zeitraum ausgeben"
@@ -130,12 +133,13 @@
 	                android:layout_height="fill_parent"
 	                android:layout_marginLeft="10dip">
 	            	<TextView 
-	                	android:id="@+id/patient_overview_button_1_text_1"
+	                	android:id="@+id/patient_overview_button_3_text_1"
 	                	android:layout_width="fill_parent"
 	                	android:layout_height="20dip"
 		                android:text="messung starten"
 		                android:layout_marginTop="10dip"/>
 		            <TextView 
+		                android:id="@+id/patient_overview_button_3_text_2"
 		                android:layout_width="fill_parent"
 		                android:layout_height="20dip"
 		                android:text="neue messung starten"

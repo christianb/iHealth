@@ -35,17 +35,18 @@
 	        android:layout_width="fill_parent"
 	        android:layout_height="150dip"
 			android:layout_marginTop="120dip"
-			android:orientation="vertical"
-			android:background="@color/blue">
+			android:orientation="vertical">
 	        
 	        <ImageView 
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"/>
+	            android:layout_width="fill_parent"
+	            android:layout_height="fill_parent"
+	            android:src="@drawable/menu_header"/>
 	        
 	        <TextView 
+	            android:id="@+id/menu_image_text"
 	            android:layout_width="fill_parent"
 	            android:layout_height="100dip"
-	            android:background="@color/red_bright"
+	            android:background="@color/red_3"
 	            android:text="ein klick und los"
 	            android:layout_marginTop="90dip"/>
 		</RelativeLayout> <!-- End of Image Layout -->
@@ -80,6 +81,7 @@
 		                android:text="patient einlesen"
 		                android:layout_marginTop="10dip"/>
 		            <TextView 
+		                android:id="@+id/menu_button_1_text_2"
 		                android:layout_width="fill_parent"
 		                android:layout_height="20dip"
 		                android:text="patient wählen und daten erfassen"
@@ -102,12 +104,13 @@
 	                android:layout_height="fill_parent"
 	                android:layout_marginLeft="10dip">
 	            	<TextView 
-	                	android:id="@+id/menu_button_1_text_1"
+	                	android:id="@+id/menu_button_2_text_1"
 	                	android:layout_width="fill_parent"
 	                	android:layout_height="20dip"
 		                android:text="Impressum"
 		                android:layout_marginTop="10dip"/>
 		            <TextView 
+		                android:id="@+id/menu_button_2_text_2"
 		                android:layout_width="fill_parent"
 		                android:layout_height="20dip"
 		                android:text="legal information anzeigen"
@@ -130,12 +133,13 @@
 	                android:layout_height="fill_parent"
 	                android:layout_marginLeft="10dip">
 	            	<TextView 
-	                	android:id="@+id/menu_button_1_text_1"
+	                	android:id="@+id/menu_button_3_text_1"
 	                	android:layout_width="fill_parent"
 	                	android:layout_height="20dip"
 		                android:text="..."
 		                android:layout_marginTop="10dip"/>
 		            <TextView 
+		                android:id="@+id/menu_button_3_text_2"
 		                android:layout_width="fill_parent"
 		                android:layout_height="20dip"
 		                android:text="..."

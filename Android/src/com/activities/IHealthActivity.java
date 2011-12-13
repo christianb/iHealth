@@ -94,7 +94,7 @@ public class IHealthActivity extends Activity implements MessageReceiver {
        
         techListsArray = new String[][] { new String[] { NfcA.class.getName(), NdefFormatable.class.getName(), MifareClassic.class.getName() } };
         
-        com = new Communication(this);
+        com = Communication.getInstance(this);
     }
     
     public String toHex(String arg) {
@@ -157,7 +157,7 @@ public class IHealthActivity extends Activity implements MessageReceiver {
      * @param value The temparature value received from Arduino.
      */
 	@Override
-	public void receiveMeasurementResult(int value) {
+	public void receiveMeasurementResult(float value) {
 		Log.d(TAG, "received temperature: "+value);
 	}
 	
@@ -165,6 +165,5 @@ public class IHealthActivity extends Activity implements MessageReceiver {
 		Log.d(TAG, "start Measurement...");
 		comm.startMeasurement();
 	}
-	
 	
 }	
