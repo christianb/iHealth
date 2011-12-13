@@ -3,8 +3,8 @@ package com.activities;
 import ihealth.arduino.Communication;
 import ihealth.arduino.MessageReceiver;
 import ihealth.utils.HexConversion;
-import android.app.Activity;
 import android.app.PendingIntent;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.IntentFilter.MalformedMimeTypeException;
@@ -35,11 +35,16 @@ public class NewMeasurement extends iHealthSuperActivity implements MessageRecei
 	private IntentFilter[] intentFiltersArray;
 	private String[][] techListsArray;
 
+	
+	private ProgressDialog dialog;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.new_measurement);
+		
+		dialog = new ProgressDialog(this);
 		
 		Spinner spinner = (Spinner) findViewById(R.id.spinner);
 	    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
@@ -54,11 +59,15 @@ public class NewMeasurement extends iHealthSuperActivity implements MessageRecei
 		RelativeLayout button2 = (RelativeLayout) findViewById(R.id.new_measurement_button_2);
 		button2.setOnClickListener(new OnClickListener() {
 			
+			
+
 			@Override
 			public void onClick(View v) {
 				Log.d(TAG, "click Button: Messung erneut starten");
 				if (com.isConnected()) {
-					com.restartMeasurement();					
+					com.restartMeasurement();
+					dialog = ProgressDialog.show(NewMeasurement.this, "", 
+	                        "Temperaturmessung läuft.\nBitte warten.", true);
 				} else {
 					Toast.makeText(NewMeasurement.this, "Keine Verbindung zum Sensor!", Toast.LENGTH_SHORT).show();
 				}
@@ -99,6 +108,10 @@ public class NewMeasurement extends iHealthSuperActivity implements MessageRecei
 		Log.d(TAG, "receive notification");
 		TextView textView = (TextView) findViewById(R.id.new_measurement_content_temperature);
 		textView.setText(value + " Grad Celsius");
+		
+		if (dialog.isShowing()) {
+			dialog.dismiss();
+		}
 		
 	}
 	
