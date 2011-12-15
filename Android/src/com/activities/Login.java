@@ -32,29 +32,29 @@ public class Login extends iHealthSuperActivity {
 			public void onClick(View v) {
 				Log.d(TAG, "click button : login");
 				
-				JSONObject jObject = RestJsonClient.loginPOST("christian", "qwertz");
+				JSONObject jObject = RestJsonClient.loginPOST("christian", "astronaut");
 				Log.d(TAG, "Empfangen: " + jObject.toString());
-				String statuscode = "";
+				String sStatuscode = "";
 				String statusmessage = "";
 				
 				try {
-					statuscode = jObject.get("statuscode").toString();
+					sStatuscode = jObject.get("statuscode").toString();
 					statusmessage = jObject.get("statusmessage").toString();
-					Log.d(TAG, "statuscode = "+ statuscode);
+					Log.d(TAG, "statuscode = "+ sStatuscode);
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
 				Log.d(TAG, statusmessage);
-				int status = new Integer(statuscode).intValue();
+				int iStatuscode = new Integer(sStatuscode).intValue();
 				
-				if (status == 200) {
+				if (iStatuscode == 200) {
 					Intent intent = new Intent(Login.this, MainMenu.class);
 					startActivity(intent);
 				}
 				
-				if (status == 404) {
+				if (iStatuscode == 404) {
 					Toast.makeText(Login.this, statusmessage, Toast.LENGTH_SHORT).show();
 				}
 				

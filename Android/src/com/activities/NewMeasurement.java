@@ -63,7 +63,7 @@ public class NewMeasurement extends iHealthSuperActivity implements MessageRecei
 				if (com.isConnected()) {
 					com.restartMeasurement();
 					dialog = ProgressDialog.show(NewMeasurement.this, "", 
-	                        "Temperaturmessung läuft.\nBitte warten.", true);
+	                        "Temperaturmessung läuft.\nBitte warten.", true, true);
 				} else {
 					Toast.makeText(NewMeasurement.this, "Keine Verbindung zum Sensor!", Toast.LENGTH_SHORT).show();
 				}

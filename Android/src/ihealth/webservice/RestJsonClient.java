@@ -104,7 +104,7 @@ public class RestJsonClient {
 		return json;
 	}
 	
-	public static JSONObject getPatientData(int pPatientRFID) {
+	public static JSONObject getPatientData(String pPatientRFID) {
 		HttpClient httpclient = new DefaultHttpClient();
 		
 		String path = "/patients/"+pPatientRFID;
