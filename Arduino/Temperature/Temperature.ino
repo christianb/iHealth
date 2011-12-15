@@ -92,9 +92,10 @@ void loop(void) {
   ds.reset();
   ds.select(addr);
   ds.write(0x44,1);         // start conversion, with parasite power on at the end
-  digitalWrite(redLED, HIGH);
-  delay(1000);     // maybe 750ms is enough, maybe not
   digitalWrite(redLED, LOW);
+  delay(250);     // maybe 750ms is enough, maybe not
+  digitalWrite(redLED, HIGH);
+  delay(500);
   // we might do a ds.depower() here, but the reset will take care of it.
   
   present = ds.reset();
