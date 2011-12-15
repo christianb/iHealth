@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /** Welcome + Login */
 public class Login extends iHealthSuperActivity {
@@ -46,13 +47,15 @@ public class Login extends iHealthSuperActivity {
 				}
 				
 				Log.d(TAG, statusmessage);
+				int status = new Integer(statuscode).intValue();
 				
-				if (new Integer(statuscode).intValue() == 200) {
-					
-				} else {
-					/* TODO noch statuscode 100, wenn geändert dann methode nach oben verschieben */
+				if (status == 200) {
 					Intent intent = new Intent(Login.this, MainMenu.class);
 					startActivity(intent);
+				}
+				
+				if (status == 404) {
+					Toast.makeText(Login.this, statusmessage, Toast.LENGTH_SHORT).show();
 				}
 				
 				
