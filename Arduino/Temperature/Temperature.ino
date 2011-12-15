@@ -14,6 +14,8 @@ MeetAndroid meetAndroid;
 #define rxPin 3
 #define txPin 2
 
+int redLED = 8;
+
 
 boolean runMeasurement = false;
 byte counter = 0;
@@ -26,6 +28,9 @@ byte NUM_VALUES = 4;
 void setup(void) {
   Serial.begin(115200);
   meetAndroid.registerFunction(startMeasurement, 'M');  
+  
+  pinMode(redLED, OUTPUT);
+  digitalWrite(redLED, LOW);
 }
 
 void startMeasurement(byte flag, byte numOfValues) {
@@ -35,32 +40,35 @@ void startMeasurement(byte flag, byte numOfValues) {
 void loop(void) {
   meetAndroid.receive();
   if (runMeasurement) {
-  byte i;
-  byte present = 0;
-  byte type_s;
-  byte data[12];
-  byte addr[8];
-  float celsius, fahrenheit;
+    
+    
+    byte i;
+    byte present = 0;
+    byte type_s;
+    byte data[12];
+    byte addr[8];
+    float celsius, fahrenheit;
   
-  if ( !ds.search(addr)) {
-    //Serial.println("No more addresses.");
-    //Serial.println();
-    ds.reset_search();
-    delay(250);
-    return;
-  }
-  
-  //Serial.print("ROM =");
-  for( i = 0; i < 8; i++) {
-    //Serial.write(' ');
-    //Serial.print(addr[i], HEX);
-  }
-
-  if (OneWire::crc8(addr, 7) != addr[7]) {
-      //Serial.println("CRC is not valid!");
+    if ( !ds.search(addr)) {
+      //Serial.println("No more addresses.");
+      //Serial.println();
+      ds.reset_search();
+      delay(250);
       return;
-  }
-  //Serial.println();
+    }
+  
+    //Serial.print("ROM =");
+    //for( i = 0; i < 8; i++) {
+      //Serial.write(' ');
+      //Serial.print(addr[i], HEX);
+    //}
+
+    if (OneWire::crc8(addr, 7) != addr[7]) {
+        //Serial.println("CRC is not valid!");
+        return;
+    }
+  
+    //Serial.println();
  
   // the first ROM byte indicates which chip
   switch (addr[0]) {
@@ -84,8 +92,9 @@ void loop(void) {
   ds.reset();
   ds.select(addr);
   ds.write(0x44,1);         // start conversion, with parasite power on at the end
-  
+  digitalWrite(redLED, HIGH);
   delay(1000);     // maybe 750ms is enough, maybe not
+  digitalWrite(redLED, LOW);
   // we might do a ds.depower() here, but the reset will take care of it.
   
   present = ds.reset();
@@ -124,9 +133,9 @@ void loop(void) {
   fahrenheit = celsius * 1.8 + 32.0;
   /*Serial.print("  Temperature = ");
   Serial.print(celsius);
-  Serial.print(" Celsius, ");
-  Serial.print(fahrenheit);
-  Serial.println(" Fahrenheit");*/
+  Serial.print(" Celsius, ");*/
+  //Serial.print(fahrenheit);
+  //Serial.println(" Fahrenheit");*/
   
   values[counter++] = celsius;
   if (counter == DURATION) {
@@ -155,10 +164,11 @@ void loop(void) {
     
     //Serial.flush();
     meetAndroid.send((float) average_temp);
-  }
+    }
   } else {
     //Serial.print("Warte auf Anfrage...\n");
     delay(1000);
+    digitalWrite(redLED, LOW);
   }
   
 }
