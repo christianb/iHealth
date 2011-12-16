@@ -15,6 +15,10 @@ MeetAndroid meetAndroid;
 #define txPin 2
 
 int redLED = 8;
+const int buttonPin = 2;
+
+// variables will change:
+int buttonState = 0;         // variable for reading the pushbutton status
 
 
 boolean runMeasurement = false;
@@ -31,6 +35,9 @@ void setup(void) {
   
   pinMode(redLED, OUTPUT);
   digitalWrite(redLED, LOW);
+  
+  // initialize the pushbutton pin as an input:
+  pinMode(buttonPin, INPUT);  
 }
 
 void startMeasurement(byte flag, byte numOfValues) {
@@ -39,6 +46,18 @@ void startMeasurement(byte flag, byte numOfValues) {
 
 void loop(void) {
   meetAndroid.receive();
+  
+  // read the state of the pushbutton value:
+  buttonState = digitalRead(buttonPin);
+  
+  // check if the pushbutton is pressed.
+  // if it is, the buttonState is HIGH:
+  if (buttonState == HIGH && runMeasurement == false) {     
+    runMeasurement = true;
+    //Serial.print("button pressed\n");
+  }
+  
+  
   if (runMeasurement) {
     
     
@@ -168,7 +187,7 @@ void loop(void) {
     }
   } else {
     //Serial.print("Warte auf Anfrage...\n");
-    delay(1000);
+    delay(100);
     digitalWrite(redLED, LOW);
   }
   
