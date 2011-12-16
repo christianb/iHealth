@@ -25,40 +25,66 @@ class RfidController extends Zend_Controller_Action{
   public function indexAction(){
     
   }
-  
-    public function createAction(){
-    
-        $createForm = new Application_Form_Rfid_Create();
-    
+
+  public function createAction(){
+
+    $createForm = new Application_Form_Rfid_Create();
+
     if($this->_request->isPost()){
       $formData = $this->_request->getPost();
 
-    if($createForm->isValid($formData)){
-      
-      $data["tag"] = $formData["tag"];
-      $data["patient"] = $this->_em->getRepository('Application_Model_Patient')->findOneById($formData["patient"]);;
-      
-      $rfid = new Application_Model_Rfid($data);
+      if($createForm->isValid($formData)){
 
-      // write back to persistence manager and flush it
-      $this->_em->persist($rfid);
-   $this->_em->flush();
+        $data["tag"] = $formData["tag"];
+        $data["patient"] = $this->_em->getRepository('Application_Model_Patient')->findOneById($formData["patient"]);
 
-      $this->_helper->flashMessenger->addMessage('Das RFID-Tag wurde erfolgreich angelegt');
-      $this->_helper->redirector('list', 'rfid');
-    }
+        $rfid = new Application_Model_Rfid($data);
+
+        // write back to persistence manager and flush it
+        $this->_em->persist($rfid);
+        $this->_em->flush();
+
+        $this->_helper->flashMessenger->addMessage('Das RFID-Tag wurde erfolgreich angelegt');
+        $this->_helper->redirector('list', 'rfid');
+      }
     }
     $this->view->createForm = $createForm;
   }
-  
-    public function listAction(){
+
+  public function editAction(){
+    $tagId = $this->getRequest()->getParam('id');
+    $tag = $this->_em->getRepository('Application_Model_Rfid')->findOneById($tagId);
+    
+    $patient = $tag->getPatient();
+    $patientId = isset($patient) ? $patient->getId() : null;
+    
+    $editForm = new Application_Form_Rfid_Edit(array("tagId" => $tagId, "patientId" => $patientId));
+
+    if($this->_request->isPost()){
+      $formData = $this->_request->getPost();
+
+      if($editForm->isValid($formData)){
+        $tag->setPatient($this->_em->getRepository('Application_Model_Patient')->findOneById($formData["patient"]));
+
+        // write back to persistence manager and flush it
+        $this->_em->persist($tag);
+        $this->_em->flush();
+
+        $this->_helper->flashMessenger->addMessage('Das RFID-Tag wurde erfolgreich bearbeitet');
+        $this->_helper->redirector('list', 'rfid');
+      }
+    }
+    $this->view->editForm = $editForm;
+  }
+
+  public function listAction(){
     $query = $this->_em->createQuery('SELECT f FROM Application_Model_Rfid f');
     $tags = $query->getResult();
 
     $this->view->listRfidTags = $tags;
   }
-  
-  public function deleteAction() {
+
+  public function deleteAction(){
     $tagId = $this->_getParam('id');
 
     if(!empty($tagId)){
@@ -71,15 +97,15 @@ class RfidController extends Zend_Controller_Action{
         $this->_helper->flashMessenger->addMessage('No file found.');
       }
     }
-    
+
     $this->_helper->redirector('list', 'rfid');
-    
-     // disable view
+
+    // disable view
     $this->view->layout()->disableLayout();
     $this->_helper->viewRenderer->setNoRender(true);
   }
-  
-    public function clearAction() {
+
+  public function clearAction(){
     $tagId = $this->_getParam('id');
 
     if(!empty($tagId)){
@@ -93,12 +119,14 @@ class RfidController extends Zend_Controller_Action{
         $this->_helper->flashMessenger->addMessage('No file found.');
       }
     }
-    
+
     $this->_helper->redirector('list', 'rfid');
-    
-     // disable view
+
+    // disable view
     $this->view->layout()->disableLayout();
     $this->_helper->viewRenderer->setNoRender(true);
   }
+
 }
+
 ?>

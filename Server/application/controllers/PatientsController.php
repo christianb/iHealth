@@ -3,51 +3,59 @@
 class PatientsController extends Zend_Rest_Controller{
 
   public function init(){
-    
+    $this->_em = Zend_Registry::getInstance()->entitymanager;
+    $this->_helper->viewRenderer->setNoRender(true);
+    $this->view->layout()->disableLayout();
+  }
+
+  public function indexAction(){
+    $response = "404";
+    $this->getResponse()->appendBody($response);
   }
 
   public function getAction(){
     // GET /patients/:rfid
 
-    $rfid = $this->getRequest()->getParam("rfid");
+    $rfid = $this->getRequest()->getParam("id");
 
-    $response["request"] = $this->getRequest()->getParams();
-    $response["statuscode"] = 100;
-    $response["statusmessage"] = "User was found.";
-    $response["response"]["userId"] = 999;
-    $response["response"]["firstname"] = "Max";
-    $response["response"]["lastname"] = "Mustermann";
+    $tag = $this->_em->getRepository("Application_Model_Rfid")->findOneBy(array("tag"=>$rfid));
 
-    $measurement["id"] = "999";
-    $measurement["type"] = "temperature";
-    $measurement["value"] = "32";
-    $measurement["note"] = "Hello Developers - World";
-    $measurement["date"] = "2011-11-20 12:33:45";
+    if(!empty($tag)){
+      $response["statuscode"] = 200;
+      $response["statusmessage"] = "User was found.";
+      $response["response"]["userId"] = $tag->getPatient()->getId();
+      $response["response"]["firstname"] = $tag->getPatient()->getFirstname();
+      $response["response"]["lastname"] = $tag->getPatient()->getLastname();
 
-    $response["response"]["measurements"][] = $measurement;
-    $response["response"]["measurements"][] = $measurement;
-    $response["response"]["measurements"][] = $measurement;
+      $measurement["id"] = "999";
+      $measurement["type"] = "temperature";
+      $measurement["value"] = "32";
+      $measurement["note"] = "Hello Developers - World";
+      $measurement["date"] = "2011-11-20 12:33:45";
 
+      $response["response"]["measurements"][] = $measurement;
+      $response["response"]["measurements"][] = $measurement;
+      $response["response"]["measurements"][] = $measurement;
+    }else{
+      $response["statuscode"] = 404;
+      $response["statusmessage"] = "No patient with this RFID found.";
+    }
     $this->getResponse()->appendBody(json_encode($response));
-    $this->_helper->viewRenderer->setNoRender(true);
   }
 
   public function postAction(){
     $response = "404";
     $this->getResponse()->appendBody($response);
-    $this->_helper->viewRenderer->setNoRender(true);
   }
 
   public function putAction(){
     $response = "404";
     $this->getResponse()->appendBody($response);
-    $this->_helper->viewRenderer->setNoRender(true);
   }
 
   public function deleteAction(){
     $response = "404";
     $this->getResponse()->appendBody($response);
-    $this->_helper->viewRenderer->setNoRender(true);
   }
 
 }

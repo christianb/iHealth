@@ -11,7 +11,7 @@
  * @Table(name="personnel_positions")
  * @HasLifeCycleCallbacks
  */
-class Application_Model_PersonnelPosition
+class Application_Model_Personnel_Position
 {
     
     /**

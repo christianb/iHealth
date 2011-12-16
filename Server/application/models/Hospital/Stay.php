@@ -11,7 +11,7 @@
  * @Table(name="hospital_stays")
  * @HasLifeCycleCallbacks
  */
-class Application_Model_HospitalStay
+class Application_Model_Hospital_Stay
 {
     
     /**

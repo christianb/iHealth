@@ -68,7 +68,6 @@
                               $this->authIdentityField => $this->identity, 
                               $this->authCredentialField => $this->credential 
                           )); 
-                          echo "auth me !!";
             if($authEntity !== null) { 
                 return new Zend_Auth_Result(Zend_Auth_Result::SUCCESS, $authEntity); 
             } else { 
