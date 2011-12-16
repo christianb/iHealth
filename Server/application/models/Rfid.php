@@ -45,31 +45,24 @@ class Application_Model_Rfid
       if(isset($data["patient"])){
         $this->patient = $data["patient"];
       }
-    }   
-    
-    public function getId() {
-        return $this->id;
-    }
-
-    public function setId($id) {
-        $this->id = $id;
-    }
-
-    public function getTag() {
-        return $this->tag;
-    }
-
-    public function setTag($tag) {
-        $this->tag = $tag;
     }
     
+    public function getId(){
+      return $this->id;
+    }
+
+    public function getTag(){
+      return $this->tag;
+    }
+
     public function getPatient(){
       return $this->patient;
     }
-
+    
     public function setPatient($patient){
       $this->patient = $patient;
     }
+
 
 
 

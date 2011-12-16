@@ -11,7 +11,7 @@
  * @Table(name="measurement_types")
  * @HasLifeCycleCallbacks
  */
-class Application_Model_MeasurementType
+class Application_Model_Measurement_Type
 {
     
     /**

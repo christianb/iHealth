@@ -86,7 +86,7 @@ class Application_Model_Patient
      * The patient rfid.
      * @var string The patient rfid.
      * 
-     * @OneToMany(targetEntity="Application_Model_HospitalStay", mappedBy="patient")
+     * @OneToMany(targetEntity="Application_Model_Hospital_Stay", mappedBy="patient")
      * @JoinColumn(name="hospital_stay_id_fk", referencedColumnName="id")
      */
     private $hospitalStays;
@@ -98,94 +98,51 @@ class Application_Model_Patient
         $this->hospitalStays = new \Doctrine\Common\Collections\ArrayCollection();
     }   
     
-    public function getId() {
-        return $this->id;
+    public function getId(){
+      return $this->id;
     }
 
-    public function setId($id) {
-        $this->id = $id;
+    public function getFirstname(){
+      return $this->firstname;
     }
 
-    public function getFirstname() {
-        return $this->firstname;
+    public function getLastname(){
+      return $this->lastname;
     }
 
-    public function setFirstname($firstname) {
-        $this->firstname = $firstname;
+    public function getStreet(){
+      return $this->street;
     }
 
-    public function getLastname() {
-        return $this->lastname;
+    public function getCity(){
+      return $this->city;
     }
 
-    public function setLastname($lastname) {
-        $this->lastname = $lastname;
+    public function getZipcode(){
+      return $this->zipcode;
     }
 
-    public function getStreet() {
-        return $this->street;
+    public function getWeight(){
+      return $this->weight;
     }
 
-    public function setStreet($street) {
-        $this->street = $street;
+    public function getSize(){
+      return $this->size;
     }
 
-    public function getCity() {
-        return $this->city;
+    public function getBloodGroup(){
+      return $this->bloodGroup;
     }
 
-    public function setCity($city) {
-        $this->city = $city;
+    public function getRfid(){
+      return $this->rfid;
     }
 
-    public function getZipcode() {
-        return $this->zipcode;
+    public function getHospitalStays(){
+      return $this->hospitalStays;
     }
 
-    public function setZipcode($zipcode) {
-        $this->zipcode = $zipcode;
-    }
-
-    public function getWeight() {
-        return $this->weight;
-    }
-
-    public function setWeight($weight) {
-        $this->weight = $weight;
-    }
-
-    public function getSize() {
-        return $this->size;
-    }
-
-    public function setSize($size) {
-        $this->size = $size;
-    }
-
-    public function getBloodGroup() {
-        return $this->bloodGroup;
-    }
-
-    public function setBloodGroup($bloodGroup) {
-        $this->bloodGroup = $bloodGroup;
-    }
-
-    public function getRfidTag() {
-        return $this->rfidTag;
-    }
-
-    public function setRfidTag($rfidTag) {
-        $this->rfidTag = $rfidTag;
-    }
-
-    public function getHospitalStays() {
-        return $this->hospitalStays;
-    }
-
-    public function setHospitalStays($hospitalStays) {
-        $this->hospitalStays = $hospitalStays;
-    }
-    
+        
           public function getName(){
       return $this->firstname . " " . $this->lastname;
     }

@@ -75,7 +75,7 @@ class Application_Model_Personnel
      * The personnel current position.
      * @var string The current position.
      * 
-     * @OneToOne(targetEntity="Application_Model_PersonnelPosition")
+     * @OneToOne(targetEntity="Application_Model_Personnel_Position")
      * @JoinColumn(name="personnel_position_id_fk", referencedColumnName="id")
      */
     private $position;

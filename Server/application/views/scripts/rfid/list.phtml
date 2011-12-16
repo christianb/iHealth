@@ -16,7 +16,8 @@
     <td><?php echo $rfidTag->getTag(); ?></td>
     <td><?php if($rfidTag->getPatient()) { echo $rfidTag->getPatient()->getName(); } else { echo "<i style=\"color: #999999\">nicht zugewiesen</i>"; } ?></td>
     <td>[ <a href="<?php echo "/rfid/delete/id/" . $rfidTag->getId(); ?>">entfernen</a> |
-      <a href="<?php echo "/rfid/clear/id/" . $rfidTag->getId(); ?>">freigeben</a>
+      <a href="<?php echo "/rfid/clear/id/" . $rfidTag->getId(); ?>">freigeben</a> |
+      <a href="<?php echo "/rfid/edit/id/" . $rfidTag->getId(); ?>">bearbeiten</a>
         ]</td>
   </tr>
   <?php endforeach; ?>

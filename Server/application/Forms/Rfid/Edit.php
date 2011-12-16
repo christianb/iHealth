@@ -1,6 +1,6 @@
 <?php
 
-class Application_Form_Rfid_Create extends Zend_Form{
+class Application_Form_Rfid_Edit extends Zend_Form{
 
   /**
    * Creates the form to create a new case.
@@ -9,13 +9,7 @@ class Application_Form_Rfid_Create extends Zend_Form{
   public function init(){
     $em = Zend_Registry::getInstance()->entitymanager;
     $this->setMethod('post');
-    $this->setAction("/rfid/create");
-
-    $tagElement = new Zend_Form_Element_Text('tag');
-    $tagElement->setLabel("Tag");
-    $tagElement->addValidator('regex', false, array('/^[a-z0-9ßöäüâáàéèñ]/i'));
-    $tagElement->addValidator('stringLength', false, array(2, 64));
-    $tagElement->setRequired(true);
+    $this->setAction("/rfid/edit/id/".$this->getAttrib("tagId"));
     
     $patientElement = new Zend_Form_Element_Select('patient');
     $patientElement->setLabel("Patient");
@@ -26,7 +20,8 @@ class Application_Form_Rfid_Create extends Zend_Form{
       $patientElement->addMultiOption($patient->getId(), $patient->getName());
     }
     $patientElement->addValidator('regex', false, array('/^[0-9]/i'));
-    $patientElement->setRequired(true);   
+    $patientElement->setRequired(true);
+    $patientElement->setValue($this->getAttrib("patientId"));
 
     $submitElement = new Zend_Form_Element_Submit('submit');
     $submitElement->setLabel('Create');
@@ -35,11 +30,10 @@ class Application_Form_Rfid_Create extends Zend_Form{
     $submitElement->removeDecorator('DtDdWrapper');
 
     $this->addElements(array(
-      $tagElement,
       $patientElement
     ));
 
-    $this->addDisplayGroup(array('tag', 'patient')
+    $this->addDisplayGroup(array('patient')
       , 'informationGroup'
       , array('legend'=>'Tag Information')
     );
