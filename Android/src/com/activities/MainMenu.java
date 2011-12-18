@@ -6,7 +6,9 @@ import org.json.JSONObject;
 import ihealth.utils.HexConversion;
 import ihealth.webservice.RestJsonClient;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.os.Bundle;
@@ -26,7 +28,7 @@ public class MainMenu extends iHealthSuperActivity {
 	private ProgressDialog dialog;
 	private Tag mTagFromIntent;
 	
-	private String mTagID = null;
+	//private String mTagID = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +45,10 @@ public class MainMenu extends iHealthSuperActivity {
 			public void onClick(View v) {
 				Log.d(TAG, "click Button : patient einlesen");
 				
-				if (mTagID == null) {
+				// Restore preferences
+				SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+				
+				if (!settings.contains("userId")) {
 					Toast.makeText(MainMenu.this, "Bitte Patient einlesen", Toast.LENGTH_SHORT).show();
 				} else {
 					Intent intent = new Intent (MainMenu.this, PatientView.class);
@@ -72,71 +77,5 @@ public class MainMenu extends iHealthSuperActivity {
 		setFontSegoeWPLight((TextView) findViewById(R.id.menu_image_text));
 	}
 	
-	public void onNewIntent(Intent intent) {
-    	
-    	mTagFromIntent = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
-    	//Log.d(TAG, "Tag ID = "+mTagFromIntent.);
-    	byte[] tagId = intent.getByteArrayExtra(NfcAdapter.EXTRA_ID);
-    	mTagID = HexConversion.bytesToHex(tagId);
-    	Log.d(TAG, "tag id = "+mTagID);
-        Log.d(TAG, "call onNewIntent()");
-        
-        JSONObject jObject = RestJsonClient.getPatientData(mTagID);
-        //Log.d(TAG, "Empfangen: " + jObject.toString());
-        
-        String sStatuscode = "";
-		String statusmessage = "";
-		
-		try {
-			sStatuscode = jObject.get("statuscode").toString();
-			statusmessage = jObject.get("statusmessage").toString();
-			Log.d(TAG, "statuscode = "+ sStatuscode);
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		int iStatuscode = new Integer(sStatuscode).intValue();
-		
-		if (iStatuscode == 200) {
-			try {
-				int userId = new Integer(jObject.getJSONObject("response").getString("userId")).intValue();
-				String firstname = jObject.getJSONObject("response").getString("firstname");
-				String lastname = jObject.getJSONObject("response").getString("lastname");
-				
-				Log.d(TAG, "User ID: "+userId);
-				Log.d(TAG, "Firstname: "+firstname);
-				Log.d(TAG, "Lastname: "+lastname);
-				
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			Toast.makeText(this, "Patient eingelesen!", Toast.LENGTH_SHORT).show();
-			
-		}
-		
-		if (iStatuscode == 404 ) {
-			Toast.makeText(this, statusmessage, Toast.LENGTH_SHORT).show();
-		}
-    }
 	
-	public void onPause() {
-        super.onPause();
-        mAdapter.disableForegroundDispatch(this);
-    }
-	
-	@Override
-	protected void onResume() {
-		super.onResume();
-		
-		mAdapter.enableForegroundDispatch(MainMenu.this, pendingIntent, intentFiltersArray, techListsArray);
-	}
-	
-	@Override
-	protected void onStop() {
-		// TODO Auto-generated method stub
-		super.onStop();
-		mTagID = null;
-	}
 }

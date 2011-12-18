@@ -165,5 +165,11 @@ public class IHealthActivity extends Activity implements MessageReceiver {
 		Log.d(TAG, "start Measurement...");
 		comm.startMeasurement();
 	}
+
+	@Override
+	public void startRemoteMeasurement() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }	

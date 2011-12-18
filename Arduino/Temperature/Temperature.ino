@@ -44,6 +44,10 @@ void startMeasurement(byte flag, byte numOfValues) {
   runMeasurement = true;
 }
 
+void startMeasurementRemote() {
+  meetAndroid.send("startMeasurementRemote");
+}
+
 void loop(void) {
   meetAndroid.receive();
   
@@ -55,6 +59,7 @@ void loop(void) {
   if (buttonState == HIGH && runMeasurement == false) {     
     runMeasurement = true;
     //Serial.print("button pressed\n");
+    startMeasurementRemote();
   }
   
   

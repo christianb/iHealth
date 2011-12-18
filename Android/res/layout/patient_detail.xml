@@ -99,10 +99,12 @@
 	                android:layout_height="wrap_content"
 	                android:orientation="vertical">
 	                <TextView 
+	                    android:id="@+id/patient_details_content_name_description"
 	                    android:layout_width="fill_parent"
 	            		android:layout_height="wrap_content"
 	            		android:text="name"/>
 	                <TextView
+	                    android:id="@+id/patient_details_content_name"
 	                    android:layout_width="fill_parent"
 	            		android:layout_height="wrap_content"
 	            		android:text="Hannah Mustermann"
@@ -116,10 +118,12 @@
 	                android:orientation="vertical"
 	                android:layout_marginTop="10dip">
 	                <TextView 
+	                    android:id="@+id/patient_details_content_birthday_description"
 	                    android:layout_width="fill_parent"
 	            		android:layout_height="wrap_content"
 	            		android:text="geburtstag"/>
 	                <TextView
+	                    android:id="@+id/patient_details_content_birthdate"
 	                    android:layout_width="fill_parent"
 	            		android:layout_height="wrap_content"
 	            		android:text="01.03.1985 (26 Jahre)"
@@ -133,10 +137,12 @@
 	                android:orientation="vertical"
 	                android:layout_marginTop="10dip">
 	                <TextView 
+	                    android:id="@+id/patient_details_content_checkin_date_description"
 	                    android:layout_width="fill_parent"
 	            		android:layout_height="wrap_content"
 	            		android:text="im krankenhaus seit"/>
 	                <TextView
+	                    android:id="@+id/patient_details_content_checkin_date"
 	                    android:layout_width="fill_parent"
 	            		android:layout_height="wrap_content"
 	            		android:text="01.11.2011"
@@ -150,10 +156,12 @@
 	                android:orientation="vertical"
 	                android:layout_marginTop="10dip">
 	                <TextView 
+	                    android:id="@+id/patient_details_content_blutgruppe_description"
 	                    android:layout_width="fill_parent"
 	            		android:layout_height="wrap_content"
 	            		android:text="blutgruppe"/>
 	                <TextView
+	                    android:id="@+id/patient_details_content_blutgruppe"
 	                    android:layout_width="fill_parent"
 	            		android:layout_height="wrap_content"
 	            		android:text="A Rh-"
@@ -167,10 +175,12 @@
 	                android:orientation="vertical"
 	                android:layout_marginTop="10dip">
 	                <TextView 
+	                    android:id="@+id/patient_details_content_weight_description"
 	                    android:layout_width="fill_parent"
 	            		android:layout_height="wrap_content"
 	            		android:text="gewicht"/>
 	                <TextView
+	                    android:id="@+id/patient_details_content_weight"
 	                    android:layout_width="fill_parent"
 	            		android:layout_height="wrap_content"
 	            		android:text="56 kg"

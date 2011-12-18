@@ -2,8 +2,11 @@ package com.activities;
 
 import ihealth.arduino.Communication;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -54,5 +57,16 @@ public class PatientView extends iHealthSuperActivity {
 		setFontSegoeWPLight((TextView) findViewById(R.id.patient_overview_button_3_text_1));
 		setFontSegoeWPLight((TextView) findViewById(R.id.patient_overview_button_3_text_2));
 		setFontSegoeWPLight((TextView) findViewById(R.id.patient_overview_image_text));
+		
+
+		// Restore preferences
+		SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+		
+		if (settings.contains("firstname")) {
+			TextView image_text = (TextView) findViewById(R.id.patient_overview_image_text);
+			String firstname = settings.getString("firstname", "??");
+			String lastname = settings.getString("lastname", " ??");
+			image_text.setText(firstname+" "+lastname);			
+		}
 	}
 }

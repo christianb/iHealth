@@ -5,8 +5,10 @@ import ihealth.arduino.MessageReceiver;
 import ihealth.utils.HexConversion;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.IntentFilter.MalformedMimeTypeException;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
@@ -98,9 +100,14 @@ public class NewMeasurement extends iHealthSuperActivity implements MessageRecei
        
         techListsArray = new String[][] { new String[] { NfcA.class.getName(), NdefFormatable.class.getName(), MifareClassic.class.getName() } };
 	
+        TextView name = (TextView) findViewById(R.id.new_measurement_image_text_2);
+        
         setFontSegoeWPLight((TextView) findViewById(R.id.new_measurement_headline));
         setFontSegoeWPSemibold((TextView) findViewById(R.id.new_measurement_image_text_1));
-        setFontSegoeWPSemibold((TextView) findViewById(R.id.new_measurement_image_text_2));
+        setFontSegoeWPSemibold(name);
+        
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        name.setText(settings.getString("firstname", "??")+" "+settings.getString("lastname", "??"));
 	}
 
 	@Override
@@ -162,4 +169,11 @@ public class NewMeasurement extends iHealthSuperActivity implements MessageRecei
     	com.unregisterCallback(this);
     	com.disconnectFromArduino();
     }
+
+	@Override
+	public void startRemoteMeasurement() {
+		dialog = ProgressDialog.show(NewMeasurement.this, "", 
+                "Temperaturmessung läuft.\nBitte warten.", true, true);
+		
+	}
 }

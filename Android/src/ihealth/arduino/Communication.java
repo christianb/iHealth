@@ -179,6 +179,14 @@ public class Communication {
     		if (dataType == AmarinoIntent.STRING_EXTRA){
     			data = intent.getStringExtra(AmarinoIntent.EXTRA_DATA);
     			
+    			if (data.equalsIgnoreCase("startMeasurementRemote")) {
+    				Log.d(TAG, "remote measurement");
+    				for (MessageReceiver m : mMessageReceivers) {
+    					m.startRemoteMeasurement();
+    				}
+    				return;
+    			}
+    			
     			//if (data != null){
     				//try {
     					// since we know that our string value is an int number we can parse it to an integer
