@@ -28,10 +28,9 @@ div.navigation ul{ width:97px; float:left; position:relative; margin-right:5px; 
 div.navigation ul li{ margin:2px 0; background-color: #5C90B8; background-color: #5C90B8; float: left; height: 84px; margin: 2px 0; width: 97px; position:relative; }
 div.navigation ul li:first-child{ margin-top:0; }
 div.navigation ul li:last-child{ margin-bottom:0; }
-div.navigation ul li a{ display:none; position: absolute; right: 0; top: 0; width: 350px; background-color: #5C90B8;
+div.navigation ul li a{ position: absolute; right: 0; top: 0; width: 0px; background-color: #5C90B8;
 line-height:1; height:100%; text-decoration:none;
 filter: alpha(opacity=80); -moz-opacity:0.8; -khtml-opacity: 0.8; opacity: 0.8; }
-div.navigation ul li:hover a{ display:block; }
 div.navigation ul li a:visited, div.navigation ul li a:link{ color:white; }
 div.navigation ul li a p.option { font-size: 24px; margin:15px 0 0 10px; }
 div.navigation ul li a p.description { font-size: 15px; margin:3px 0 15px 10px; }
