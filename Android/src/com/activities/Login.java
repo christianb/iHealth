@@ -25,6 +25,12 @@ public class Login extends iHealthSuperActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login);
 		
+		final TextView password = (TextView) findViewById(R.id.login_password_edit);
+		final TextView username = (TextView) findViewById(R.id.login_username_edit);
+		
+		password.setText("astronaut");
+		username.setText("christian");	
+		
 		Button doLogin = (Button) findViewById(R.id.login_button);
 		doLogin.setOnClickListener(new OnClickListener() {
 			
@@ -32,7 +38,7 @@ public class Login extends iHealthSuperActivity {
 			public void onClick(View v) {
 				Log.d(TAG, "click button : login");
 				
-				JSONObject jObject = RestJsonClient.loginPOST("christian", "astronaut");
+				JSONObject jObject = RestJsonClient.loginPOST(username.getText().toString(), password.getText().toString());
 				Log.d(TAG, "Empfangen: " + jObject.toString());
 				String sStatuscode = "";
 				String statusmessage = "";
@@ -62,8 +68,14 @@ public class Login extends iHealthSuperActivity {
 			}
 		});
 		
+			
+		
+		setFontSegoeWPLight(password);
+		setFontSegoeWPLight(username);
 		setFontSegoeWPLight((TextView) findViewById(R.id.login_headline));
 		setFontSegoeWPLight((TextView) findViewById(R.id.login_username_info));
 		setFontSegoeWPLight((TextView) findViewById(R.id.login_password_info));
+		
+		
 	}
 }
