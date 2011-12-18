@@ -32,7 +32,7 @@ div.navigation ul li a{ display:none; position: absolute; right: 0; top: 0; widt
 line-height:1; height:100%; text-decoration:none;
 filter: alpha(opacity=80); -moz-opacity:0.8; -khtml-opacity: 0.8; opacity: 0.8; }
 div.navigation ul li:hover a{ display:block; }
-div.navigation ul li a:visited{ color:white; }
+div.navigation ul li a:visited, div.navigation ul li a:link{ color:white; }
 div.navigation ul li a p.option { font-size: 24px; margin:15px 0 0 10px; }
 div.navigation ul li a p.description { font-size: 15px; margin:3px 0 15px 10px; }
 
