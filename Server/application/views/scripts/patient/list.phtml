@@ -2,6 +2,10 @@
     $this->title = "Patienten Listenansicht";
     $this->headTitle($this->title);
 ?>
+  <div class="data-column">
+  <div class="data-content">
+    <div class="filler-block">
+</div>
 <table cellpadding="0" cellspacing="0" class="default"> 
   <tr>
     <th>Name</th>
@@ -12,12 +16,25 @@
   $i = 0;
   foreach($this->listPatients as $patient): 
     ?>
-  <tr <?php echo ($i++ %2 == 0) ? "class=\"even\"" : ""; ?>>
-    <td><?php echo $patient->getName(); ?></td>
-    <td>kommt noch</td>
-    <td>[ 
+  <tr <?php $i++; echo ($patient->isCheckedIn()) ? "class=\"active\"" : (($i %2 != 0) ? "class=\"even\"" : ""); ?>>
+    <td><a href="/patient/overview/id/<?php echo $patient->getId(); ?>"><?php echo $patient->getName(); ?></a></td>
+    <td>Position</td>
+    <td>[ <a href="<?php echo "/patient/delete/id/" . $patient->getId(); ?>">entfernen</a> |
+        <?php if($patient->isCheckedIn()) { ?>
+          <a href="<?php echo "/patient/checkout/id/" . $patient->getId(); ?>">auschecken</a>
+        <?php } else { ?>
+          <a href="<?php echo "/patient/checkin/id/" . $patient->getId(); ?>">einchecken</a>
+        <?php } ?> |
+        <a href="<?php echo "/patient/edit/id/" . $patient->getId(); ?>">bearbeiten</a>
+				</li>
         ]</td>
   </tr>
   <?php endforeach; ?>
 </table>
   <a href="/patient/create">Neuen Patient anlegen</a>
+
+  </div>
+</div>
+<div id="icon">
+  <img src="/resources/icons/patient.png" />
+</div>

@@ -1,9 +1,16 @@
 <?php
-    $this->title = $this->translate("Registration");
-    $this->headTitle($this->title);
+$this->title = $this->translate("Registrierung");
+$this->headTitle($this->title);
 ?>
-
-<?php 
-    // Output the form.
-    echo $this->registerForm;	
-?>
+<div class="data-column">
+  <div class="data-content">
+    <div class="filler-block">
+    </div>
+    <?php
+    echo $this->registerForm;
+    ?>
+  </div>
+</div>
+<div id="icon">
+  <img src="/resources/icons/register.png" />
+</div>

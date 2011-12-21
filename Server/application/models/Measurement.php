@@ -51,7 +51,7 @@ class Application_Model_Measurement{
    * @var string The measurement user.
    * 
    * @ManyToOne(targetEntity="Application_Model_Patient")
-   * @JoinColumn(name="patient_id_fk", referencedColumnName="id")
+   * @JoinColumn(name="patient_id_fk", referencedColumnName="id", onDelete="CASCADE")
    */
   private $patient;
 
@@ -60,7 +60,7 @@ class Application_Model_Measurement{
    * @var string The measurement type.
    * 
    * @ManyToOne(targetEntity="Application_Model_Measurement_Type")
-   * @JoinColumn(name="measurement_type_id_fk", referencedColumnName="id")
+   * @JoinColumn(name="measurement_type_id_fk", referencedColumnName="id", onDelete="CASCADE")
    */
   private $type;
 
@@ -69,7 +69,7 @@ class Application_Model_Measurement{
    * @var string The measurement personnel.
    * 
    * @ManyToOne(targetEntity="Application_Model_Personnel")
-   * @JoinColumn(name="personnel_id_fk", referencedColumnName="id")
+   * @JoinColumn(name="personnel_id_fk", referencedColumnName="id", onDelete="SET NULL")
    */
   private $personnel;
 
@@ -97,8 +97,8 @@ class Application_Model_Measurement{
       $this->personnel = $data["personnel"];
     }
   }
-  
-    /**
+
+  /**
    * Method auto-called when object is persisted to database for the first time.
    * 
    * @PrePersist
@@ -106,7 +106,6 @@ class Application_Model_Measurement{
   public function created(){
     $this->date = new DateTime("now");
   }
-
 
   public function getId(){
     return $this->id;
@@ -135,4 +134,5 @@ class Application_Model_Measurement{
   public function getPersonnel(){
     return $this->personnel;
   }
+
 }

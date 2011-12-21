@@ -1,0 +1,229 @@
+@font-face { font-family: imed_sego_light; src: url('/resources/res/SegoeWP-Light.ttf'); }
+body{ font-family:imed_sego_light; }
+
+div.blue-fade{ position:fixed; top:0; left:0; height: 500px; width: 100%; background: #ffffff url(../img/bg.png) repeat-x; z-index: -1; }
+
+div.top-gray{ height: 37px; width:100%; background-color: #878687; top:0; position:fixed; z-index:10;
+filter: alpha(opacity=80); -moz-opacity:0.8; -khtml-opacity: 0.8; opacity: 0.8;}
+img.img-bg{ position:fixed; top:37px; right:50px; height:380px; z-index: -1; }
+
+div.outter-content{ min-height: 400px; width: 75%; margin-left:5%; margin-bottom: 30px; margin-top: 93px; position:relative; float:left; }
+div.content{background-color: white; padding: 10px 40px; }
+div.content h1{ color: #577388; width: 100%; }
+div.content #icon{ padding-top: 20px; text-align: center; vertical-align: middle; width:189px; float:left; height: 169px; margin-left: -100%;}
+div.content #user-pic{ text-align: center; vertical-align: middle; width:189px; float:left; height: 169px; margin-left: -100%;}
+div.data-column{ width:100%; float:left; }
+div.data-column div.data-content{ margin-left:204px; overflow: auto;}
+div.data-column div.data-content div.filler-block{ height:160px; background-color:#C4D7E5; padding: 15px }
+div.data-column div.data-content div.user-info{ width:70%; margin-top:10px; float:left; }
+div.user-info div.user-record{ color: #757E85; margin:25px 0; }
+div.user-info div.user-record:last-child{ margin-bottom:0; }
+div.user-info div.user-record label{ padding: 0 7px; }
+div.user-info div.user-record p{ padding: 0 17px; background-color: #D9D9D9; margin: 5px 0 0 0;}
+
+div.data-column div.arrow-column{ bottom: 10px; position: absolute; right: 40px; width: 20%; text-align:center; line-height: 1; }
+div.data-column a.right-arrow{ display: inline-block;}
+div.data-column a.right-arrow img{ display:block; float:left; }
+
+div.navigation{ float:left; margin-left:5px; margin-top: 154px; height: 348px; color:white; }
+div.navigation ul{ width:97px; float:left; position:relative; margin-right:5px; }
+div.navigation ul li{ margin:2px 0; background-color: #577388; float: left; height: 84px; margin: 2px 0; width: 97px; position:relative;   background-repeat: no-repeat;
+  background-position: 11px 4px; }
+div.navigation ul li:first-child{ margin-top:0; }
+div.navigation ul li:last-child{ margin-bottom:0; }
+div.navigation ul li a{ color:white; display:none; position: absolute; right: 0; top: 0; width: 350px; background-color: #577388;
+line-height:1; height:100%; text-decoration:none;
+filter: alpha(opacity=80); -moz-opacity:0.8; -khtml-opacity: 0.8; opacity: 0.8; }
+div.navigation ul li:hover a{ display:block; }
+div.navigation ul li a:visited{ color:white; }
+div.navigation ul li a p.option { font-size: 24px; margin:18px 0 0 20px; }
+div.navigation ul li a p.description { color: #bcc7cf; font-size: 15px; margin:3px 0 15px 20px; }
+
+div.navigation div.nav-info-wrapper{ float: right; height: 100%; position: relative; width: 33px; }
+div.navigation div.nav-info-wrapper div.nav-info-bg{ background-color: #5C90B8; height: 100%; position: absolute; top: 0; width: 100%; filter: alpha(opacity=80); -moz-opacity:0.8; -khtml-opacity: 0.8; opacity: 0.8; }
+div.navigation span.nav-info{ left: -48px; position: absolute; width: 134px; top: 63px;	font-size: 22px;
+	-webkit-transform: rotate(90deg); -moz-transform: rotate(90deg); -ms-transform: rotate(90deg);
+	-o-transform: rotate(90deg); transform: rotate(90deg); }
+
+div.navigation ul li.lock {
+  background-image: url('/resources/icons/lock_small.png');
+}
+div.navigation ul li.register {
+  background-image: url('/resources/icons/register_small.png');
+}
+div.navigation ul li.home {
+  background-image: url('/resources/icons/home_small.png');
+}
+div.navigation ul li.measurement {
+  background-image: url('/resources/icons/measurement_small.png');
+}
+div.navigation ul li.rfid {
+  background-image: url('/resources/icons/rfid_small.png');
+}
+div.navigation ul li.patient {
+  background-image: url('/resources/icons/patient_small.png');
+}
+div.navigation ul li.personnel {
+  background-image: url('/resources/icons/personnel_small.png');
+}
+
+table.default {
+  width: 100%;
+  background-color: #fbfbfb;
+  border: 1px #d2d5d7 solid;
+  margin: 20px 0;
+  font-size: 11pt
+}
+
+table.default th {
+  background-color: #577388;
+  color: #ffffff;
+  text-align: left;
+  padding: 3px 5px 3px 15px;
+  font-weight: bold;
+}
+
+table.default td {
+  background-color: #ebeced;
+  color: #555555;
+  text-align: left;
+  padding: 12px 5px 12px 15px;
+  font-weight: normal;
+}
+
+table.default .even td {
+  background-color: #f7f7f7;
+}
+
+table.default .active td {
+  background-color: #e4febf;
+}
+
+
+a,
+a:link,
+a:visited{
+  color: #577388;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* zend form */
+.zend_form,
+.zend_form  dd {
+	padding: 0;
+	margin: 0;
+}
+
+.zend_form  dl {
+	margin: 15px 0 0 15px;
+}
+
+.zend_form label {
+  font-size: 11pt;
+}
+.zend_form input[type='text'],
+.zend_form input[type='password'],
+.zend_form input[type='file'],
+.zend_form select,
+.zend_form textarea
+{
+  font-family: imed_sego_light; src: url('/resources/res/SegoeWP-Light.ttf');
+	background: #90a0ac;
+  color: #ffffff;
+	width: 350px;
+	padding: 5px 10px 6px 5px;
+	text-decoration: none;
+	border: 0;
+	position: relative;
+	font-size: 11pt;
+	margin-bottom: 5px;
+}
+.zend_form input[type='file']
+	{
+	border: 0;
+	}
+
+.zend_form textarea
+	{
+	width: 500px;
+	max-width: 500px;
+	height: 250px;
+	max-height: 250px;
+	margin-bottom: 15px;
+	}
+	
+.zend_form textarea.auto
+	{
+	max-width: auto;
+	max-height: auto;
+	}
+
+.zend_form ul.errors {
+	color: red;
+	background-color: #ffedf1;
+	margin: 0 15px 5px 0;
+	padding: 3px;
+	}
+
+.zend_form ul.errors li {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	}
+	
+.zend_form fieldset {
+	border: 0;
+  background-color: #e5ecf2;
+  margin: 5px 0 5px 0;
+  padding: 0 0 10px 0;
+	}
+	
+.zend_form fieldset legend {
+	margin: 0;
+	padding: 10px 10px 10px 15px;
+  background-color: #C4D7E5;
+	font-weight: normal;
+	font-size: 13pt;
+	}
+  
+  
+  
+.zend_form input[type='submit'],
+.zend_form input[type='submit']:visited {
+	background: #90a0ac; 
+  border: 0;
+	display: inline-block; 
+	padding: 10px 15px;
+	color: #fff; 
+	text-decoration: none;
+	position: relative;
+	cursor: pointer;
+  font-size: 11pt;
+  margin-top: 5px;
+  margin-left: 15px;
+  font-family: imed_sego_light; src: url('/resources/res/SegoeWP-Light.ttf');
+}
+
+.zend_form input[type='submit']:hover	{ 
+  background-color: #e5ecf2; color: #000000;
+}
+.zend_form input[type='submit']:active							{ top: 1px; }
+
+
+.flash-messages {
+  background: #fefabf;
+  padding: 3px;
+  margin: 5px 0 5px 0;
+}
+
+h2 {
+  margin-bottom: 0;
+}
+
+#imed-logo {
+  margin-left: 30px;
+}

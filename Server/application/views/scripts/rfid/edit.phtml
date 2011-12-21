@@ -1,9 +1,16 @@
 <?php
-    $this->title = "Tag bearbeiten";
-    $this->headTitle($this->title);
+$this->title = "Tag bearbeiten";
+$this->headTitle($this->title);
 ?>
-
-<?php 
-    // Output the form.
-    echo $this->editForm;	
-?>
+<div class="data-column">
+  <div class="data-content">
+    <div class="filler-block">
+    </div>
+    <?php
+    echo $this->editForm;
+    ?>
+  </div>
+</div>
+<div id="icon">
+  <img src="/resources/icons/rfid.png" />
+</div>

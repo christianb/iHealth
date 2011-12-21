@@ -108,6 +108,60 @@ class Application_Model_PatientProxy extends \Application_Model_Patient implemen
         return parent::getName();
     }
 
+    public function isCheckedIn()
+    {
+        $this->__load();
+        return parent::isCheckedIn();
+    }
+
+    public function setFirstname($firstname)
+    {
+        $this->__load();
+        return parent::setFirstname($firstname);
+    }
+
+    public function setLastname($lastname)
+    {
+        $this->__load();
+        return parent::setLastname($lastname);
+    }
+
+    public function setStreet($street)
+    {
+        $this->__load();
+        return parent::setStreet($street);
+    }
+
+    public function setCity($city)
+    {
+        $this->__load();
+        return parent::setCity($city);
+    }
+
+    public function setZipcode($zipcode)
+    {
+        $this->__load();
+        return parent::setZipcode($zipcode);
+    }
+
+    public function setWeight($weight)
+    {
+        $this->__load();
+        return parent::setWeight($weight);
+    }
+
+    public function setSize($size)
+    {
+        $this->__load();
+        return parent::setSize($size);
+    }
+
+    public function setBloodGroup($bloodGroup)
+    {
+        $this->__load();
+        return parent::setBloodGroup($bloodGroup);
+    }
+
 
     public function __sleep()
     {

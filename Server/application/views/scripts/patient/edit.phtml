@@ -1,0 +1,18 @@
+<?php
+$this->title = "Patienten bearbeiten";
+$this->headTitle($this->title);
+?>
+<div class="data-column">
+  <div class="data-content">
+    <div class="filler-block">
+      <?php echo $this->patient->getPatientData(); ?>
+    </div>
+    <?php
+    echo $this->editForm;
+    ?>
+
+  </div>
+</div>
+<div id="user-pic">
+  <img src="/resources/img/user_123.png" />
+</div>

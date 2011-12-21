@@ -16,7 +16,6 @@ class MeasurementsController extends Zend_Rest_Controller{
     $typeName = $this->getRequest()->getParam("type");
     $patientId = $this->getRequest()->getParam("patientId");
     $limit = $this->getRequest()->getParam("limit");
-    ;
 
     $patient = $this->_em->getRepository("Application_Model_Patient")->findOneBy(array("id"=>$patientId));
     $type = $this->_em->getRepository("Application_Model_Measurement_Type")->findOneBy(array("name"=>$typeName));

@@ -1,0 +1,19 @@
+<?php
+$this->title = "Patienten einchecken";
+$this->headTitle($this->title);
+?>
+
+<div class="data-column">
+  <div class="data-content">
+    <div class="filler-block">
+      <?php echo $this->patient->getPatientData(); ?>
+    </div>
+    <h2>Geben Sie nachfolgend bitte die Informationen zum Aufenthalt ein.</h2>
+    <?php
+    echo $this->checkinForm;
+    ?>
+  </div>
+</div>
+<div id="user-pic">
+  <a href="/patient/overview/id/<?php echo $this->patient->getId(); ?>"><img src="/resources/img/user_123.png" /></a>
+</div>

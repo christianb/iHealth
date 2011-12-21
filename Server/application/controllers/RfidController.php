@@ -36,7 +36,6 @@ class RfidController extends Zend_Controller_Action{
       if($createForm->isValid($formData)){
 
         $data["tag"] = $formData["tag"];
-        $data["patient"] = $this->_em->getRepository('Application_Model_Patient')->findOneById($formData["patient"]);
 
         $rfid = new Application_Model_Rfid($data);
 
@@ -44,7 +43,7 @@ class RfidController extends Zend_Controller_Action{
         $this->_em->persist($rfid);
         $this->_em->flush();
 
-        $this->_helper->flashMessenger->addMessage('Das RFID-Tag wurde erfolgreich angelegt');
+        $this->_helper->flashMessenger->addMessage('Das RFID-Tag wurde erfolgreich angelegt.');
         $this->_helper->redirector('list', 'rfid');
       }
     }
@@ -70,7 +69,7 @@ class RfidController extends Zend_Controller_Action{
         $this->_em->persist($tag);
         $this->_em->flush();
 
-        $this->_helper->flashMessenger->addMessage('Das RFID-Tag wurde erfolgreich bearbeitet');
+        $this->_helper->flashMessenger->addMessage('Das RFID-Tag wurde erfolgreich bearbeitet.');
         $this->_helper->redirector('list', 'rfid');
       }
     }
@@ -94,7 +93,7 @@ class RfidController extends Zend_Controller_Action{
         $this->_em->remove($tag);
         $this->_em->flush();
       }else{
-        $this->_helper->flashMessenger->addMessage('No file found.');
+        $this->_helper->flashMessenger->addMessage('Kein RFID-Tag mit dieser Id gefunden.');
       }
     }
 
@@ -116,7 +115,7 @@ class RfidController extends Zend_Controller_Action{
         $this->_em->persist($rfid);
         $this->_em->flush();
       }else{
-        $this->_helper->flashMessenger->addMessage('No file found.');
+        $this->_helper->flashMessenger->addMessage('Kein RFID-Tag mit dieser Id gefunden.');
       }
     }
 
