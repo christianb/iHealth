@@ -191,7 +191,7 @@ class PatientController extends Zend_Controller_Action{
         $qb = $this->_em->createQueryBuilder();
         $qb->add('select', 'h')
             ->add('from', 'Application_Model_Hospital_Stay h')
-            ->add('where', 'h.patient = ' . $patientId)
+            ->add('where', 'h.patient = ' . $patientId . ' AND h.checkOut is NULL')
             ->add('orderBy', 'h.checkIn DESC');
         $qb->setMaxResults(1);
         $query = $qb->getQuery();

@@ -131,6 +131,8 @@ class Application_Model_Personnel{
    * Constructor.
    */
   public function __construct($data = array()){
+    $this->rights = 32;
+    
     if(isset($data["username"])){
       $this->username = $data["username"];
     }
