@@ -11,7 +11,16 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap{
   protected function _initConfig(){
     $config = new Zend_Config($this->getOptions(), true);
     Zend_Registry::set('config', $config);
+
     return $config;
+  }
+
+  protected function _initRights(){
+    define("CRUD_MEASUREMENTS", 0);
+    define("CRUD_PERSONNEL", 1);
+    define("CRUD_PATIENTS", 2);
+    define("CRUD_HOSPITALS", 3);
+    define("CRUD_RFID", 4);
   }
 
   protected function _initRestRoute(){

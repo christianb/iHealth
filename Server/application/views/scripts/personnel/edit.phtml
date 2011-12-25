@@ -1,9 +1,16 @@
 <?php
-    $this->title = "Profil bearbeiten";
-    $this->headTitle($this->title);
+$this->title = "Benutzer bearbeiten";
+$this->headTitle($this->title);
 ?>
-
-<?php 
-    // Output the form including the user data.
-    echo $this->profileForm;	
-?>
+<div class="data-column">
+  <div class="data-content">
+    <div class="filler-block">
+    </div>
+    <?php
+    echo $this->editForm;
+    ?>
+  </div>
+</div>
+<div id="icon">
+  <img src="/resources/icons/register.png" />
+</div>

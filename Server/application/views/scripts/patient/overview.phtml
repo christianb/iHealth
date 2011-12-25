@@ -1,0 +1,37 @@
+<?php
+$this->title = "Übersicht Patient";
+$this->headTitle($this->title);
+?>
+
+<div class="data-column">
+  <div class="data-content">
+    <div class="filler-block">
+      <?php echo $this->patient->getPatientData(); ?>
+    </div>
+    <br/>
+    <?php if($this->personnel->hasRight(CRUD_MEASUREMENTS)){ ?>
+      <a href="<?php echo "/measurement/list/id/" . $this->patient->getId(); ?>">Messungen anzeigen</a>
+      <br />
+    <?php } ?>
+    <a href="<?php echo "/hospital-stay/list/id/" . $this->patient->getId(); ?>">Krankenhausaufenthalte anzeigen</a>
+    <br />
+
+    <?php if($this->currentStay){ ?>
+      <h2>Aktueller Aufenthalt</h2>
+      Eingecheckt: <?php echo $this->currentStay->getCheckin()->format('Y-m-d'); ?><br/>
+      OPS: <?php echo $this->currentStay->getOps(); ?><br/>
+      ICD: <?php echo $this->currentStay->getIcd(); ?><br/>
+
+    <?php } ?>
+
+    <h2>Anschrift</h2>
+    <?php echo $this->patient->getStreet(); ?><br />
+    <?php echo $this->patient->getZipcode(); ?>
+    <?php echo $this->patient->getCity(); ?>
+
+  </div>
+</div>
+<div id="user-pic">
+  <a href="/patient/overview/id/<?php echo $this->patient->getId(); ?>"><img src="/resources/img/user_123.png" /></a>
+  <a href="/patient/list">zurück zur Patientenliste</a>
+</div>

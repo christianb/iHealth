@@ -1,9 +1,16 @@
 <?php
-    $this->title = "Neues Tag anlegen";
-    $this->headTitle($this->title);
+$this->title = "Neues Tag anlegen";
+$this->headTitle($this->title);
 ?>
-
-<?php 
-    // Output the form.
-    echo $this->createForm;	
-?>
+<div class="data-column">
+  <div class="data-content">
+    <div class="filler-block">
+    </div>
+    <?php
+    echo $this->createForm;
+    ?>
+  </div>
+</div>
+<div id="icon">
+  <img src="/resources/icons/rfid.png" />
+</div>

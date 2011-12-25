@@ -198,10 +198,28 @@ class Application_Model_PersonnelProxy extends \Application_Model_Personnel impl
         return parent::getName();
     }
 
+    public function hasRight($right)
+    {
+        $this->__load();
+        return parent::hasRight($right);
+    }
+
+    public function setRight($right)
+    {
+        $this->__load();
+        return parent::setRight($right);
+    }
+
+    public function unsetRight($right)
+    {
+        $this->__load();
+        return parent::unsetRight($right);
+    }
+
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'email', 'username', 'password', 'academicTitle', 'firstname', 'lastname', 'state', 'position', 'layedIn', 'layedOut', 'degreeDate', 'verificationHash');
+        return array('__isInitialized__', 'id', 'email', 'username', 'password', 'academicTitle', 'firstname', 'lastname', 'state', 'position', 'layedIn', 'layedOut', 'degreeDate', 'verificationHash', 'rights');
     }
 
     public function __clone()

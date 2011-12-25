@@ -1,0 +1,77 @@
+body {
+  margin: 0; padding: 0;
+  font-size: 100%;
+  line-height: 1.5;
+}
+article, aside, figcaption, figure, footer, header, hgroup, nav, section {
+  display: block;
+}
+h1, h2, h3, h4 {
+  margin: 1em 0 .5em;
+  line-height: 1.25;
+  font-weight: normal;
+}
+h1 {font-size: 2em;}
+h2 {font-size: 1.5em;}
+h3 {font-size: 1.2em;}
+h4 {font-size: 1em;}
+ul, ol {
+  margin-left:0;
+	margin-top:0;
+	margin-bottom:0;
+	margin-right:0;
+  padding-left: 0;
+	padding-right: 0;
+	padding-top: 0;
+	padding-bottom: 0;
+	list-style-type: none;
+}
+p {
+  margin: 1em 0;
+}
+blockquote {
+  margin: 1em 40px;
+}
+a {
+  text-decoration: underline;
+}
+a:link {color: #0000EE;}
+a:visited {color: #551A8B;}
+a:active {color: #EE0000;}
+a:hover, a:focus {
+  /* ... */
+}
+a:active, a:hover {
+  outline: none;
+}
+a img {
+  border: none;
+}
+q, cite {
+  font-style: italic;
+}
+q:before, q:after {
+  content: "";
+}
+sup, sub {
+  line-height: 0;
+}
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+input, button, select {
+  vertical-align: middle;
+}
+table {
+  border-collapse: collapse;
+}
+td, th {
+  padding: 1px;
+  vertical-align: top;
+  text-align: left;
+}
+td:first-child, th:first-child {
+  empty-cells: hide;
+}

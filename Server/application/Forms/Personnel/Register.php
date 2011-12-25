@@ -30,7 +30,7 @@ class Application_Form_Personnel_Register extends Zend_Form{
     $emailElement->setRequired(true);
 
     $usernameElement = new Zend_Form_Element_Text('username');
-    $usernameElement->setLabel("Shown username");
+    $usernameElement->setLabel("Benutzername");
     $usernameElement->addValidator('regex', false, array('/^[a-z0-9ßöäüâáàéèñ]/i'));
     $usernameElement->addValidator('stringLength', false, array(2, 64));
     $usernameElement->addValidator(new Unplagged_Validate_NoRecordExists('Application_Model_Personnel','username'));
@@ -38,21 +38,21 @@ class Application_Form_Personnel_Register extends Zend_Form{
     $usernameElement->setRequired(true);
 
     $passwordElement = new Zend_Form_Element_Password('password');
-    $passwordElement->setLabel("Password");
+    $passwordElement->setLabel("Passwort");
     $passwordElement->addValidator('regex', false, array('/^[a-z0-9ßöäüâáàéèñ]/i'));
     $passwordElement->addValidator('stringLength', false, array(8, 32));
     $passwordElement->setAttrib('maxLength', 32);
     $passwordElement->setRequired(true);
     
     $reenterPasswordElement = new Zend_Form_Element_Password('confirmedPassword');
-    $reenterPasswordElement->setLabel("Re-enter Password");
+    $reenterPasswordElement->setLabel("Passwort erneut eingeben");
     $reenterPasswordElement->setAttrib('maxLength', 32);
     $reenterPasswordElement->addValidator('Identical', false, array('token' => 'password'));
     $reenterPasswordElement->setRequired(true);
 
 
     $submitElement = new Zend_Form_Element_Submit('submit');
-    $submitElement->setLabel('Register');
+    $submitElement->setLabel('Registrieren');
     $submitElement->setIgnore(true);
     $submitElement->setAttrib('class', 'submit');
     $submitElement->removeDecorator('DtDdWrapper');
@@ -71,7 +71,7 @@ class Application_Form_Personnel_Register extends Zend_Form{
       ,'confirmedPassword'
         )
         , 'credentialGroup'
-        , array('legend'=>'Credential Information')
+        , array('legend'=>'Zugangsdaten')
     );
 
     $this->addElements(array(
