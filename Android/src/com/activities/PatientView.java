@@ -49,6 +49,7 @@ public class PatientView extends iHealthSuperActivity {
 			}
 		});
 		
+		// TODO make members of views
 		setFontSegoeWPLight((TextView) findViewById(R.id.patient_overview_headline));
 		setFontSegoeWPLight((TextView) findViewById(R.id.patient_overview_button_1_text_1));
 		setFontSegoeWPLight((TextView) findViewById(R.id.patient_overview_button_1_text_2));
@@ -60,13 +61,25 @@ public class PatientView extends iHealthSuperActivity {
 		
 
 		// Restore preferences
-		SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+		SharedPreferences sp = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+		setContent(sp);		
+	}
+
+	@Override
+	public void readNewPatient(SharedPreferences sp) {
+		setContent(sp);
 		
-		if (settings.contains("firstname")) {
-			TextView image_text = (TextView) findViewById(R.id.patient_overview_image_text);
-			String firstname = settings.getString("firstname", "??");
-			String lastname = settings.getString("lastname", " ??");
-			image_text.setText(firstname+" "+lastname);			
-		}
+	}
+	
+	private void setContent(SharedPreferences sp) {
+		TextView image_text = (TextView) findViewById(R.id.patient_overview_image_text);
+		image_text.setText(sp.getString("firstname", "??")+" "+sp.getString("lastname", "??"));
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		SharedPreferences sp = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+		setContent(sp);
 	}
 }

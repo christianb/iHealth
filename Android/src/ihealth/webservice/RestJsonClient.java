@@ -36,7 +36,7 @@ public class RestJsonClient {
 	
 	private final static String TAG = "RestJsonClient";
 	
-	private final static String HOST = "http://imed.benjaminoertel.com/";
+	private final static String HOST = "http://titania.f4.htw-berlin.de/";
 	
 	public static JSONObject loginPOST(String pUser, String pPassword) {
 		HttpClient httpclient = new DefaultHttpClient();

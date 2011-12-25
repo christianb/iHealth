@@ -36,6 +36,8 @@ public class NewMeasurement extends iHealthSuperActivity implements MessageRecei
 	
 	private ProgressDialog dialog;
 	
+	private TextView mName;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -100,14 +102,14 @@ public class NewMeasurement extends iHealthSuperActivity implements MessageRecei
        
         techListsArray = new String[][] { new String[] { NfcA.class.getName(), NdefFormatable.class.getName(), MifareClassic.class.getName() } };
 	
-        TextView name = (TextView) findViewById(R.id.new_measurement_image_text_2);
         
+        mName = (TextView) findViewById(R.id.new_measurement_image_text_2);
         setFontSegoeWPLight((TextView) findViewById(R.id.new_measurement_headline));
         setFontSegoeWPSemibold((TextView) findViewById(R.id.new_measurement_image_text_1));
-        setFontSegoeWPSemibold(name);
+        setFontSegoeWPSemibold(mName);
         
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        name.setText(settings.getString("firstname", "??")+" "+settings.getString("lastname", "??"));
+        mName.setText(settings.getString("firstname", "??")+" "+settings.getString("lastname", "??"));
 	}
 
 	@Override
@@ -176,4 +178,16 @@ public class NewMeasurement extends iHealthSuperActivity implements MessageRecei
                 "Temperaturmessung läuft.\nBitte warten.", true, true);
 		
 	}
+	
+	/*
+	@Override
+	public void readNewPatient(SharedPreferences sp) {
+		setContent(sp);
+		
+	}
+	
+	private void setContent(SharedPreferences sp) {
+		mName.setText(sp.getString("firstname", "??")+" "+sp.getString("lastname", "??"));
+	}
+	*/
 }

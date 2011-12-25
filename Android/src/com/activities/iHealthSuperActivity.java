@@ -27,7 +27,7 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class iHealthSuperActivity extends Activity {
+public class iHealthSuperActivity extends Activity implements NFC_Message  {
 
 	protected NfcAdapter mAdapter;
 	protected PendingIntent pendingIntent;
@@ -91,7 +91,7 @@ public void onNewIntent(Intent intent) {
         Log.d(TAG, "call onNewIntent()");
         
         JSONObject jObject = RestJsonClient.getPatientData(mTagID);
-        //Log.d(TAG, "Empfangen: " + jObject.toString());
+        Log.d(TAG, "Empfangen: " + jObject.toString());
         
         String sStatuscode = "";
 		String statusmessage = "";
@@ -126,6 +126,8 @@ public void onNewIntent(Intent intent) {
 				// Commit the edits!
 				editor.commit();
 				
+				readNewPatient(settings);
+				
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -157,5 +159,10 @@ public void onNewIntent(Intent intent) {
 		// TODO Auto-generated method stub
 		super.onStop();
 		mTagID = null;
+	}
+
+	@Override
+	public void readNewPatient(SharedPreferences sp) {
+		
 	}
 }
