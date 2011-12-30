@@ -1,6 +1,7 @@
 package com.activities;
 
 import ihealth.arduino.Communication;
+import ihealth.utils.Patient;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -61,25 +62,25 @@ public class PatientView extends iHealthSuperActivity {
 		
 
 		// Restore preferences
-		SharedPreferences sp = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-		setContent(sp);		
+		//SharedPreferences sp = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+		setContent(Patient.getInstance());		
 	}
 
 	@Override
-	public void readNewPatient(SharedPreferences sp) {
-		setContent(sp);
+	public void readNewPatient(Patient p) {
+		setContent(p);
 		
 	}
 	
-	private void setContent(SharedPreferences sp) {
+	private void setContent(Patient p) {
 		TextView image_text = (TextView) findViewById(R.id.patient_overview_image_text);
-		image_text.setText(sp.getString("firstname", "??")+" "+sp.getString("lastname", "??"));
+		image_text.setText(p.getFirstname()+" "+p.getLastname());
 	}
 	
 	@Override
 	protected void onResume() {
 		super.onResume();
-		SharedPreferences sp = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-		setContent(sp);
+		//SharedPreferences sp = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+		setContent(Patient.getInstance());
 	}
 }

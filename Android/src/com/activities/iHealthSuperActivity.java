@@ -1,6 +1,7 @@
 package com.activities;
 
 import ihealth.utils.HexConversion;
+import ihealth.utils.Patient;
 import ihealth.webservice.RestJsonClient;
 
 import java.util.List;
@@ -48,6 +49,8 @@ public class iHealthSuperActivity extends Activity implements NFC_Message  {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
+		Patient.getInstance().create(getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE));
+		
 		// NFC access
         mAdapter = NfcAdapter.getDefaultAdapter(this);
         
@@ -81,7 +84,7 @@ public class iHealthSuperActivity extends Activity implements NFC_Message  {
 		view.setTypeface(tf);
 	}
 	
-public void onNewIntent(Intent intent) {
+	public void onNewIntent(Intent intent) {
     	
     	mTagFromIntent = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
     	//Log.d(TAG, "Tag ID = "+mTagFromIntent.);
@@ -112,10 +115,22 @@ public void onNewIntent(Intent intent) {
 				int userId = new Integer(jObject.getJSONObject("response").getString("userId")).intValue();
 				String firstname = jObject.getJSONObject("response").getString("firstname");
 				String lastname = jObject.getJSONObject("response").getString("lastname");
+				String bloodGroup = jObject.getJSONObject("response").getString("bloodGroup");
+				String size = jObject.getJSONObject("response").getString("size");
+				//String weight = jObject.getJSONObject("response").getString("weight");
+				String street = jObject.getJSONObject("response").getJSONObject("address").getString("street");
+				String zipcode = jObject.getJSONObject("response").getJSONObject("address").getString("zipcode");
+				String city = jObject.getJSONObject("response").getJSONObject("address").getString("city");
 				
 				Log.d(TAG, "User ID: "+userId);
 				Log.d(TAG, "Firstname: "+firstname);
 				Log.d(TAG, "Lastname: "+lastname);
+				Log.d(TAG, "BloodGroup: "+bloodGroup);
+				Log.d(TAG, "size: "+size);
+				Log.d(TAG, "Street: "+street);
+				Log.d(TAG, "zipcode: "+zipcode);
+				Log.d(TAG, "city: "+city);
+				//Log.d(TAG, "weight: "+weight);
 				
 				SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
 				
@@ -123,10 +138,17 @@ public void onNewIntent(Intent intent) {
 				editor.putString("firstname", firstname);
 				editor.putString("lastname", lastname);
 				editor.putInt("userId", userId);
+				editor.putString("bloodGroup", bloodGroup);
+				editor.putString("size", size);
+				editor.putString("street", street);
+				editor.putString("zipcode", zipcode);
+				editor.putString("city", city);
+				//editor.putString("weight", weight);
+				
 				// Commit the edits!
 				editor.commit();
-				
-				readNewPatient(settings);
+								
+				readNewPatient(Patient.getInstance().create(settings));
 				
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
@@ -162,7 +184,7 @@ public void onNewIntent(Intent intent) {
 	}
 
 	@Override
-	public void readNewPatient(SharedPreferences sp) {
+	public void readNewPatient(Patient p) {
 		
 	}
 }

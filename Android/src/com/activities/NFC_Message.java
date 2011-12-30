@@ -1,8 +1,8 @@
 package com.activities;
 
-import android.content.SharedPreferences;
+import ihealth.utils.Patient;
 
 public interface NFC_Message {
 
-	void readNewPatient(SharedPreferences sp);
+	void readNewPatient(Patient p);
 }
