@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 public class Patient {
 	
 	// KONSTANTEN:
+	public static final String ID = "userId";
+	
 	// Allgemeine Informationen
 	public static final String FIRSTNAME = "firstname";
 	public static final String LASTNAME = "lastname";
@@ -22,6 +24,8 @@ public class Patient {
 	
 	
 	// MEMBER
+	private String mID;
+	
 	private String mFirstname;
 	private String mLastname;
 	private String mBirthday;
@@ -47,6 +51,7 @@ public class Patient {
 	}
 	
 	public Patient create(SharedPreferences sp) {
+		mID = sp.getString(ID, "-1");
 		mFirstname = sp.getString(FIRSTNAME, "...");
 		mLastname = sp.getString(LASTNAME, "...");
 		mBirthday = sp.getString(BIRTHDAY, "...");
@@ -60,6 +65,10 @@ public class Patient {
 		mCity = sp.getString(CITY, "...");
 		
 		return instance;
+	}
+	
+	public String getID() {
+		return mID;
 	}
 	
 	public String getFirstname() {

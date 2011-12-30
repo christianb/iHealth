@@ -112,15 +112,15 @@ public class iHealthSuperActivity extends Activity implements NFC_Message  {
 		
 		if (iStatuscode == 200) {
 			try {
-				int userId = new Integer(jObject.getJSONObject("response").getString("userId")).intValue();
-				String firstname = jObject.getJSONObject("response").getString("firstname");
-				String lastname = jObject.getJSONObject("response").getString("lastname");
-				String bloodGroup = jObject.getJSONObject("response").getString("bloodGroup");
-				String size = jObject.getJSONObject("response").getString("size");
-				//String weight = jObject.getJSONObject("response").getString("weight");
-				String street = jObject.getJSONObject("response").getJSONObject("address").getString("street");
-				String zipcode = jObject.getJSONObject("response").getJSONObject("address").getString("zipcode");
-				String city = jObject.getJSONObject("response").getJSONObject("address").getString("city");
+				String userId  = jObject.getJSONObject("response").getString(Patient.ID);
+				String firstname = jObject.getJSONObject("response").getString(Patient.FIRSTNAME);
+				String lastname = jObject.getJSONObject("response").getString(Patient.LASTNAME);
+				String bloodGroup = jObject.getJSONObject("response").getString(Patient.BLOOD_GROUP);
+				String size = jObject.getJSONObject("response").getString(Patient.SIZE);
+				//String weight = jObject.getJSONObject("response").getString(Patient.WEIGHT);
+				String street = jObject.getJSONObject("response").getJSONObject("address").getString(Patient.STREET);
+				String zipcode = jObject.getJSONObject("response").getJSONObject("address").getString(Patient.ZIPCODE);
+				String city = jObject.getJSONObject("response").getJSONObject("address").getString(Patient.CITY);
 				
 				Log.d(TAG, "User ID: "+userId);
 				Log.d(TAG, "Firstname: "+firstname);
@@ -135,15 +135,16 @@ public class iHealthSuperActivity extends Activity implements NFC_Message  {
 				SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
 				
 				SharedPreferences.Editor editor = settings.edit();
-				editor.putString("firstname", firstname);
-				editor.putString("lastname", lastname);
-				editor.putInt("userId", userId);
-				editor.putString("bloodGroup", bloodGroup);
-				editor.putString("size", size);
-				editor.putString("street", street);
-				editor.putString("zipcode", zipcode);
-				editor.putString("city", city);
-				//editor.putString("weight", weight);
+				editor.putString(Patient.ID, userId);
+				editor.putString(Patient.FIRSTNAME, firstname);
+				editor.putString(Patient.LASTNAME, lastname);
+				
+				editor.putString(Patient.BLOOD_GROUP, bloodGroup);
+				editor.putString(Patient.SIZE, size);
+				editor.putString(Patient.STREET, street);
+				editor.putString(Patient.ZIPCODE, zipcode);
+				editor.putString(Patient.CITY, city);
+				//editor.putString(Patient.WEIGHT, weight);
 				
 				// Commit the edits!
 				editor.commit();

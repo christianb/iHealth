@@ -1,8 +1,12 @@
 package com.activities;
 
+import org.json.JSONObject;
+
 import ihealth.arduino.Communication;
 import ihealth.arduino.MessageReceiver;
 import ihealth.utils.HexConversion;
+import ihealth.utils.Patient;
+import ihealth.webservice.RestJsonClient;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -37,6 +41,9 @@ public class NewMeasurement extends iHealthSuperActivity implements MessageRecei
 	private ProgressDialog dialog;
 	
 	private TextView mName;
+	private float mValue;
+	
+	private TextView mNote;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +63,24 @@ public class NewMeasurement extends iHealthSuperActivity implements MessageRecei
 		com.registerCallback(this);
 		com.startMeasurement();
 		
+		mNote = (TextView) findViewById(R.id.new_measurement_content_bemerkung);
+		
+		RelativeLayout buttonSaveMeasurement = (RelativeLayout) findViewById(R.id.new_measurement_button_1);
+		buttonSaveMeasurement.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				String pPatientID = Patient.getInstance().getID();
+				String pType = "temperature";
+				String pValue = new Float(mValue).toString();
+				String pNote = mNote.getText().toString();
+				SharedPreferences sp = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+				String pUserID = sp.getString("doctorId", "-1");
+				JSONObject jObject = RestJsonClient.createMeasurement(pPatientID, pType, pValue, pNote, pUserID);
+				Log.d(TAG, "Empfangen: " + jObject.toString());
+			}
+		});
+		
 		RelativeLayout button2 = (RelativeLayout) findViewById(R.id.new_measurement_button_2);
 		button2.setOnClickListener(new OnClickListener() {
 			
@@ -71,15 +96,6 @@ public class NewMeasurement extends iHealthSuperActivity implements MessageRecei
 				} else {
 					Toast.makeText(NewMeasurement.this, "Keine Verbindung zum Sensor!", Toast.LENGTH_SHORT).show();
 				}
-			}
-		});
-		
-		RelativeLayout button1 = (RelativeLayout) findViewById(R.id.new_measurement_button_1);
-		button1.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Log.d(TAG, "click Button: Messung speichern");
 			}
 		});
 		
@@ -121,6 +137,8 @@ public class NewMeasurement extends iHealthSuperActivity implements MessageRecei
 		if (dialog.isShowing()) {
 			dialog.dismiss();
 		}
+		
+		mValue = value;
 		
 	}
 	

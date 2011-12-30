@@ -3,9 +3,12 @@ package com.activities;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import ihealth.utils.Patient;
 import ihealth.webservice.RestJsonClient;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -42,11 +45,15 @@ public class Login extends iHealthSuperActivity {
 				Log.d(TAG, "Empfangen: " + jObject.toString());
 				String sStatuscode = "";
 				String statusmessage = "";
+				String user_id = "-1";
 				
 				try {
 					sStatuscode = jObject.get("statuscode").toString();
 					statusmessage = jObject.get("statusmessage").toString();
+					user_id = jObject.getJSONObject("response").getString("userId");
+					
 					Log.d(TAG, "statuscode = "+ sStatuscode);
+					Log.d(TAG, "User ID (Arzt): "+user_id);
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -56,8 +63,14 @@ public class Login extends iHealthSuperActivity {
 				int iStatuscode = new Integer(sStatuscode).intValue();
 				
 				if (iStatuscode == 200) {
+					SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+					SharedPreferences.Editor editor = settings.edit();
+					editor.putString("doctorID", user_id);
+					
 					Intent intent = new Intent(Login.this, MainMenu.class);
 					startActivity(intent);
+					
+					
 				}
 				
 				if (iStatuscode == 404) {
