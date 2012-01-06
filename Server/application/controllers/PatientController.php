@@ -34,8 +34,10 @@ class PatientController extends Zend_Controller_Action{
       $formData = $this->_request->getPost();
 
       if($createForm->isValid($formData)){
+        $data["sex"] = $formData["sex"];
         $data["firstname"] = $formData["firstname"];
         $data["lastname"] = $formData["lastname"];
+        $data["birthday"] = DateTime::createFromFormat("Y-m-d", $formData["birthday"]);
 
         $data["street"] = $formData["street"];
         $data["city"] = $formData["city"];
@@ -65,8 +67,10 @@ class PatientController extends Zend_Controller_Action{
     $editForm = new Application_Form_Patient_Modify();
     $editForm->setAction("/patient/edit/id/" . $patientId);
 
+    $editForm->getElement("sex")->setValue($patient->getSex());
     $editForm->getElement("firstname")->setValue($patient->getFirstname());
     $editForm->getElement("lastname")->setValue($patient->getLastname());
+    $editForm->getElement("birthday")->setValue($patient->getBirthday()->format("Y-m-d"));
 
     $editForm->getElement("size")->setValue($patient->getSize());
     $editForm->getElement("weight")->setValue($patient->getWeight());
@@ -80,8 +84,10 @@ class PatientController extends Zend_Controller_Action{
       $formData = $this->_request->getPost();
 
       if($editForm->isValid($formData)){
+        $patient->setSex($formData["sex"]);
         $patient->setFirstname($formData["firstname"]);
         $patient->setLastname($formData["lastname"]);
+        $patient->setBirthday(DateTime::createFromFormat("Y-m-d", $formData["birthday"]));
 
         $patient->setSize($formData["size"]);
         $patient->setWeight($formData["weight"]);
