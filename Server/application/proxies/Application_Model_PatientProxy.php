@@ -162,6 +162,12 @@ class Application_Model_PatientProxy extends \Application_Model_Patient implemen
         return parent::setBloodGroup($bloodGroup);
     }
 
+    public function getPatientData()
+    {
+        $this->__load();
+        return parent::getPatientData();
+    }
+
 
     public function __sleep()
     {

@@ -170,11 +170,11 @@ class PersonnelController extends Zend_Controller_Action{
             $personnel->setLayedOut(DateTime::createFromFormat("Y-m-d", $formData['layedOut']));
           }
 
-          $formData['measurementsRight'] == 1 ? $personnel->setRight(CRUD_MEASUREMENTS) : $personnel->unsetRight(CRUD_MEASUREMENTS);
-          $formData['hospitalsRight'] == 1 ? $personnel->setRight(CRUD_HOSPITALS) : $personnel->unsetRight(CRUD_HOSPITALS);
-          $formData['personnelRight'] == 1 ? $personnel->setRight(CRUD_PERSONNEL) : $personnel->unsetRight(CRUD_PERSONNEL);
-          $formData['patientsRight'] == 1 ? $personnel->setRight(CRUD_PATIENTS) : $personnel->unsetRight(CRUD_PATIENTS);
-          $formData['rfidsRight'] == 1 ? $personnel->setRight(CRUD_RFID) : $personnel->unsetRight(CRUD_RFID);
+          $personnel->setRight(CRUD_MEASUREMENTS, $formData['measurementsRight'] == 1);
+          $personnel->setRight(CRUD_HOSPITALS, $formData['hospitalsRight'] == 1);
+          $personnel->setRight(CRUD_PERSONNEL, $formData['personnelRight'] ==1);
+          $personnel->setRight(CRUD_PATIENTS, $formData['patientsRight'] == 1);
+          $personnel->setRight(CRUD_RFID, $formData['rfidsRight'] == 1);
 
 
           // write back to persistence manage and flush it
