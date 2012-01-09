@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 public class Patient {
 	
 	// KONSTANTEN:
-	public static final String ID = "userId";
+	public static final String ID = "patientId";
 	
 	// Allgemeine Informationen
 	public static final String FIRSTNAME = "firstname";
