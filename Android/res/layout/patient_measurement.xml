@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white" >
+    
+    <!-- Layout just for Margin left and right -->
+    <RelativeLayout 
+        android:id="@+id/patient_measurement_margin"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip">
+        
+        <!-- Headline -->
+        <RelativeLayout
+        android:id="@+id/patient_measurement_headline_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+		android:layout_marginTop="55dip"
+		android:orientation="vertical">
+		
+	        <TextView
+	            android:id="@+id/patient_measurement_headline"
+	            android:text="messungen"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            style="@style/Headline"
+	            android:textColor="@color/text_hadline"
+	        />
+	        
+		</RelativeLayout> <!-- End of Headline Layout -->
+    
+    	<!-- Image -->
+	    <RelativeLayout
+	        android:id="@+id/patient_measurement_image_layout"
+	        android:layout_width="fill_parent"
+	        android:layout_height="57dip"
+			android:orientation="horizontal"
+			android:layout_below="@id/patient_measurement_headline_layout">
+	        
+	        <ImageView 
+	            android:id="@+id/patient_measurement_image"
+	            android:layout_width="fill_parent"
+	            android:layout_height="fill_parent"
+	            android:src="@drawable/patient_header_small"/>
+	        
+	        <!--  Beshreibung des Patienten --> 
+	        <RelativeLayout 
+	            android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
+		        android:layout_marginLeft="130dip"
+		        android:background="@color/blue_medium_semi_transparent">
+	            
+	            <TextView 
+	                android:id="@+id/patient_measurement_image_text_1"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginTop="5dip"
+		            android:layout_marginRight="10dip"
+		            android:text="patientin"
+		            android:layout_alignParentRight="true"
+		            android:textSize="20dip"
+		            android:textColor="@color/text" />
+	            
+	            <TextView 
+	                android:id="@+id/patient_measurement_image_text_2"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginTop="-5dip"
+		            android:layout_marginRight="10dip"
+		            android:text="Hannah Mustermann"
+		            android:layout_alignParentRight="true"
+		            android:textSize="15dip"
+		            android:layout_below="@id/patient_measurement_image_text_1"
+		            android:textColor="@color/text" />
+	            
+	        </RelativeLayout>
+	        	        
+
+	        
+		</RelativeLayout> <!-- End of Image Layout -->
+    
+    	<WebView 
+    	    android:id="@+id/myWebView"
+    	    android:layout_width="fill_parent"
+    	    android:layout_height="fill_parent"
+    	    android:layout_marginBottom="30dip"
+    	    android:layout_below="@id/patient_measurement_image_layout"
+    	    android:layout_marginTop="10dip"/>
+    
+        
+    </RelativeLayout> <!-- End of Margin Layout -->
+    
+    
+
+</RelativeLayout>

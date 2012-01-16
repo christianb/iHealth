@@ -51,6 +51,18 @@ public class PatientView extends iHealthSuperActivity {
 			}
 		});
 		
+		RelativeLayout button2 = (RelativeLayout) findViewById(R.id.patient_overview_button_2);
+		button2.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Log.d(TAG, "click button : messwerte anzeigen");
+				
+				Intent intent = new Intent(PatientView.this, PatientMeasurement.class);
+				startActivity(intent);
+			}
+		});
+		
 		// TODO make members of views
 		setFontSegoeWPLight((TextView) findViewById(R.id.patient_overview_headline));
 		setFontSegoeWPLight((TextView) findViewById(R.id.patient_overview_button_1_text_1));
