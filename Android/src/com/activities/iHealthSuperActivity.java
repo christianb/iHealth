@@ -84,6 +84,12 @@ public class iHealthSuperActivity extends Activity implements NFC_Message  {
 		view.setTypeface(tf);
 	}
 	
+	protected void setFontSegoeWP(TextView view) {
+		Typeface tf = Typeface.createFromAsset(
+				getBaseContext().getAssets(), "fonts/SegoeWP.ttf");
+		view.setTypeface(tf);
+	}
+	
 	public void onNewIntent(Intent intent) {
     	
     	mTagFromIntent = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
@@ -117,10 +123,12 @@ public class iHealthSuperActivity extends Activity implements NFC_Message  {
 				String lastname = jObject.getJSONObject("response").getString(Patient.LASTNAME);
 				String bloodGroup = jObject.getJSONObject("response").getString(Patient.BLOOD_GROUP);
 				String size = jObject.getJSONObject("response").getString(Patient.SIZE);
-				//String weight = jObject.getJSONObject("response").getString(Patient.WEIGHT);
+				String weight = jObject.getJSONObject("response").getString(Patient.WEIGHT);
 				String street = jObject.getJSONObject("response").getJSONObject("address").getString(Patient.STREET);
 				String zipcode = jObject.getJSONObject("response").getJSONObject("address").getString(Patient.ZIPCODE);
 				String city = jObject.getJSONObject("response").getJSONObject("address").getString(Patient.CITY);
+				String birthday = jObject.getJSONObject("response").getString(Patient.BIRTHDAY);
+				String sex = jObject.getJSONObject("response").getString(Patient.SEX);
 				
 				Log.d(TAG, "User ID: "+userId);
 				Log.d(TAG, "Firstname: "+firstname);
@@ -130,7 +138,9 @@ public class iHealthSuperActivity extends Activity implements NFC_Message  {
 				Log.d(TAG, "Street: "+street);
 				Log.d(TAG, "zipcode: "+zipcode);
 				Log.d(TAG, "city: "+city);
-				//Log.d(TAG, "weight: "+weight);
+				Log.d(TAG, "birthday: "+birthday);
+				Log.d(TAG, "weight: "+weight);
+				Log.d(TAG, "sex: "+sex);
 				
 				SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
 				
@@ -144,7 +154,9 @@ public class iHealthSuperActivity extends Activity implements NFC_Message  {
 				editor.putString(Patient.STREET, street);
 				editor.putString(Patient.ZIPCODE, zipcode);
 				editor.putString(Patient.CITY, city);
-				//editor.putString(Patient.WEIGHT, weight);
+				editor.putString(Patient.WEIGHT, weight);
+				editor.putString(Patient.BIRTHDAY, birthday);
+				editor.putString(Patient.SEX, sex);
 				
 				// Commit the edits!
 				editor.commit();

@@ -69,7 +69,7 @@
 		    android:layout_width="fill_parent"
 		    android:layout_height="fill_parent"
 		    android:layout_below="@id/impressum_content"
-		    android:background="@color/blue"
+		    android:background="@color/blue_light"
 		    android:layout_marginTop="40dip"
 		    android:layout_marginBottom="10dip">
 		    

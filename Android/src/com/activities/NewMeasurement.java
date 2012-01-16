@@ -75,8 +75,9 @@ public class NewMeasurement extends iHealthSuperActivity implements MessageRecei
 				String pValue = new Float(mValue).toString();
 				String pNote = mNote.getText().toString();
 				SharedPreferences sp = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-				String pUserID = sp.getString("doctorId", "-1");
+				String pUserID = sp.getString("userId", "-1");
 				JSONObject jObject = RestJsonClient.createMeasurement(pPatientID, pType, pValue, pNote, pUserID);
+				Log.d(TAG, "userid: "+pUserID);
 				Log.d(TAG, "Empfangen: " + jObject.toString());
 			}
 		});

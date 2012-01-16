@@ -5,12 +5,13 @@ import android.content.SharedPreferences;
 public class Patient {
 	
 	// KONSTANTEN:
-	public static final String ID = "userId";
+	public static final String ID = "patientId";
 	
 	// Allgemeine Informationen
 	public static final String FIRSTNAME = "firstname";
 	public static final String LASTNAME = "lastname";
-	public static final String BIRTHDAY = "birthday"; // Fehlt noch.
+	public static final String BIRTHDAY = "birthday";
+	public static final String SEX = "sex";
 	
 	// Vital Attribute
 	public static final String SIZE = "size";
@@ -21,6 +22,7 @@ public class Patient {
 	public static final String STREET = "street";
 	public static final String ZIPCODE = "zipcode";
 	public static final String CITY = "city";
+	
 	
 	
 	// MEMBER
@@ -37,6 +39,8 @@ public class Patient {
 	private String mStreet;
 	private String mZipCode;
 	private String mCity;
+	
+	private String mSex;
 	
 	private static Patient instance;
 	
@@ -63,6 +67,7 @@ public class Patient {
 		mStreet = sp.getString(STREET, "...");
 		mZipCode = sp.getString(ZIPCODE, "...");
 		mCity = sp.getString(CITY, "...");
+		mSex = sp.getString(SEX, "female");
 		
 		return instance;
 	}
@@ -105,5 +110,9 @@ public class Patient {
 
 	public String getCity() {
 		return mCity;
+	}
+	
+	public String getSex() {
+		return mSex;
 	}
 }

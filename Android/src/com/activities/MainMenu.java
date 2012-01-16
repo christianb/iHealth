@@ -74,7 +74,8 @@ public class MainMenu extends iHealthSuperActivity {
 		setFontSegoeWPLight((TextView) findViewById(R.id.menu_button_1_text_2));
 		setFontSegoeWPLight((TextView) findViewById(R.id.menu_button_2_text_1));
 		setFontSegoeWPLight((TextView) findViewById(R.id.menu_button_2_text_2));
-		setFontSegoeWPLight((TextView) findViewById(R.id.menu_image_text));
+		setFontSegoeWPLight((TextView) findViewById(R.id.menu_headline_1));
+		setFontSegoeWPLight((TextView) findViewById(R.id.menu_headline_2));
 	}
 	
 	
