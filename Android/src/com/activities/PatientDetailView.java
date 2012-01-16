@@ -4,6 +4,7 @@ import ihealth.utils.Patient;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /** Patientendetails: Name, Geburtstag, etc. */
@@ -31,9 +32,11 @@ public class PatientDetailView extends iHealthSuperActivity {
 		mCity = (TextView) findViewById(R.id.patient_details_content_city);
 		mZipCode = (TextView) findViewById(R.id.patient_details_content_zipcode);
 		
+		
+		
 		// TODO make members of views
 		setFontSegoeWPLight((TextView) findViewById(R.id.patient_details_headline));
-		setFontSegoeWPLight((TextView) findViewById(R.id.patient_details_image_text_1));
+		setFontSegoeWP((TextView) findViewById(R.id.patient_details_image_text_1));
 		setFontSegoeWPLight((TextView) findViewById(R.id.patient_details_image_text_2));
 		setFontSegoeWPLight(mBirthday);
 		setFontSegoeWPLight((TextView) findViewById(R.id.patient_details_content_birthday_description));
@@ -41,8 +44,8 @@ public class PatientDetailView extends iHealthSuperActivity {
 		setFontSegoeWPLight((TextView) findViewById(R.id.patient_details_content_blutgruppe_description));
 		setFontSegoeWPLight((TextView) findViewById(R.id.patient_details_content_checkin_date));
 		setFontSegoeWPLight((TextView) findViewById(R.id.patient_details_content_checkin_date_description));
-		setFontSegoeWPLight((TextView) findViewById(R.id.patient_details_content_name));
-		setFontSegoeWPLight((TextView) findViewById(R.id.patient_details_content_name_description));
+		//setFontSegoeWPLight((TextView) findViewById(R.id.patient_details_content_name));
+		//setFontSegoeWPLight((TextView) findViewById(R.id.patient_details_content_name_description));
 		setFontSegoeWPLight(mWeight);
 		setFontSegoeWPLight((TextView) findViewById(R.id.patient_details_content_weight_description));
 		setFontSegoeWPLight(mSize);
@@ -67,11 +70,12 @@ public class PatientDetailView extends iHealthSuperActivity {
 	}
 	
 	private void setContent(Patient p) {
+		
 		TextView image_text = (TextView) findViewById(R.id.patient_details_image_text_2);
 		image_text.setText(p.getFirstname()+" "+p.getLastname());
 		
-		TextView name = (TextView) findViewById(R.id.patient_details_content_name);
-		name.setText(p.getFirstname()+" "+p.getLastname());
+		//TextView name = (TextView) findViewById(R.id.patient_details_content_name);
+		//name.setText(p.getFirstname()+" "+p.getLastname());
 		
 		mBirthday.setText(p.getBirthday());
 		mBloodGroup.setText(p.getBloodGroup());
@@ -80,6 +84,26 @@ public class PatientDetailView extends iHealthSuperActivity {
 		mStreet.setText(p.getStreet());
 		mZipCode.setText(p.getZipCode());
 		mCity.setText(p.getCity());
+		
+		TextView sex = (TextView) findViewById(R.id.patient_details_image_text_1);
+		if (p.getSex().equalsIgnoreCase("male")) {
+			sex.setText("Herr");
+		} else {
+			sex.setText("Frau");
+		}
+		
+		ImageView image = (ImageView) findViewById(R.id.patient_details_image); 
+		int i = new Integer(p.getID()).intValue();
+		switch (i) {
+			
+			case 2: image.setImageResource(R.drawable.patient_2_small);
+				break;
+			case 3: image.setImageResource(R.drawable.patient_3_small);
+				break;
+			case 4: image.setImageResource(R.drawable.patient_4_small);
+				break;
+			default: image.setImageResource(R.drawable.patient_1_small);
+		}
 		
 	}
 }

@@ -18,7 +18,7 @@
 	        android:id="@+id/patient_details_headline_layout"
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
-			android:layout_marginTop="50dip"
+			android:layout_marginTop="55dip"
 			android:orientation="vertical">
 		
 	        <TextView
@@ -26,47 +26,57 @@
 	            android:text="patientendetails"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            style="@style/Headline"/>
+	            style="@style/Headline"
+	            android:textColor="@color/text_hadline"/>
 		</RelativeLayout> <!-- End of Headline Layout -->
     
     	<!-- Image -->
 	    <RelativeLayout
 	        android:id="@+id/patient_details_image_layout"
 	        android:layout_width="fill_parent"
-	        android:layout_height="55dip"
-			android:layout_marginTop="85dip"
+	        android:layout_height="57dip"
+			android:layout_marginTop="100dip"
 			android:orientation="horizontal">
 	        
 	        <ImageView 
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
+	            android:id="@+id/patient_details_image"
+	            android:layout_width="fill_parent"
+	            android:layout_height="fill_parent"
 	            android:src="@drawable/patient_header_small"/>
 	        
 	        <!--  Beshreibung des Patienten --> 
-	        <LinearLayout 
+	        <RelativeLayout 
 	            android:layout_width="fill_parent"
 		        android:layout_height="fill_parent"
 		        android:layout_marginLeft="130dip"
-		        android:background="@color/red_3"
-		        android:orientation="vertical">
+		        android:background="@color/blue_medium_semi_transparent">
 	            
 	            <TextView 
 	                android:id="@+id/patient_details_image_text_1"
-		            android:layout_width="fill_parent"
+		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
 		            android:layout_marginTop="5dip"
-		            android:text="patientin"/>
+		            android:layout_marginRight="10dip"
+		            android:text="patientin"
+		            android:layout_alignParentRight="true"
+		            android:textSize="20dip"
+		            android:textColor="@color/text" />
 	            
 	            <TextView 
 	                android:id="@+id/patient_details_image_text_2"
-		            android:layout_width="fill_parent"
+		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
-		            android:layout_marginTop="5dip"
-		            android:text="Hannah Mustermann"/>
+		            android:layout_marginTop="-5dip"
+		            android:layout_marginRight="10dip"
+		            android:text="Hannah Mustermann"
+		            android:layout_alignParentRight="true"
+		            android:textSize="15dip"
+		            android:layout_below="@id/patient_details_image_text_1"
+		            android:textColor="@color/text" />
 	            
-	        </LinearLayout>
-	        
-	        
+	        </RelativeLayout>
+	        	        
+
 	        
 		</RelativeLayout> <!-- End of Image Layout -->
     
@@ -75,8 +85,8 @@
 	        android:id="@+id/patient_details_view"
 	        android:layout_below="@id/patient_details_image_layout"
 	        android:layout_width="fill_parent"
-	        android:layout_height="200dip"
-			android:layout_marginTop="5dip"
+	        android:layout_height="288dip"
+			android:layout_marginTop="10dip"
 			android:orientation="vertical"
 			android:background="@color/red_bright">
 	        
@@ -94,47 +104,36 @@
 	            android:orientation="vertical">
 	            
 	            <!-- Diese Elemente müssten dynamisch eingebunden werden!!! -->	            
-	            <LinearLayout 
-	                android:layout_width="fill_parent"
-	                android:layout_height="wrap_content"
-	                android:orientation="vertical">
-	                <TextView 
-	                    android:id="@+id/patient_details_content_name_description"
-	                    android:layout_width="fill_parent"
-	            		android:layout_height="wrap_content"
-	            		android:text="name"/>
-	                <TextView
-	                    android:id="@+id/patient_details_content_name"
-	                    android:layout_width="fill_parent"
-	            		android:layout_height="wrap_content"
-	            		android:text="Hannah Mustermann"
-	            		android:background="@color/red_dark"/>
-	            			    
-				</LinearLayout>
-				
+	            
 	           	<LinearLayout 
 	                android:layout_width="fill_parent"
 	                android:layout_height="wrap_content"
 	                android:orientation="vertical"
-	                android:layout_marginTop="10dip">
+	                android:layout_marginTop="5dip">
 	                <TextView 
 	                    android:id="@+id/patient_details_content_size_description"
 	                    android:layout_width="fill_parent"
 	            		android:layout_height="wrap_content"
-	            		android:text="Körpergröße (in cm)"/>
+	            		android:text="körpergröße (in cm)"/>
 	                <TextView
 	                    android:id="@+id/patient_details_content_size"
 	                    android:layout_width="fill_parent"
-	            		android:layout_height="wrap_content"
-	            		android:text="178"
-	            		android:background="@color/red_dark"/>
+	            		android:layout_height="25dip"
+			            android:layout_marginRight="10dip"
+			            android:layout_marginTop="2dip"
+			            android:paddingTop="2dip"
+			            android:paddingBottom="2dip"
+			            android:paddingLeft="3dip"
+			            android:background="@color/blue_dark"
+			            android:textColor="@color/text"
+	            		android:text="178"/>
 				</LinearLayout>
 	                
 				<LinearLayout 
 	                android:layout_width="fill_parent"
 	                android:layout_height="wrap_content"
 	                android:orientation="vertical"
-	                android:layout_marginTop="10dip">
+	                android:layout_marginTop="5dip">
 	                <TextView 
 	                    android:id="@+id/patient_details_content_birthday_description"
 	                    android:layout_width="fill_parent"
@@ -143,16 +142,22 @@
 	                <TextView
 	                    android:id="@+id/patient_details_content_birthdate"
 	                    android:layout_width="fill_parent"
-	            		android:layout_height="wrap_content"
-	            		android:text="01.03.1985 (26 Jahre)"
-	            		android:background="@color/red_dark"/>
+	            		android:layout_height="25dip"
+			            android:layout_marginRight="10dip"
+			            android:layout_marginTop="2dip"
+			            android:paddingTop="2dip"
+			            android:paddingBottom="2dip"
+			            android:paddingLeft="3dip"
+			            android:background="@color/blue_dark"
+			            android:textColor="@color/text"
+	            		android:text="01.03.1985 (26 Jahre)"/>
 				</LinearLayout>
 				
 				<LinearLayout 
 	                android:layout_width="fill_parent"
 	                android:layout_height="wrap_content"
 	                android:orientation="vertical"
-	                android:layout_marginTop="10dip">
+	                android:layout_marginTop="5dip">
 	                <TextView 
 	                    android:id="@+id/patient_details_content_checkin_date_description"
 	                    android:layout_width="fill_parent"
@@ -161,9 +166,15 @@
 	                <TextView
 	                    android:id="@+id/patient_details_content_checkin_date"
 	                    android:layout_width="fill_parent"
-	            		android:layout_height="wrap_content"
-	            		android:text="01.11.2011"
-	            		android:background="@color/red_dark"/>
+	            		android:layout_height="25dip"
+			            android:layout_marginRight="10dip"
+			            android:layout_marginTop="2dip"
+			            android:paddingTop="2dip"
+			            android:paddingBottom="2dip"
+			            android:paddingLeft="3dip"
+			            android:background="@color/blue_dark"
+			            android:textColor="@color/text"
+	            		android:text="01.11.2011"/>
 	            			    
 				</LinearLayout>
 				
@@ -171,7 +182,7 @@
 	                android:layout_width="fill_parent"
 	                android:layout_height="wrap_content"
 	                android:orientation="vertical"
-	                android:layout_marginTop="10dip">
+	                android:layout_marginTop="5dip">
 	                <TextView 
 	                    android:id="@+id/patient_details_content_blutgruppe_description"
 	                    android:layout_width="fill_parent"
@@ -180,9 +191,15 @@
 	                <TextView
 	                    android:id="@+id/patient_details_content_blutgruppe"
 	                    android:layout_width="fill_parent"
-	            		android:layout_height="wrap_content"
-	            		android:text="A Rh-"
-	            		android:background="@color/red_dark"/>
+	            		android:layout_height="25dip"
+			            android:layout_marginRight="10dip"
+			            android:layout_marginTop="2dip"
+			            android:paddingTop="2dip"
+			            android:paddingBottom="2dip"
+			            android:paddingLeft="3dip"
+			            android:background="@color/blue_dark"
+			            android:textColor="@color/text"
+	            		android:text="A Rh-"/>
 	            			    
 				</LinearLayout>
 				
@@ -190,7 +207,7 @@
 	                android:layout_width="fill_parent"
 	                android:layout_height="wrap_content"
 	                android:orientation="vertical"
-	                android:layout_marginTop="10dip">
+	                android:layout_marginTop="5dip">
 	                <TextView 
 	                    android:id="@+id/patient_details_content_weight_description"
 	                    android:layout_width="fill_parent"
@@ -199,63 +216,88 @@
 	                <TextView
 	                    android:id="@+id/patient_details_content_weight"
 	                    android:layout_width="fill_parent"
-	            		android:layout_height="wrap_content"
-	            		android:text="56 kg"
-	            		android:background="@color/red_dark"/>
+	            		android:layout_height="25dip"
+			            android:layout_marginRight="10dip"
+			            android:layout_marginTop="2dip"
+			            android:paddingTop="2dip"
+			            android:paddingBottom="2dip"
+			            android:paddingLeft="3dip"
+			            android:background="@color/blue_dark"
+			            android:textColor="@color/text"
+	            		android:text="56 kg"/>
 				</LinearLayout>
 				
 				<LinearLayout 
 	                android:layout_width="fill_parent"
 	                android:layout_height="wrap_content"
 	                android:orientation="vertical"
-	                android:layout_marginTop="10dip">
+	                android:layout_marginTop="5dip">
 	                <TextView 
 	                    android:id="@+id/patient_details_content_street_description"
 	                    android:layout_width="fill_parent"
 	            		android:layout_height="wrap_content"
-	            		android:text="Straße"/>
+	            		android:text="straße"/>
 	                <TextView
 	                    android:id="@+id/patient_details_content_street"
 	                    android:layout_width="fill_parent"
-	            		android:layout_height="wrap_content"
-	            		android:text=""
-	            		android:background="@color/red_dark"/>
+	            		android:layout_height="25dip"
+			            android:layout_marginRight="10dip"
+			            android:layout_marginTop="2dip"
+			            android:paddingTop="2dip"
+			            android:paddingBottom="2dip"
+			            android:paddingLeft="3dip"
+			            android:background="@color/blue_dark"
+			            android:textColor="@color/text"
+	            		android:text=""/>
 				</LinearLayout>
 				
 	            <LinearLayout 
 	                android:layout_width="fill_parent"
 	                android:layout_height="wrap_content"
 	                android:orientation="vertical"
-	                android:layout_marginTop="10dip">
+	                android:layout_marginTop="5dip">
 	                <TextView 
 	                    android:id="@+id/patient_details_content_zipcode_description"
 	                    android:layout_width="fill_parent"
 	            		android:layout_height="wrap_content"
-	            		android:text="Postleitzahl"/>
+	            		android:text="postleitzahl"/>
 	                <TextView
 	                    android:id="@+id/patient_details_content_zipcode"
 	                    android:layout_width="fill_parent"
-	            		android:layout_height="wrap_content"
-	            		android:text=""
-	            		android:background="@color/red_dark"/>
+	            		android:layout_height="25dip"
+			            android:layout_marginRight="10dip"
+			            android:layout_marginTop="2dip"
+			            android:paddingTop="2dip"
+			            android:paddingBottom="2dip"
+			            android:paddingLeft="3dip"
+			            android:background="@color/blue_dark"
+			            android:textColor="@color/text"
+	            		android:text=""/>
 				</LinearLayout>
 				
 	            <LinearLayout 
 	                android:layout_width="fill_parent"
 	                android:layout_height="wrap_content"
 	                android:orientation="vertical"
-	                android:layout_marginTop="10dip">
+	                android:layout_marginTop="5dip"
+	                android:layout_marginBottom="10dip">
 	                <TextView 
 	                    android:id="@+id/patient_details_content_city_description"
 	                    android:layout_width="fill_parent"
 	            		android:layout_height="wrap_content"
-	            		android:text="Stadt"/>
+	            		android:text="stadt"/>
 	                <TextView
 	                    android:id="@+id/patient_details_content_city"
 	                    android:layout_width="fill_parent"
-	            		android:layout_height="wrap_content"
-	            		android:text=""
-	            		android:background="@color/red_dark"/>
+	            		android:layout_height="25dip"
+			            android:layout_marginRight="10dip"
+			            android:layout_marginTop="2dip"
+			            android:paddingTop="2dip"
+			            android:paddingBottom="2dip"
+			            android:paddingLeft="3dip"
+			            android:background="@color/blue_dark"
+			            android:textColor="@color/text"
+	            		android:text=""/>
 				</LinearLayout>
 	        </LinearLayout>
 	        
