@@ -10,30 +10,83 @@
         android:layout_height="wrap_content"
 		android:layout_marginLeft="20dip"
 		android:layout_marginRight="20dip"
-		android:layout_marginTop="120dip"
+		android:layout_marginTop="55dip"
 		android:orientation="vertical"
 		>
 		
         <TextView
             android:id="@+id/login_headline"
             android:text="willkommen"
-            android:layout_marginLeft="10dip"
             android:layout_marginRight="10dip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/Headline"
+            android:textColor="@color/text_hadline"
             />
 	</RelativeLayout>
     
     <RelativeLayout
         android:id="@+id/login_info"
         android:layout_width="fill_parent"
-        android:layout_height="150dip"
+        android:layout_height="180dip"
 		android:layout_marginLeft="20dip"
 		android:layout_marginRight="20dip"
-		android:layout_marginTop="150dip"
+		android:layout_marginTop="100dip"
 		android:orientation="vertical"
-		android:background="@color/blue">
+		android:background="@color/blue_light">
+        
+        <TextView
+            android:id="@+id/headline_welcome_1"
+            android:text="iHealth"
+            android:textStyle="bold"
+            android:textColor="@color/text" 
+            android:layout_marginBottom="-12dip"
+            android:layout_marginRight="10dip"
+            android:layout_marginTop="10dip"
+            android:layout_alignParentRight="true"
+            android:textSize="33dip"
+            
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        
+        <TextView
+            android:id="@+id/headline_welcome_2"
+            android:text="verwalten sie"
+            android:textColor="@color/text" 
+            android:layout_alignParentRight="true"
+            android:textSize="33dip"
+            android:layout_marginRight="10dip"
+            android:layout_marginBottom="-12dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/headline_welcome_1"
+            />
+        
+        <TextView
+            android:id="@+id/headline_welcome_3"
+            android:text="ihre patienten"
+            android:textColor="@color/text" 
+            android:layout_alignParentRight="true"
+            android:textSize="33dip"
+            android:layout_marginRight="10dip"
+            android:layout_marginBottom="-10dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/headline_welcome_2"
+            />
+        
+        <TextView
+            android:id="@+id/headline_welcome_4"
+            android:text="einfach + schnell"
+            android:textColor="@color/text" 
+            android:layout_alignParentRight="true"
+            android:textSize="33dip"
+            android:layout_marginRight="10dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/headline_welcome_3"
+            />
 	</RelativeLayout>
     
 
@@ -51,26 +104,33 @@
         <TextView
             android:id="@+id/login_username_info"
             android:text="bitte geben sie ihren benutzernamen ein"
-            android:textColor="@color/black" 
+            android:textColor="@color/text_label" 
             android:layout_marginLeft="10dip"
             android:layout_marginRight="10dip"
+            android:layout_marginTop="5dip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
         <EditText 
             android:id="@+id/login_username_edit"
             android:layout_width="fill_parent"
-            android:layout_height="20dip"
+            android:layout_height="25dip"
             android:layout_marginLeft="10dip"
             android:layout_marginRight="10dip"
+            android:layout_marginTop="2dip"
+            android:paddingTop="2dip"
+            android:paddingBottom="2dip"
+            android:paddingLeft="3dip"
             android:layout_below="@id/login_username_info"
-            android:background="@color/red_dark"/>
+            android:background="@color/red_dark"
+            android:textColor="@color/text"/>
         <TextView
             android:id="@+id/login_password_info"
             android:text="bitte geben sie ihr passwort ein"
-            android:textColor="@color/black" 
+            android:textColor="@color/text_label" 
             android:layout_marginLeft="10dip"
             android:layout_marginRight="10dip"
+            android:layout_marginTop="5dip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/login_username_edit"
@@ -79,18 +139,26 @@
             android:id="@+id/login_password_edit"
             android:password="true"
             android:layout_width="fill_parent"
-            android:layout_height="20dip"
+            android:layout_height="25dip"
             android:layout_marginLeft="10dip"
             android:layout_marginRight="10dip"
+            android:layout_marginTop="2dip"
+            android:paddingBottom="2dip"
+            android:paddingLeft="3dip"
             android:layout_below="@id/login_password_info"
-            android:background="@color/red_dark"/>
+            android:background="@color/red_dark"
+            android:textColor="@color/text"/>
         
-      	<Button 
-      	    android:id="@+id/login_button"
-      	    android:layout_width="wrap_content"
-      	    android:layout_height="wrap_content"
-      	    android:text="Login"
-      	    android:layout_below="@id/login_password_edit"/>
+        <ImageView 
+            android:id="@+id/login_button"
+            android:src="@drawable/icon_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dip"
+            android:layout_marginTop="6dip"
+            android:layout_below="@id/login_password_edit"
+            />
         
      </RelativeLayout>
 

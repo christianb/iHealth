@@ -84,6 +84,12 @@ public class iHealthSuperActivity extends Activity implements NFC_Message  {
 		view.setTypeface(tf);
 	}
 	
+	protected void setFontSegoeWP(TextView view) {
+		Typeface tf = Typeface.createFromAsset(
+				getBaseContext().getAssets(), "fonts/SegoeWP.ttf");
+		view.setTypeface(tf);
+	}
+	
 	public void onNewIntent(Intent intent) {
     	
     	mTagFromIntent = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);

@@ -2,8 +2,16 @@
 <resources>
         <color name="white">#ffffffff</color>
         <color name="black">#ff000000</color>
-        <color name="red_dark">#ffaa0009</color>
-        <color name="red_bright">#ffff0009</color>
-        <color name="blue">#ff0000ff</color>
+        <color name="red_dark">#ff4A6274</color>
+        <color name="red_bright">#ff577388</color>
+        
+        <color name="blue_medium">#ff577388</color>
+        <color name="blue_dark">#ff4A6274</color>
+        <color name="blue_light">#ff5C90B8</color>
+        
+        <color name="text">#ffffffff</color>
+        <color name="text_label">#ffCFD8DE</color>
+        <color name="text_hadline">#ff577388</color>
+            
         <color name="red_3">#77ff0000</color>
 </resources>

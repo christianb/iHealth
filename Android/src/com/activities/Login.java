@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,7 +35,7 @@ public class Login extends iHealthSuperActivity {
 		password.setText("astronaut");
 		username.setText("christian");	
 		
-		Button doLogin = (Button) findViewById(R.id.login_button);
+		ImageView doLogin = (ImageView) findViewById(R.id.login_button);
 		doLogin.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -82,6 +83,10 @@ public class Login extends iHealthSuperActivity {
 		});
 		
 			
+		setFontSegoeWPLight( (TextView) findViewById(R.id.headline_welcome_2));
+		setFontSegoeWPLight( (TextView) findViewById(R.id.headline_welcome_3));
+		setFontSegoeWPLight( (TextView) findViewById(R.id.headline_welcome_4));
+		setFontSegoeWP( (TextView) findViewById(R.id.headline_welcome_1));
 		
 		setFontSegoeWPLight(password);
 		setFontSegoeWPLight(username);
