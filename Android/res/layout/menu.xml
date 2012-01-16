@@ -18,7 +18,7 @@
         android:id="@+id/menu_headline_layout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-		android:layout_marginTop="80dip"
+		android:layout_marginTop="55dip"
 		android:orientation="vertical">
 		
 	        <TextView
@@ -26,7 +26,10 @@
 	            android:text="aktion wählen"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            style="@style/Headline"/>
+	            style="@style/Headline"
+	            android:textColor="@color/text_hadline"
+	        />
+	        
 		</RelativeLayout> <!-- End of Headline Layout -->
     
     	<!-- Image -->
@@ -34,7 +37,7 @@
 	        android:id="@+id/menu_image_layout"
 	        android:layout_width="fill_parent"
 	        android:layout_height="150dip"
-			android:layout_marginTop="120dip"
+			android:layout_marginTop="100dip"
 			android:orientation="vertical">
 	        
 	        <ImageView 
@@ -42,13 +45,44 @@
 	            android:layout_height="fill_parent"
 	            android:src="@drawable/menu_header"/>
 	        
-	        <TextView 
+	        <RelativeLayout 
 	            android:id="@+id/menu_image_text"
 	            android:layout_width="fill_parent"
 	            android:layout_height="100dip"
-	            android:background="@color/red_3"
-	            android:text="ein klick und los"
-	            android:layout_marginTop="90dip"/>
+	            android:background="@color/blue_medium_semi_transparent"
+	            android:layout_marginTop="90dip">
+	        
+	            <TextView
+		            android:id="@+id/menu_headline_1"
+		            android:text="ein klick und los"
+		            android:textColor="@color/text" 
+		            android:layout_marginBottom="-12dip"
+		            android:layout_marginRight="10dip"
+		            android:layout_marginTop="4dip"
+		            android:layout_alignParentRight="true"
+		            android:textSize="20dip"
+		            
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            />
+	            
+	            <TextView
+		            android:id="@+id/menu_headline_2"
+		            android:text="wählen sie eine option"
+		            android:textColor="@color/text" 
+		            android:layout_marginBottom="-12dip"
+		            android:layout_marginRight="10dip"
+		            android:layout_marginTop="2dip"
+		            android:layout_alignParentRight="true"
+		            android:textSize="25dip"
+		            android:layout_below="@id/menu_headline_1"
+		            
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            />
+	            
+	        </RelativeLayout>
+	        
 		</RelativeLayout> <!-- End of Image Layout -->
     
 		<!-- Buttons -->
@@ -64,7 +98,7 @@
 	        <RelativeLayout
 	            android:id="@+id/menu_button_1"
 	            android:layout_width="fill_parent"
-	            android:layout_height="50dip"
+	            android:layout_height="60dip"
 				android:layout_marginTop="5dip"
 				android:orientation="vertical"
 				android:background="@color/red_bright">
@@ -77,28 +111,42 @@
 	            	<TextView 
 	                	android:id="@+id/menu_button_1_text_1"
 	                	android:layout_width="fill_parent"
-	                	android:layout_height="20dip"
+	                	android:layout_height="wrap_content"
 		                android:text="patient einlesen"
-		                android:layout_marginTop="10dip"/>
+		                android:layout_marginTop="6dip"
+		                android:layout_marginBottom="0dip"
+		                android:textSize="20dip"
+		                android:textColor="@color/text"/>
 		            <TextView 
 		                android:id="@+id/menu_button_1_text_2"
 		                android:layout_width="fill_parent"
 		                android:layout_height="20dip"
+		                android:layout_marginTop="-4dip"
 		                android:text="patient wählen und daten erfassen"
-		                android:layout_below="@id/menu_button_1_text_1"/>
+		                android:layout_below="@id/menu_button_1_text_1"
+		                android:textColor="@color/text_label"/>
+		            <ImageView 
+			            android:id="@+id/menu_button_1"
+			            android:src="@drawable/icon_login"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_alignParentRight="true"
+			            android:layout_marginRight="10dip"
+			            android:layout_marginTop="15dip"
+			            />
 	            </RelativeLayout>
 	        </RelativeLayout>
 	        
-	       	<RelativeLayout
+			<RelativeLayout
 	            android:id="@+id/menu_button_2"
 	            android:layout_width="fill_parent"
-	            android:layout_height="50dip"
-	            android:layout_below="@id/menu_button_1"
+	            android:layout_height="60dip"
 				android:layout_marginTop="5dip"
 				android:orientation="vertical"
-				android:background="@color/red_bright">
-	            
-	       	    <!-- Wrap the text on the buttons -->
+				android:background="@color/red_bright"
+				android:layout_below="@id/menu_button_1">
+				
+	            <!-- Wrap the text on the buttons -->
 	            <RelativeLayout
 	                android:layout_width="fill_parent"
 	                android:layout_height="fill_parent"
@@ -106,46 +154,34 @@
 	            	<TextView 
 	                	android:id="@+id/menu_button_2_text_1"
 	                	android:layout_width="fill_parent"
-	                	android:layout_height="20dip"
-		                android:text="Impressum"
-		                android:layout_marginTop="10dip"/>
+	                	android:layout_height="wrap_content"
+		                android:text="impressum"
+		                android:layout_marginTop="6dip"
+		                android:layout_marginBottom="0dip"
+		                android:textSize="20dip"
+		                android:textColor="@color/text"/>
 		            <TextView 
 		                android:id="@+id/menu_button_2_text_2"
 		                android:layout_width="fill_parent"
 		                android:layout_height="20dip"
+		                android:layout_marginTop="-4dip"
 		                android:text="legal information anzeigen"
-		                android:layout_below="@id/menu_button_1_text_1"/>
+		                android:layout_below="@id/menu_button_2_text_1"
+		                android:textColor="@color/text_label"/>
+		            <ImageView 
+			            android:src="@drawable/icon_login"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_alignParentRight="true"
+			            android:layout_marginRight="10dip"
+			            android:layout_marginTop="15dip"
+			            />
 	            </RelativeLayout>
 	        </RelativeLayout>
 	        
-	       	<RelativeLayout
-	            android:id="@+id/menu_button_3"
-	            android:layout_width="fill_parent"
-	            android:layout_height="50dip"
-	            android:layout_below="@id/menu_button_2"
-				android:layout_marginTop="5dip"
-				android:orientation="vertical"
-				android:background="@color/red_bright">
-	            
-	       	    <!-- Wrap the text on the buttons -->
-	            <RelativeLayout
-	                android:layout_width="fill_parent"
-	                android:layout_height="fill_parent"
-	                android:layout_marginLeft="10dip">
-	            	<TextView 
-	                	android:id="@+id/menu_button_3_text_1"
-	                	android:layout_width="fill_parent"
-	                	android:layout_height="20dip"
-		                android:text="..."
-		                android:layout_marginTop="10dip"/>
-		            <TextView 
-		                android:id="@+id/menu_button_3_text_2"
-		                android:layout_width="fill_parent"
-		                android:layout_height="20dip"
-		                android:text="..."
-		                android:layout_below="@id/menu_button_1_text_1"/>
-	            </RelativeLayout>
-	        </RelativeLayout>
+	       	
+	        
+	       	
 	        
 	     </RelativeLayout> <!-- End of Buttons -->
         
