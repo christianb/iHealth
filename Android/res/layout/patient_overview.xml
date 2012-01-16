@@ -36,7 +36,7 @@
 	        android:id="@+id/patient_overview_image_layout"
 	        android:layout_width="fill_parent"
 	        android:layout_height="150dip"
-			android:layout_marginTop="100dip"
+			android:layout_below="@id/patient_overview_headline_layout"
 			android:orientation="vertical">
 	        
 	        <ImageView 

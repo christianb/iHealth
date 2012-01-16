@@ -4,6 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import ihealth.utils.HexConversion;
+import ihealth.utils.Patient;
 import ihealth.webservice.RestJsonClient;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -48,7 +49,7 @@ public class MainMenu extends iHealthSuperActivity {
 				// Restore preferences
 				SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
 				
-				if (!settings.contains("userId")) {
+				if (Patient.getInstance() == null) {
 					Toast.makeText(MainMenu.this, "Bitte Patient einlesen", Toast.LENGTH_SHORT).show();
 				} else {
 					Intent intent = new Intent (MainMenu.this, PatientView.class);

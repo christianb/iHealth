@@ -27,7 +27,7 @@ public class PatientView extends iHealthSuperActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.patient_overview);
 		
-		/*RelativeLayout button3 = (RelativeLayout) findViewById(R.id.patient_overview_button_3);
+		RelativeLayout button3 = (RelativeLayout) findViewById(R.id.patient_overview_button_3);
 		button3.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -37,7 +37,7 @@ public class PatientView extends iHealthSuperActivity {
 				Intent intent = new Intent(PatientView.this, NewMeasurement.class);
 				startActivity(intent);
 			}
-		});*/
+		});
 		
 		RelativeLayout button1 = (RelativeLayout) findViewById(R.id.patient_overview_button_1);
 		button1.setOnClickListener(new OnClickListener() {

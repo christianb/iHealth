@@ -24,6 +24,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -121,18 +122,33 @@ public class NewMeasurement extends iHealthSuperActivity implements MessageRecei
 	
         
         mName = (TextView) findViewById(R.id.new_measurement_image_text_2);
+        
         setFontSegoeWPLight((TextView) findViewById(R.id.new_measurement_headline));
-        setFontSegoeWPSemibold((TextView) findViewById(R.id.new_measurement_image_text_1));
-        setFontSegoeWPSemibold(mName);
+        setFontSegoeWP((TextView) findViewById(R.id.new_measurement_image_text_1));
+        setFontSegoeWPLight(mName);
+        
+        setFontSegoeWPLight((TextView) findViewById(R.id.new_measurement_button_1_text_1));
+        setFontSegoeWPLight((TextView) findViewById(R.id.new_measurement_button_1_text_2));
+        
+        setFontSegoeWPLight((TextView) findViewById(R.id.new_measurement_button_2_text_1));
+        setFontSegoeWPLight((TextView) findViewById(R.id.new_measurement_button_2_text_2));
+        
+        setFontSegoeWPLight((TextView) findViewById(R.id.new_measurement_content1_text1));
+        setFontSegoeWPLight((TextView) findViewById(R.id.new_measurement_content2_text1));
+        setFontSegoeWPLight((TextView) findViewById(R.id.new_measurement_content2_text2));
+        setFontSegoeWPLight((TextView) findViewById(R.id.new_measurement_content3_text1));
+        setFontSegoeWPLight((TextView) findViewById(R.id.new_measurement_content_bemerkung));
         
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         mName.setText(settings.getString("firstname", "??")+" "+settings.getString("lastname", "??"));
+        
+        setContent(Patient.getInstance());
 	}
 
 	@Override
 	public void receiveMeasurementResult(float value) {
 		Log.d(TAG, "receive notification");
-		TextView textView = (TextView) findViewById(R.id.new_measurement_content_temperature);
+		TextView textView = (TextView) findViewById(R.id.new_measurement_content2_text2);
 		textView.setText(value + " Grad Celsius");
 		
 		if (dialog.isShowing()) {
@@ -209,4 +225,28 @@ public class NewMeasurement extends iHealthSuperActivity implements MessageRecei
 		mName.setText(sp.getString("firstname", "??")+" "+sp.getString("lastname", "??"));
 	}
 	*/
+	
+	private void setContent(Patient p) {
+		
+		TextView sex = (TextView) findViewById(R.id.new_measurement_image_text_1);
+		if (p.getSex().equalsIgnoreCase("male")) {
+			sex.setText("Herr");
+		} else {
+			sex.setText("Frau");
+		}
+		
+		ImageView image = (ImageView) findViewById(R.id.new_measurement_image); 
+		int i = new Integer(p.getID()).intValue();
+		switch (i) {
+			
+			case 2: image.setImageResource(R.drawable.patient_2_small);
+				break;
+			case 3: image.setImageResource(R.drawable.patient_3_small);
+				break;
+			case 4: image.setImageResource(R.drawable.patient_4_small);
+				break;
+			default: image.setImageResource(R.drawable.patient_1_small);
+		}
+		
+	}
 }
