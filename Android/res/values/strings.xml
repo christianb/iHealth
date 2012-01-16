@@ -9,6 +9,18 @@
         <item>Körpertemperatur</item>
         <item>Puls</item>
     </string-array>
+    <string name="impressum_text">ist ein Projekt, das im Rahmen der Vorlesung &quot;Mobile Anwendungen im
+Gesundheitswesen&quot; unter der Leitung von Herrn Knape im WS2011/12 an der HTW Berlin
+entstanden ist. Ziel des Projektes ist die Verwaltung von Patientendaten sowie die
+Erfassung von Messwerten im Krankenhaus und eine zentralisierte Speicherung der
+aufgenommenen Daten.\n
+\n
+Gruppenmitglieder:\n
+Alexander Miller\n
+Christian Bunk\n
+Christian Sandvoss\n
+Antonio Lourerio\n
+Benjamin Oertel\n</string>
     
         
 </resources>

@@ -14,7 +14,7 @@ public class Impressum extends iHealthSuperActivity {
 		setContentView(R.layout.impressum);
 		
 		setFontSegoeWPLight((TextView) findViewById(R.id.impressumg_headline));
-		setFontSegoeWPLight((TextView) findViewById(R.id.impressum_text_1));
+		setFontSegoeWP((TextView) findViewById(R.id.impressum_text_1));
 		setFontSegoeWPLight((TextView) findViewById(R.id.impressum_text_2));
 	}
 }
