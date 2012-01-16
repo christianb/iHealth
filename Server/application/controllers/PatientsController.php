@@ -39,7 +39,6 @@ class PatientsController extends Zend_Rest_Controller{
         $response["response"]["sex"] = $tag->getPatient()->getSex();
         $response["response"]["birthday"] = $tag->getPatient()->getBirthday()->format("Y-m-d");
         $response["response"]["size"] = $tag->getPatient()->getSize();
-        $response["response"]["image"] = "http://titania.f4.htw-berlin.de/user/" . $tag->getPatient()->getId() . ".jpg";
         
         $qb = $this->_em->createQueryBuilder();
         $qb->add('select', 'h')
