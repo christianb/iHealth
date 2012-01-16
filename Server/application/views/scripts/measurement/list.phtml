@@ -7,7 +7,41 @@ $this->headTitle($this->title);
     <div class="filler-block">
       <?php echo $this->patient->getPatientData(); ?>
     </div>
+   <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load('visualization', '1.0', {'packages':['corechart']});
+      google.setOnLoadCallback(drawChart);
 
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Date');
+        data.addColumn('number', 'Temperatur');
+        data.addRows([
+          <?php
+          $valueArr = array();
+
+          foreach($this->listMeasurements as $measurement){
+            $valueArr[] = "['" . $measurement->getDate()->format("d.m.Y") . "', " . $measurement->getValue() . "]";
+          }
+          
+          $values = implode(",", $valueArr);
+          echo $values;
+          ?>
+        ]);
+
+        var options = {
+          height: 240
+        };
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+
+      }
+    </script>
+    <h2>Messungen</h2>
+    <div id="chart_div" style="width: 100%"></div>
     <table cellpadding="0" cellspacing="0" class="default"> 
       <tr>
         <th>Wert</th>

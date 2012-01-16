@@ -1,14 +1,34 @@
-<?php
-$this->title = "Ausgabe Diagramm";
-$this->headTitle($this->title);
-?>
-<div class="data-column">
-  <div class="data-content">
-    <div class="filler-block">
-    </div>
-    google chart api
-  </div>
-</div>
-<div id="user-pic">
-  <a href="/patient/overview/id/<?php echo $this->patient->getId(); ?>"><img src="/resources/img/user_123.png" /></a>
-</div>
+   <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load('visualization', '1.0', {'packages':['corechart']});
+      google.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Date');
+        data.addColumn('number', 'Temperatur');
+        data.addRows([
+          <?php
+          $valueArr = array();
+
+          foreach($this->listMeasurements as $measurement){
+            $valueArr[] = "['" . $measurement->getDate()->format("d.m.Y") . "', " . $measurement->getValue() . "]";
+          }
+          
+          $values = implode(",", $valueArr);
+          echo $values;
+          ?>
+        ]);
+
+        var options = {
+          height: 240
+        };
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+
+      }
+    </script>
+    <div id="chart_div"></div>

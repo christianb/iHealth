@@ -204,16 +204,10 @@ class Application_Model_PersonnelProxy extends \Application_Model_Personnel impl
         return parent::hasRight($right);
     }
 
-    public function setRight($right)
+    public function setRight($right, $hasRight)
     {
         $this->__load();
-        return parent::setRight($right);
-    }
-
-    public function unsetRight($right)
-    {
-        $this->__load();
-        return parent::unsetRight($right);
+        return parent::setRight($right, $hasRight);
     }
 
 

@@ -77,7 +77,20 @@ class Application_Model_Patient{
    * @Column(type="string", length=64)
    */
   private $size;
-
+  /**
+   * The patient sex.
+   * @var string The patient sex.
+   * 
+   * @Column(type="string", length=6)
+   */
+  private $sex;
+    /**
+   * The patient birthday.
+   * @var string The patient birthday.
+   * 
+   * @Column(type="date")
+   */
+  private $birthday;
   /**
    * The patient blood group.
    * @var string The patient blood group.
@@ -106,11 +119,17 @@ class Application_Model_Patient{
   public function __construct($data){
     $this->hospitalStays = new \Doctrine\Common\Collections\ArrayCollection();
 
+    if(isset($data["sex"])){
+      $this->sex = $data["sex"];
+    }
     if(isset($data["firstname"])){
       $this->firstname = $data["firstname"];
     }
     if(isset($data["lastname"])){
       $this->lastname = $data["lastname"];
+    }
+    if(isset($data["birthday"])){
+      $this->birthday = $data["birthday"];
     }
     if(isset($data["street"])){
       $this->street = $data["street"];
@@ -238,5 +257,23 @@ class Application_Model_Patient{
 
     return $patientData;
   }
+  
+  public function setSex($sex){
+    $this->sex = $sex;
+  }
+
+  public function setBirthday($birthday){
+    $this->birthday = $birthday;
+  }
+
+  public function getSex(){
+    return $this->sex;
+  }
+
+  public function getBirthday(){
+    return $this->birthday;
+  }
+
+
 
 }

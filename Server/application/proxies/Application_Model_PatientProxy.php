@@ -162,10 +162,40 @@ class Application_Model_PatientProxy extends \Application_Model_Patient implemen
         return parent::setBloodGroup($bloodGroup);
     }
 
+    public function getPatientData()
+    {
+        $this->__load();
+        return parent::getPatientData();
+    }
+
+    public function setSex($sex)
+    {
+        $this->__load();
+        return parent::setSex($sex);
+    }
+
+    public function setBirthday($birthday)
+    {
+        $this->__load();
+        return parent::setBirthday($birthday);
+    }
+
+    public function getSex()
+    {
+        $this->__load();
+        return parent::getSex();
+    }
+
+    public function getBirthday()
+    {
+        $this->__load();
+        return parent::getBirthday();
+    }
+
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'firstname', 'lastname', 'street', 'city', 'zipcode', 'weight', 'size', 'bloodGroup', 'rfid', 'hospitalStays');
+        return array('__isInitialized__', 'id', 'firstname', 'lastname', 'street', 'city', 'zipcode', 'weight', 'size', 'sex', 'birthday', 'bloodGroup', 'rfid', 'hospitalStays');
     }
 
     public function __clone()

@@ -82,7 +82,7 @@ class Application_Model_Personnel{
    * The personnel current position.
    * @var string The current position.
    * 
-   * @OneToOne(targetEntity="Application_Model_Personnel_Position")
+   * @ManyToOne(targetEntity="Application_Model_Personnel_Position")
    * @JoinColumn(name="personnel_position_id_fk", referencedColumnName="id")
    */
   private $position;
@@ -271,38 +271,14 @@ class Application_Model_Personnel{
   }
 
   public function hasRight($right){
-    //  100001
-    //  543210
-    // 0  measurements
-    // 1  personnel
-    // 2  patients
-    // 3  hospitals
-    // 4  rfids
-    // 5  place holder
-
-    $binrights = decbin($this->rights);
-
-    return substr(decbin(bindec($binrights) >> $right), -1) == 1;
+    return ($this->rights >> $right) & 1;
   }
 
-  public function setRight($right){
-    $binRights = decbin($this->rights);
-
-    $stringRights = $binRights . "";
-    $length = strlen($stringRights) - 1;
-
-    $binRights{$length - $right} = 1;
-    $this->rights = bindec($binRights);
+  public function setRight($right, $hasRight){
+    if($hasRight) {
+      $this->rights = ($this->rights | (1 << $right));
+    } else {
+      $this->rights = $this->rights & ($this->rights ^ (1 << $right));
+    }
   }
-
-  public function unsetRight($right){
-    $binRights = decbin($this->rights);
-
-    $stringRights = $binRights . "";
-    $length = strlen($stringRights) - 1;
-
-    $binRights{$length - $right} = 0;
-    $this->rights = bindec($binRights);
-  }
-
 }

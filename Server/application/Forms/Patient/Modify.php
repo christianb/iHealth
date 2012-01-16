@@ -10,6 +10,13 @@ class Application_Form_Patient_Modify extends Zend_Form{
     $em = Zend_Registry::getInstance()->entitymanager;
     $this->setMethod('post');
 
+    $sexElement = new Zend_Form_Element_Select('sex');
+    $sexElement->setLabel("Geschlecht");
+    $sexElement->addMultiOption("", "Bitte wählen");
+    $sexElement->addMultiOption("male", "männlich");
+    $sexElement->addMultiOption("female", "weiblich");
+    $sexElement->setRequired(true);
+    
     $firstnameElement = new Zend_Form_Element_Text('firstname');
     $firstnameElement->setLabel("Vorname");
     $firstnameElement->addValidator('regex', false, array('/^[a-z0-9ßöäüâáàéèñ]/i'));
@@ -21,6 +28,10 @@ class Application_Form_Patient_Modify extends Zend_Form{
     $lastnameElement->addValidator('regex', false, array('/^[a-z0-9ßöäüâáàéèñ]/i'));
     $lastnameElement->addValidator('stringLength', false, array(2, 64));
     $lastnameElement->setRequired(true);
+  
+    $birthdayElement = new Zend_Form_Element_Text('birthday');
+    $birthdayElement->setLabel("Geburtstag");
+    $birthdayElement->addValidator(new Zend_Validate_Date());
     
     $sizeElement = new Zend_Form_Element_Text('size');
     $sizeElement->setLabel("Körpergröße in cm");
@@ -36,7 +47,7 @@ class Application_Form_Patient_Modify extends Zend_Form{
     $bloodGroupElement->setLabel("Blutgruppe");
     $bloodGroupElement->addValidator('regex', false, array('/^[a-z0-9ßöäüâáàéèñ]/i'));
     $bloodGroupElement->addValidator('stringLength', false, array(2, 64));
-    
+
     $streetElement = new Zend_Form_Element_Text('street');
     $streetElement->setLabel("Straße");
     $streetElement->addValidator('regex', false, array('/^[a-z0-9ßöäüâáàéèñ]/i'));
@@ -67,10 +78,12 @@ class Application_Form_Patient_Modify extends Zend_Form{
       $bloodGroupElement,
       $streetElement,
       $zipcodeElement,
-      $cityElement
+      $cityElement,
+      $sexElement,
+      $birthdayElement
     ));
 
-    $this->addDisplayGroup(array('firstname', 'lastname')
+    $this->addDisplayGroup(array('sex', 'firstname', 'lastname', 'birthday')
       , 'informationGroup'
       , array('legend'=>'Allgemeine Informationen')
     );
