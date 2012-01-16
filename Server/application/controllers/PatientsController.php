@@ -37,8 +37,8 @@ class PatientsController extends Zend_Rest_Controller{
         $response["response"]["bloodGroup"] = $tag->getPatient()->getBloodGroup();
         $response["response"]["weight"] = $tag->getPatient()->getWeight();
         $response["response"]["sex"] = $tag->getPatient()->getSex();
-        $response["response"]["birthday"] = $tag->getPatient()->getBirthday()->format("Y-m-d");
-        $response["response"]["size"] = $tag->getPatient()->getSize();
+        $response["response"]["birthday"] = $tag->getPatient()->getBirthday()->format("d.m.Y");
+        $response["response"]["size"] = $tag->getPatient()->getSize(); 
         
         $qb = $this->_em->createQueryBuilder();
         $qb->add('select', 'h')
@@ -49,7 +49,7 @@ class PatientsController extends Zend_Rest_Controller{
         $query = $qb->getQuery();
         $currentStay = $query->getResult();
         if($currentStay){
-          $response["response"]["stay"]["checkIn"] = $currentStay[0]->getCheckIn()->format("Y-m-d");
+          $response["response"]["stay"]["checkIn"] = $currentStay[0]->getCheckIn()->format("d.m.Y");
           $response["response"]["stay"]["ops"] = $currentStay[0]->getOps();
           $response["response"]["stay"]["icd"] = $currentStay[0]->getIcd();
           $response["response"]["stay"]["isEmergency"] = $currentStay[0]->getIsEmergency() ? "1" : "0";
