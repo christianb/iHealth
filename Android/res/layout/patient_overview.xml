@@ -36,21 +36,52 @@
 	        android:id="@+id/patient_overview_image_layout"
 	        android:layout_width="fill_parent"
 	        android:layout_height="150dip"
-			android:layout_marginTop="120dip"
+			android:layout_marginTop="100dip"
 			android:orientation="vertical">
 	        
 	        <ImageView 
+	            android:id="@+id/patient_overview_image"
 	            android:layout_width="fill_parent"
 	            android:layout_height="fill_parent"
 	            android:src="@drawable/patient_header"/>
 	        
-	        <TextView 
+	        <RelativeLayout 
 	            android:id="@+id/patient_overview_image_text"
 	            android:layout_width="fill_parent"
 	            android:layout_height="100dip"
-	            android:background="@color/red_3"
-	            android:text="patientin hannah mustermann"
-	            android:layout_marginTop="90dip"/>
+	            android:background="@color/blue_medium_semi_transparent"
+	            android:layout_marginTop="90dip">
+	        
+	            <TextView
+		            android:id="@+id/patient_overview_headline_1"
+		            android:text="patient"
+		            android:textColor="@color/text" 
+		            android:layout_marginBottom="-12dip"
+		            android:layout_marginRight="10dip"
+		            android:layout_marginTop="4dip"
+		            android:layout_alignParentRight="true"
+		            android:textSize="20dip"
+		            
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            />
+	            
+	            <TextView
+		            android:id="@+id/patient_overview_headline_2"
+		            android:text="wählen sie eine option"
+		            android:textColor="@color/text" 
+		            android:layout_marginBottom="-12dip"
+		            android:layout_marginRight="10dip"
+		            android:layout_marginTop="2dip"
+		            android:layout_alignParentRight="true"
+		            android:textSize="25dip"
+		            android:layout_below="@id/patient_overview_headline_1"
+		            
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            />
+	            
+	        </RelativeLayout>
 		</RelativeLayout> <!-- End of Image Layout -->
     
 		<!-- Buttons -->
@@ -66,7 +97,7 @@
 	        <RelativeLayout
 	            android:id="@+id/patient_overview_button_1"
 	            android:layout_width="fill_parent"
-	            android:layout_height="50dip"
+	            android:layout_height="60dip"
 				android:layout_marginTop="5dip"
 				android:orientation="vertical"
 				android:background="@color/red_bright">
@@ -79,28 +110,41 @@
 	            	<TextView 
 	                	android:id="@+id/patient_overview_button_1_text_1"
 	                	android:layout_width="fill_parent"
-	                	android:layout_height="20dip"
+	                	android:layout_height="wrap_content"
 		                android:text="patientendaten anzeigen"
-		                android:layout_marginTop="10dip"/>
+		                android:layout_marginTop="6dip"
+		                android:layout_marginBottom="0dip"
+		                android:textSize="20dip"
+		                android:textColor="@color/text"/>
 		            <TextView 
 		                android:id="@+id/patient_overview_button_1_text_2"
 		                android:layout_width="fill_parent"
 		                android:layout_height="20dip"
+		                android:layout_marginTop="-4dip"
 		                android:text="basisinformationen des patienten"
-		                android:layout_below="@id/patient_overview_button_1_text_1"/>
+		                android:layout_below="@id/patient_overview_button_1_text_1"
+		                android:textColor="@color/text_label"/>
+		            <ImageView 
+			            android:src="@drawable/icon_login"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_alignParentRight="true"
+			            android:layout_marginRight="10dip"
+			            android:layout_marginTop="15dip"
+			            />
 	            </RelativeLayout>
 	        </RelativeLayout>
 	        
-	       	<RelativeLayout
+	        <RelativeLayout
 	            android:id="@+id/patient_overview_button_2"
 	            android:layout_width="fill_parent"
-	            android:layout_height="50dip"
-	            android:layout_below="@id/patient_overview_button_1"
+	            android:layout_height="60dip"
 				android:layout_marginTop="5dip"
 				android:orientation="vertical"
-				android:background="@color/red_bright">
-	            
-	       	    <!-- Wrap the text on the buttons -->
+				android:background="@color/red_bright"
+				android:layout_below="@id/patient_overview_button_1">
+				
+	            <!-- Wrap the text on the buttons -->
 	            <RelativeLayout
 	                android:layout_width="fill_parent"
 	                android:layout_height="fill_parent"
@@ -108,28 +152,41 @@
 	            	<TextView 
 	                	android:id="@+id/patient_overview_button_2_text_1"
 	                	android:layout_width="fill_parent"
-	                	android:layout_height="20dip"
-		                android:text="auswertungen anzeigen"
-		                android:layout_marginTop="10dip"/>
+	                	android:layout_height="wrap_content"
+		                android:text="auswertung anzeigen"
+		                android:layout_marginTop="6dip"
+		                android:layout_marginBottom="0dip"
+		                android:textSize="20dip"
+		                android:textColor="@color/text"/>
 		            <TextView 
 		                android:id="@+id/patient_overview_button_2_text_2"
 		                android:layout_width="fill_parent"
 		                android:layout_height="20dip"
-		                android:text="messung über zeitraum ausgeben"
-		                android:layout_below="@id/patient_overview_button_1_text_1"/>
+		                android:layout_marginTop="-4dip"
+		                android:text="messungen über zeitraum ausgeben"
+		                android:layout_below="@id/patient_overview_button_2_text_1"
+		                android:textColor="@color/text_label"/>
+		            <ImageView 
+			            android:src="@drawable/icon_login"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_alignParentRight="true"
+			            android:layout_marginRight="10dip"
+			            android:layout_marginTop="15dip"
+			            />
 	            </RelativeLayout>
 	        </RelativeLayout>
 	        
-	       	<RelativeLayout
+	        <RelativeLayout
 	            android:id="@+id/patient_overview_button_3"
 	            android:layout_width="fill_parent"
-	            android:layout_height="50dip"
-	            android:layout_below="@id/patient_overview_button_2"
+	            android:layout_height="60dip"
 				android:layout_marginTop="5dip"
 				android:orientation="vertical"
-				android:background="@color/red_bright">
-	            
-	       	    <!-- Wrap the text on the buttons -->
+				android:background="@color/red_bright"
+				android:layout_below="@id/patient_overview_button_2">
+				
+	            <!-- Wrap the text on the buttons -->
 	            <RelativeLayout
 	                android:layout_width="fill_parent"
 	                android:layout_height="fill_parent"
@@ -137,17 +194,35 @@
 	            	<TextView 
 	                	android:id="@+id/patient_overview_button_3_text_1"
 	                	android:layout_width="fill_parent"
-	                	android:layout_height="20dip"
+	                	android:layout_height="wrap_content"
 		                android:text="messung starten"
-		                android:layout_marginTop="10dip"/>
+		                android:layout_marginTop="6dip"
+		                android:layout_marginBottom="0dip"
+		                android:textSize="20dip"
+		                android:textColor="@color/text"/>
 		            <TextView 
 		                android:id="@+id/patient_overview_button_3_text_2"
 		                android:layout_width="fill_parent"
 		                android:layout_height="20dip"
-		                android:text="neue messung starten"
-		                android:layout_below="@id/patient_overview_button_1_text_1"/>
+		                android:layout_marginTop="-4dip"
+		                android:text="neue messung beginnen"
+		                android:layout_below="@id/patient_overview_button_3_text_1"
+		                android:textColor="@color/text_label"/>
+		            <ImageView 
+			            android:src="@drawable/icon_login"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_alignParentRight="true"
+			            android:layout_marginRight="10dip"
+			            android:layout_marginTop="15dip"
+			            />
 	            </RelativeLayout>
-	        </RelativeLayout>
+	        </RelativeLayout>    
+	       
+	        
+	       	
+	        
+	       	
 	        
 	     </RelativeLayout> <!-- End of Buttons -->
         

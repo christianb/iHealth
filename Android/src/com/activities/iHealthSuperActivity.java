@@ -128,6 +128,7 @@ public class iHealthSuperActivity extends Activity implements NFC_Message  {
 				String zipcode = jObject.getJSONObject("response").getJSONObject("address").getString(Patient.ZIPCODE);
 				String city = jObject.getJSONObject("response").getJSONObject("address").getString(Patient.CITY);
 				String birthday = jObject.getJSONObject("response").getString(Patient.BIRTHDAY);
+				String sex = jObject.getJSONObject("response").getString(Patient.SEX);
 				
 				Log.d(TAG, "User ID: "+userId);
 				Log.d(TAG, "Firstname: "+firstname);
@@ -139,6 +140,7 @@ public class iHealthSuperActivity extends Activity implements NFC_Message  {
 				Log.d(TAG, "city: "+city);
 				Log.d(TAG, "birthday: "+birthday);
 				Log.d(TAG, "weight: "+weight);
+				Log.d(TAG, "sex: "+sex);
 				
 				SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
 				
@@ -154,6 +156,7 @@ public class iHealthSuperActivity extends Activity implements NFC_Message  {
 				editor.putString(Patient.CITY, city);
 				editor.putString(Patient.WEIGHT, weight);
 				editor.putString(Patient.BIRTHDAY, birthday);
+				editor.putString(Patient.SEX, sex);
 				
 				// Commit the edits!
 				editor.commit();
