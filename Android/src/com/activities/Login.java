@@ -9,6 +9,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -42,40 +44,48 @@ public class Login extends iHealthSuperActivity {
 			public void onClick(View v) {
 				Log.d(TAG, "click button : login");
 				
-				JSONObject jObject = RestJsonClient.loginPOST(username.getText().toString(), password.getText().toString());
-				Log.d(TAG, "Empfangen: " + jObject.toString());
-				String sStatuscode = "";
-				String statusmessage = "";
-				String user_id = "-1";
-				
-				try {
-					sStatuscode = jObject.get("statuscode").toString();
-					statusmessage = jObject.get("statusmessage").toString();
-					user_id = jObject.getJSONObject("response").getString("userId");
+				if (isOnline()) {
+					Log.d(TAG, "ist online");
+					JSONObject jObject = RestJsonClient.loginPOST(username.getText().toString(), password.getText().toString());
+					Log.d(TAG, "Empfangen: " + jObject.toString());
+					String sStatuscode = "";
+					String statusmessage = "";
+					String user_id = "-1";
 					
-					Log.d(TAG, "statuscode = "+ sStatuscode);
-					Log.d(TAG, "User ID (Arzt): "+user_id);
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-				Log.d(TAG, statusmessage);
-				int iStatuscode = new Integer(sStatuscode).intValue();
-				
-				if (iStatuscode == 200) {
-					SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-					SharedPreferences.Editor editor = settings.edit();
-					editor.putString("doctorID", user_id);
+					try {
+						sStatuscode = jObject.get("statuscode").toString();
+						statusmessage = jObject.get("statusmessage").toString();
+						user_id = jObject.getJSONObject("response").getString("userId");
+						
+						Log.d(TAG, "statuscode = "+ sStatuscode);
+						Log.d(TAG, "User ID (Arzt): "+user_id);
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					
-					Intent intent = new Intent(Login.this, MainMenu.class);
-					startActivity(intent);
+					Log.d(TAG, statusmessage);
+					int iStatuscode = new Integer(sStatuscode).intValue();
 					
+					if (iStatuscode == 200) {
+						SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+						SharedPreferences.Editor editor = settings.edit();
+						editor.putString("doctorID", user_id);
+						
+						Intent intent = new Intent(Login.this, MainMenu.class);
+						startActivity(intent);
+						
+						
+					}
 					
-				}
-				
-				if (iStatuscode == 404) {
-					Toast.makeText(Login.this, statusmessage, Toast.LENGTH_SHORT).show();
+					if (iStatuscode == 404) {
+						Toast.makeText(Login.this, statusmessage, Toast.LENGTH_SHORT).show();
+					}
+					
+				} else {
+					Log.d(TAG, "nicht online");
+					// is not online
+					Toast.makeText(Login.this, "Keine Verbindung zum Netzwerk!", Toast.LENGTH_SHORT).show();
 				}
 				
 				
@@ -94,6 +104,15 @@ public class Login extends iHealthSuperActivity {
 		setFontSegoeWPLight((TextView) findViewById(R.id.login_username_info));
 		setFontSegoeWPLight((TextView) findViewById(R.id.login_password_info));
 		
-		
+	}
+	
+	public boolean isOnline() {
+		 ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+		 NetworkInfo netInfo = cm.getActiveNetworkInfo();
+		 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+		        return true;
+		 }
+		 
+		 return false;
 	}
 }
