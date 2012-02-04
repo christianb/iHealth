@@ -45,6 +45,7 @@ public class PatientMeasurement extends iHealthSuperActivity {
 		try {
 			//Log.d(TAG, "json: "+jObject.toString());
 			String chart_url = jObject.get("chart").toString();
+			chart_url += "&chs=280x300";
 			Log.d(TAG, "chart_url: "+chart_url);
 			
 			myWebView.loadUrl(chart_url);
