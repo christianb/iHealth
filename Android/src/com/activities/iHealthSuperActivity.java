@@ -25,6 +25,7 @@ import android.nfc.tech.MifareClassic;
 import android.nfc.tech.NdefFormatable;
 import android.nfc.tech.NfcA;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,10 +46,15 @@ public class iHealthSuperActivity extends Activity implements NFC_Message  {
 	
 	private static final String TAG = "iHealthSuperActivity";
 	
+	protected Vibrator mVibrate;
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		
+		mVibrate =  (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 		
 		Patient.getInstance().create(getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE));
 		
@@ -71,6 +77,11 @@ public class iHealthSuperActivity extends Activity implements NFC_Message  {
        
         techListsArray = new String[][] { new String[] { NfcA.class.getName(), NdefFormatable.class.getName(), MifareClassic.class.getName() } };
     	
+	}
+	
+	protected void vibrate() {
+		long milliseconds = 50;
+		mVibrate.vibrate(milliseconds);
 	}
 	
 	protected void setFontSegoeWPLight(TextView view) {

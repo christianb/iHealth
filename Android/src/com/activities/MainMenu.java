@@ -47,6 +47,7 @@ public class MainMenu extends iHealthSuperActivity {
 			@Override
 			public void onClick(View v) {
 				Log.d(TAG, "click Button : patient einlesen");
+				vibrate();
 				
 				// Restore preferences
 				SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
@@ -66,6 +67,7 @@ public class MainMenu extends iHealthSuperActivity {
 			@Override
 			public void onClick(View v) {
 				Log.d(TAG, "click Button : impressum");
+				vibrate();
 				
 				Intent intent = new Intent (MainMenu.this, Impressum.class);
 				startActivity(intent);

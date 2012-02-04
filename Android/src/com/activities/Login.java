@@ -11,6 +11,7 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -41,6 +42,7 @@ public class Login extends iHealthSuperActivity {
 			@Override
 			public void onClick(View v) {
 				Log.d(TAG, "click button : login");
+				vibrate();
 				
 				if (isOnline()) {
 					Log.d(TAG, "ist online");

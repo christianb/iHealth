@@ -74,6 +74,8 @@ public class NewMeasurement extends iHealthSuperActivity implements MessageRecei
 			
 			@Override
 			public void onClick(View v) {
+				vibrate();
+				
 				String pPatientID = Patient.getInstance().getID();
 				String pType = "temperature";
 				String pValue = new Float(mValue).toString();
@@ -102,6 +104,8 @@ public class NewMeasurement extends iHealthSuperActivity implements MessageRecei
 
 			@Override
 			public void onClick(View v) {
+				vibrate();
+				
 				Log.d(TAG, "click Button: Messung erneut starten");
 				if (com.isConnected()) {
 					com.restartMeasurement();

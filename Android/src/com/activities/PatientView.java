@@ -35,6 +35,7 @@ public class PatientView extends iHealthSuperActivity {
 			@Override
 			public void onClick(View v) {
 				Log.d(TAG, "click on Button 3");
+				vibrate();
 
 				Intent intent = new Intent(PatientView.this, NewMeasurement.class);
 				startActivity(intent);
@@ -47,6 +48,7 @@ public class PatientView extends iHealthSuperActivity {
 			@Override
 			public void onClick(View v) {
 				Log.d(TAG, "click button : patientendaten anzeigen");
+				vibrate();
 				
 				Intent intent = new Intent(PatientView.this, PatientDetailView.class);
 				startActivity(intent);
@@ -59,6 +61,7 @@ public class PatientView extends iHealthSuperActivity {
 			@Override
 			public void onClick(View v) {
 				Log.d(TAG, "click button : messwerte anzeigen");
+				vibrate();
 				
 				Intent intent = new Intent(PatientView.this, PatientMeasurement.class);
 				startActivity(intent);
