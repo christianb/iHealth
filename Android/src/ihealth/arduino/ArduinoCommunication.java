@@ -11,7 +11,7 @@ import android.util.Log;
 import at.abraxas.amarino.Amarino;
 import at.abraxas.amarino.AmarinoIntent;
 
-public class Communication {
+public class ArduinoCommunication {
 
 	private static final String TAG = "Communication";
 	
@@ -26,17 +26,17 @@ public class Communication {
 	
 	private List<MessageReceiver> mMessageReceivers = null;
 	
-	private static Communication mInstance;
+	private static ArduinoCommunication mInstance;
 	
-	public static Communication getInstance(Context pContext) {
+	public static ArduinoCommunication getInstance(Context pContext) {
 		if (mInstance == null) {
-			mInstance = new Communication(pContext);
+			mInstance = new ArduinoCommunication(pContext);
 		}
 		
 		return mInstance;
 	}
 	
-	private Communication(Context pContext, String pDevice_Address) {
+	private ArduinoCommunication(Context pContext, String pDevice_Address) {
 		mDeviceAddress = pDevice_Address;
 		mContext = pContext;
 		mMessageReceivers = new ArrayList<MessageReceiver>();
@@ -44,7 +44,7 @@ public class Communication {
 		mInstance = this;
 	}
 	
-	private Communication(Context pContext) {
+	private ArduinoCommunication(Context pContext) {
 		// TODO Auto-generated constructor stub
 		mContext = pContext;
 		mInstance = this;

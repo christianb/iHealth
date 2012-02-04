@@ -1,5 +1,6 @@
 package com.activities;
 
+import ihealth.arduino.ArduinoCommunication;
 import ihealth.utils.HexConversion;
 import ihealth.utils.Patient;
 import ihealth.webservice.RestJsonClient;
@@ -191,9 +192,18 @@ public class iHealthSuperActivity extends Activity implements NFC_Message  {
 	
 	@Override
 	protected void onStop() {
+		
 		// TODO Auto-generated method stub
 		super.onStop();
 		mTagID = null;
+	}
+	
+	@Override
+	protected void onStart() {
+		// TODO Auto-generated method stub
+		super.onStart();
+		
+		
 	}
 
 	@Override

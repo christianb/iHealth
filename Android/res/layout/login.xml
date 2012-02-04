@@ -149,8 +149,14 @@
             android:background="@color/red_dark"
             android:textColor="@color/text"/>
         
-        <ImageView 
+        <RelativeLayout 
             android:id="@+id/login_button"
+        	android:layout_below="@id/login_password_edit"
+        	android:layout_width="fill_parent"
+        	android:layout_height="50dip"
+			android:orientation="vertical"
+			android:background="@color/red_bright">
+        	<ImageView 
             android:src="@drawable/icon_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -159,6 +165,7 @@
             android:layout_marginTop="6dip"
             android:layout_below="@id/login_password_edit"
             />
+        </RelativeLayout>
         
      </RelativeLayout>
 

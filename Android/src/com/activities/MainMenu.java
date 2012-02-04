@@ -3,6 +3,9 @@ package com.activities;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.activities.R;
+
+import ihealth.nfc.NFC;
 import ihealth.utils.HexConversion;
 import ihealth.utils.Patient;
 import ihealth.webservice.RestJsonClient;
@@ -20,7 +23,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.nfc.NFC;
 
 /** Patient einlesen, impressum (Hilfe) */
 public class MainMenu extends iHealthSuperActivity {

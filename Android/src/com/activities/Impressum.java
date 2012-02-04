@@ -1,5 +1,7 @@
 package com.activities;
 
+import com.activities.R;
+
 import android.app.Activity;
 import android.graphics.Typeface;
 import android.os.Bundle;

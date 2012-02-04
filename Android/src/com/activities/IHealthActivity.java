@@ -3,14 +3,16 @@ package com.activities;
 import java.math.BigInteger;
 import java.nio.charset.Charset;
 
-import ihealth.arduino.Communication;
+import ihealth.arduino.ArduinoCommunication;
 import ihealth.arduino.MessageReceiver;
+import ihealth.nfc.NFC;
 import ihealth.utils.HexConversion;
 import ihealth.webservice.RestJsonClient;
 
 import org.json.JSONObject;
 
-import com.nfc.NFC;
+import com.activities.R;
+
 
 import android.app.Activity;
 import android.app.PendingIntent;
@@ -30,7 +32,7 @@ public class IHealthActivity extends Activity implements MessageReceiver {
 	
 	private final static String TAG = "IHealthActivity";
 	
-	private Communication comm;
+	private ArduinoCommunication comm;
 	
 	private Button startMeasurement;
 
@@ -44,7 +46,7 @@ public class IHealthActivity extends Activity implements MessageReceiver {
 
 	private Tag mTagFromIntent;
 
-	private Communication com;
+	private ArduinoCommunication com;
 	
     /** Called when the activity is first created. */
     @Override
@@ -94,7 +96,7 @@ public class IHealthActivity extends Activity implements MessageReceiver {
        
         techListsArray = new String[][] { new String[] { NfcA.class.getName(), NdefFormatable.class.getName(), MifareClassic.class.getName() } };
         
-        com = Communication.getInstance(this);
+        com = ArduinoCommunication.getInstance(this);
     }
     
     public String toHex(String arg) {

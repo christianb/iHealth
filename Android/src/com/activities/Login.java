@@ -1,11 +1,10 @@
 package com.activities;
 
+import ihealth.webservice.RestJsonClient;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import ihealth.utils.Patient;
-import ihealth.webservice.RestJsonClient;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,8 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,7 +35,7 @@ public class Login extends iHealthSuperActivity {
 		password.setText("astronaut");
 		username.setText("christian");	
 		
-		ImageView doLogin = (ImageView) findViewById(R.id.login_button);
+		RelativeLayout doLogin = (RelativeLayout) findViewById(R.id.login_button);
 		doLogin.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -46,7 +44,7 @@ public class Login extends iHealthSuperActivity {
 				
 				if (isOnline()) {
 					Log.d(TAG, "ist online");
-					JSONObject jObject = RestJsonClient.loginPOST(username.getText().toString(), password.getText().toString());
+					JSONObject jObject = RestJsonClient.login(username.getText().toString(), password.getText().toString());
 					Log.d(TAG, "Empfangen: " + jObject.toString());
 					String sStatuscode = "";
 					String statusmessage = "";

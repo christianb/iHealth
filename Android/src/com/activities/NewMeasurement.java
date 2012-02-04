@@ -1,9 +1,13 @@
 package com.activities;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
-import ihealth.arduino.Communication;
+import com.activities.R;
+
+import ihealth.arduino.ArduinoCommunication;
 import ihealth.arduino.MessageReceiver;
+import ihealth.nfc.NFC;
 import ihealth.utils.HexConversion;
 import ihealth.utils.Patient;
 import ihealth.webservice.RestJsonClient;
@@ -30,12 +34,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.nfc.NFC;
 
 public class NewMeasurement extends iHealthSuperActivity implements MessageReceiver {
 
 	private static final String TAG = "NewMeasurement";
-	private Communication com;
+	private ArduinoCommunication com;
 	private Tag mTagFromIntent;
 
 	
@@ -60,7 +63,7 @@ public class NewMeasurement extends iHealthSuperActivity implements MessageRecei
 	    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 	    spinner.setAdapter(adapter);
 		
-		com = Communication.getInstance(this);
+		com = ArduinoCommunication.getInstance(this);
 		com.registerCallback(this);
 		com.startMeasurement();
 		
@@ -76,10 +79,19 @@ public class NewMeasurement extends iHealthSuperActivity implements MessageRecei
 				String pValue = new Float(mValue).toString();
 				String pNote = mNote.getText().toString();
 				SharedPreferences sp = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-				String pUserID = sp.getString("userId", "-1");
+				String pUserID = sp.getString("userId", Patient.getInstance().getID());
 				JSONObject jObject = RestJsonClient.createMeasurement(pPatientID, pType, pValue, pNote, pUserID);
 				Log.d(TAG, "userid: "+pUserID);
 				Log.d(TAG, "Empfangen: " + jObject.toString());
+				try {
+					String statuscode = jObject.get("statuscode").toString();
+					if (statuscode.equalsIgnoreCase("200")) {
+						Toast.makeText(NewMeasurement.this, "Messung gespeichert.", Toast.LENGTH_SHORT).show();
+					}
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 		

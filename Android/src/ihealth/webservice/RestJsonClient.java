@@ -38,7 +38,7 @@ public class RestJsonClient {
 	
 	private final static String HOST = "http://titania.f4.htw-berlin.de/";
 	
-	public static JSONObject loginPOST(String pUser, String pPassword) {
+	public static JSONObject login(String pUser, String pPassword) {
 		HttpClient httpclient = new DefaultHttpClient();
 		
 		// hash the password
@@ -161,7 +161,7 @@ public class RestJsonClient {
 	public static JSONObject getMeasurement(String pPatientId, String pType, String pLimit) {
 		HttpClient httpclient = new DefaultHttpClient();
 		
-		String path = "/measurements/";
+		String path = "/measurements/patientId/"+pPatientId+"/type/"+pType+"/limit/"+pLimit;
 		
 		// Prepare a request object
         HttpGet get = new HttpGet();
@@ -172,12 +172,12 @@ public class RestJsonClient {
 			e1.printStackTrace();
 		}
 
-        HttpParams params = new BasicHttpParams();
+        /*HttpParams params = new BasicHttpParams();
         params.setParameter("type", pType);
         params.setParameter("patientId", pPatientId);
         params.setParameter("limit", pLimit);
         get.setParams(params);
-       
+       */
         return execute(httpclient, get);
 	}
     

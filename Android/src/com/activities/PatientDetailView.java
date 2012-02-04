@@ -1,5 +1,7 @@
 package com.activities;
 
+import com.activities.R;
+
 import ihealth.utils.Patient;
 import android.content.Context;
 import android.content.SharedPreferences;

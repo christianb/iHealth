@@ -1,7 +1,14 @@
 package com.activities;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.activities.R;
+
 import ihealth.utils.Patient;
+import ihealth.webservice.RestJsonClient;
 import android.os.Bundle;
+import android.util.Log;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -10,6 +17,8 @@ import android.widget.TextView;
 
 public class PatientMeasurement extends iHealthSuperActivity {
 
+	private static final String TAG = "PatientMeasurement";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -26,9 +35,27 @@ public class PatientMeasurement extends iHealthSuperActivity {
 		 // if there is an error loading this page (see below).
 		myWebView.getSettings().setJavaScriptEnabled(true);
 		myWebView.setWebViewClient(new WebViewClient());
-		 myWebView.loadUrl("http://chart.apis.google.com/chart?cht=bvg&chs=250x150&chd=s:Monkeys&chxt=x,y&chxs=0,ff0000,12,0,lt|1,0000ff,10,1,lt");
+		
+		String patientId = Patient.getInstance().getID();
+		String type = "temperature";
+		String limit = "10";
+		
+		// Hole MeasurementURL
+		JSONObject jObject = RestJsonClient.getMeasurement(patientId, type, limit);
+		try {
+			//Log.d(TAG, "json: "+jObject.toString());
+			String chart_url = jObject.get("chart").toString();
+			Log.d(TAG, "chart_url: "+chart_url);
+			
+			myWebView.loadUrl(chart_url);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//myWebView.loadUrl("http://chart.apis.google.com/chart?cht=bvg&chs=250x150&chd=s:Monkeys&chxt=x,y&chxs=0,ff0000,12,0,lt|1,0000ff,10,1,lt");
 		 
-		 setContent(Patient.getInstance());
+		setContent(Patient.getInstance());
 	}
 	
 private void setContent(Patient p) {

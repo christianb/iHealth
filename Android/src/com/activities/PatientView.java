@@ -1,6 +1,8 @@
 package com.activities;
 
-import ihealth.arduino.Communication;
+import com.activities.R;
+
+import ihealth.arduino.ArduinoCommunication;
 import ihealth.utils.Patient;
 import android.app.Activity;
 import android.content.Context;
