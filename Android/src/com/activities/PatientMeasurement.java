@@ -15,6 +15,12 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * Zeigt die Messungen in einem Diagram für einen bestimmten Patienten an.
+ * 
+ * @author christian
+ *
+ */
 public class PatientMeasurement extends iHealthSuperActivity {
 
 	private static final String TAG = "PatientMeasurement";
@@ -38,14 +44,14 @@ public class PatientMeasurement extends iHealthSuperActivity {
 		
 		String patientId = Patient.getInstance().getID();
 		String type = "temperature";
-		String limit = "10";
+		String limit = "4";
 		
 		// Hole MeasurementURL
 		JSONObject jObject = RestJsonClient.getMeasurement(patientId, type, limit);
 		try {
 			//Log.d(TAG, "json: "+jObject.toString());
 			String chart_url = jObject.get("chart").toString();
-			chart_url += "&chs=280x300";
+			chart_url += "&chs=270x285";
 			Log.d(TAG, "chart_url: "+chart_url);
 			
 			myWebView.loadUrl(chart_url);

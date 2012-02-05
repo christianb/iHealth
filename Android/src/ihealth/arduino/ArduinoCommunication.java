@@ -129,8 +129,8 @@ public class ArduinoCommunication {
      * The value is the duration the Arduino must do the measurement.
      */
     public void startMeasurement() {
-    	sendInteger(0, 'M');
-    	notifyCallbacks(36);
+    	//sendInteger(0, 'M');
+    	//notifyCallbacks(36);
     }
     
     public void restartMeasurement() {

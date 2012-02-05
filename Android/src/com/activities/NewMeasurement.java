@@ -56,6 +56,7 @@ public class NewMeasurement extends iHealthSuperActivity implements MessageRecei
 		setContentView(R.layout.new_measurement);
 		
 		dialog = new ProgressDialog(this);
+		mValue = -1;
 		
 		Spinner spinner = (Spinner) findViewById(R.id.spinner);
 	    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
@@ -65,7 +66,7 @@ public class NewMeasurement extends iHealthSuperActivity implements MessageRecei
 		
 		com = ArduinoCommunication.getInstance(this);
 		com.registerCallback(this);
-		com.startMeasurement();
+		//com.startMeasurement();
 		
 		mNote = (TextView) findViewById(R.id.new_measurement_content_bemerkung);
 		
@@ -76,24 +77,29 @@ public class NewMeasurement extends iHealthSuperActivity implements MessageRecei
 			public void onClick(View v) {
 				vibrate();
 				
-				String pPatientID = Patient.getInstance().getID();
-				String pType = "temperature";
-				String pValue = new Float(mValue).toString();
-				String pNote = mNote.getText().toString();
-				SharedPreferences sp = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-				String pUserID = sp.getString("userId", Patient.getInstance().getID());
-				JSONObject jObject = RestJsonClient.createMeasurement(pPatientID, pType, pValue, pNote, pUserID);
-				Log.d(TAG, "userid: "+pUserID);
-				Log.d(TAG, "Empfangen: " + jObject.toString());
-				try {
-					String statuscode = jObject.get("statuscode").toString();
-					if (statuscode.equalsIgnoreCase("200")) {
-						Toast.makeText(NewMeasurement.this, "Messung gespeichert.", Toast.LENGTH_SHORT).show();
+				if (mValue != -1) {
+					String pPatientID = Patient.getInstance().getID();
+					String pType = "temperature";
+					String pValue = new Float(mValue).toString();
+					String pNote = mNote.getText().toString();
+					SharedPreferences sp = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+					String pUserID = sp.getString("userId", Patient.getInstance().getID());
+					JSONObject jObject = RestJsonClient.createMeasurement(pPatientID, pType, pValue, pNote, pUserID);
+					Log.d(TAG, "userid: "+pUserID);
+					Log.d(TAG, "Empfangen: " + jObject.toString());
+					try {
+						String statuscode = jObject.get("statuscode").toString();
+						if (statuscode.equalsIgnoreCase("200")) {
+							Toast.makeText(NewMeasurement.this, "Messung gespeichert.", Toast.LENGTH_SHORT).show();
+						}
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				} else {
+					Toast.makeText(NewMeasurement.this, "Kein Messwert vorhanden!", Toast.LENGTH_SHORT).show();
 				}
+				
 			}
 		});
 		
@@ -151,7 +157,7 @@ public class NewMeasurement extends iHealthSuperActivity implements MessageRecei
         
         setFontSegoeWPLight((TextView) findViewById(R.id.new_measurement_content1_text1));
         setFontSegoeWPLight((TextView) findViewById(R.id.new_measurement_content2_text1));
-        setFontSegoeWPLight((TextView) findViewById(R.id.new_measurement_content2_text2));
+        TextView temp_value = (TextView) findViewById(R.id.new_measurement_content2_text2);        
         setFontSegoeWPLight((TextView) findViewById(R.id.new_measurement_content3_text1));
         setFontSegoeWPLight((TextView) findViewById(R.id.new_measurement_content_bemerkung));
         

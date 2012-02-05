@@ -131,6 +131,7 @@ public class RestJsonClient {
 	 * @return
 	 */
 	public static JSONObject createMeasurement(String pPatientId, String pType, String pValue, String pNote, String pUserId) {
+		Log.d(TAG, "Erstelle neue Messung: {pValue = "+pValue+"}");
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpPost post = new HttpPost();
 		
