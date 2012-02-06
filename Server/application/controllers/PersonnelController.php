@@ -172,7 +172,7 @@ class PersonnelController extends Zend_Controller_Action{
 
           $personnel->setRight(CRUD_MEASUREMENTS, $formData['measurementsRight'] == 1);
           $personnel->setRight(CRUD_HOSPITALS, $formData['hospitalsRight'] == 1);
-          $personnel->setRight(CRUD_PERSONNEL, $formData['personnelRight'] ==1);
+          $personnel->setRight(CRUD_PERSONNEL, $formData['personnelRight'] == 1);
           $personnel->setRight(CRUD_PATIENTS, $formData['patientsRight'] == 1);
           $personnel->setRight(CRUD_RFID, $formData['rfidsRight'] == 1);
 
@@ -218,13 +218,24 @@ class PersonnelController extends Zend_Controller_Action{
       $profileForm->getElement("firstname")->setValue($personnel->getFirstname());
       $profileForm->getElement("lastname")->setValue($personnel->getLastname());
 
+
       // form has been submitted through post request
       if($this->_request->isPost()){
         $formData = $this->_request->getPost();
 
+        if($personnel->getUsername() == $formData['username']){
+          $profileForm->getElement("username")->removeValidator("Unplagged_Validate_NoRecordExists");
+        }
+        if($personnel->getEmail() == $formData['email']){
+          $profileForm->getElement("email")->removeValidator("Unplagged_Validate_NoRecordExists");
+        }
+
         // if the form doesn't validate, pass to view and return
         if($profileForm->isValid($formData)){
+
           // select the user and update the values
+          $personnel->setEmail($formData['email']);
+          $personnel->setUsername($formData['username']);
           $personnel->setFirstname($formData['firstname']);
           $personnel->setLastname($formData['lastname']);
 

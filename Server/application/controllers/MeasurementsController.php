@@ -35,8 +35,18 @@ class MeasurementsController extends Zend_Rest_Controller{
       }
       $response["statuscode"] = 200;
       $response["statusmessage"] = "The measurements were returned successfully.";
-      $measurements = $this->_em->getRepository("Application_Model_Measurement")->findBy(array("patient"=>$patient->getId()));
 
+      $qb = $this->_em->createQueryBuilder();
+      $qb->add('select', "m")
+          ->add('from', 'Application_Model_Measurement m')
+          ->where("m.patient = '" . $patient->getId() . "'");
+      $qb->setMaxResults(6);
+      $qb->orderBy('m.id', 'DESC'); 
+
+      $measurements = $qb->getQuery()->getResult();
+
+      $measurementType = "";
+      $measurements = array_reverse($measurements);
       foreach($measurements as $measurement){
         $patientMeasurement = array();
         $patientMeasurement["id"] = $measurement->getId();
@@ -48,6 +58,42 @@ class MeasurementsController extends Zend_Rest_Controller{
         $patientMeasurement["memo"] = $measurement->getMemo();
 
         $response["measurements"][] = $patientMeasurement;
+        $measurementType = $measurement->getType()->getUnit();
+        $measurementValues[] = $measurement->getValue();
+        $measurementDays[] = $measurement->getDate()->format("d.m");
+        $measurementTimes[] = $measurement->getDate()->format("H:i");
+      }
+      if($measurements){
+        $dayString = implode("|", $measurementDays);    //X-Achse (Datum)
+
+        $scaleTemps = array();
+        $min = floor(min($measurementValues)/2)*2;
+        $max = ceil(max($measurementValues)/2)*2;
+
+        for($i = $min - 2; $i <= $max + 2; $i+=2){
+          $scaleTemps[] = $i;
+        }
+
+        $scaleString = implode("|", $scaleTemps);  //Y-Achse(Temperaturskala)
+
+        $timeString = implode("|", $measurementTimes);  // X-Achse (Zeit)
+        $valueString = implode(",", $measurementValues);  // X-Achse (Zeit)
+
+        $url = "http://chart.apis.google.com/chart?chxl=";
+        $url .= "0:|" . $dayString . "|";
+        $url .= "1:|" . $scaleString . "|";
+        $url .= "2:|" . $timeString . "|";
+        $url .= "&chxr=1," . ($min - 5) . "," . ($max + 5) . "|2,0,95";
+        $url .= "&chxs=0,4f5d67,11.5,-0.5,l,4f5d67|1,4f5d67,11.5,-0.333,lt,4f5d67|2,4a6274,9.5,-1,l,4f5d67";
+        $url .= "&chxt=x,y,x";
+        $url .= "&cht=lc";
+        $url .= "&chds=" . ($min - 5) . "," . ($max + 5);
+        $url .= "&chd=t:" . $valueString;
+        $url .= "&chls=1";
+        $url .= "&chm=o,4a6274,0,-1,5";
+        $url .= "&chtt=Temperatur";
+
+        $response["chart"] = $url;
       }
     }
     $this->getResponse()->appendBody(json_encode($response));

@@ -24,8 +24,8 @@ $this->headTitle($this->title);
       echo ($i % 2 != 0) ? "class=\"even\"" : ""; ?>>
           <td><?php echo $hospitalStay->getIcd(); ?></td>
           <td><?php echo $hospitalStay->getOps(); ?></td>
-          <td><?php echo $hospitalStay->getHospital()->getName(); ?></td>
-          <td><?php echo $hospitalStay->getCheckIn()->format("Y-m-d"); ?> / <?php echo $hospitalStay->getCheckOut()->format("Y-m-d"); ?></td>
+          <td><?php echo ($hospitalStay->getHospital()) ? $hospitalStay->getHospital()->getName() : "-"; ?></td>
+          <td><?php echo $hospitalStay->getCheckIn()->format("Y-m-d"); ?> / <?php echo ($hospitalStay->getHospital()) ? $hospitalStay->getCheckOut()->format("Y-m-d") : "im KH"; ?></td>
         </tr>
 <?php endforeach; ?>
     </table>

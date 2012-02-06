@@ -32,10 +32,12 @@ class Application_Form_Personnel_Profile extends Zend_Form{
 
     $usernameElement = new Zend_Form_Element_Text('username');
     $usernameElement->setLabel("Benutzername");
+    $usernameElement->addValidator(new Unplagged_Validate_NoRecordExists('Application_Model_Personnel','username'));
     $usernameElement->setIgnore(true);
 
     $emailElement = new Zend_Form_Element_Text('email');
     $emailElement->setLabel("E-Mail");
+    $emailElement->addValidator(new Unplagged_Validate_NoRecordExists('Application_Model_Personnel','email'));
     $emailElement->setIgnore(true);
 
     $firstnameElement = new Zend_Form_Element_Text('firstname');
